@@ -1,15 +1,22 @@
 import { Outlet } from 'react-router-dom'
 import Header from '../header'
+import { Splitter, SplitterPanel } from 'primereact/splitter';
+import { useContext } from 'react';
+import { GlobalContext } from '../../contexts/global/globalContext';
 
 const ProtectedLayout = () => {
+    const { isMobile } = useContext(GlobalContext);
+
     return (
-        <main className='grid mr-0 mb-0'>
-            <div className='col-12 md:col-1 lg:max-w-7rem pr-0 pb-0'>
-                <Header />
-            </div>
-            <div className='col-12 md:col-11 md:px-0 py-0'>
-                <Outlet />
-            </div>
+        <main>
+            <Splitter className="h-screen" layout={isMobile ? "vertical" : "horizontal"}>
+                <SplitterPanel className="flex align-items-center justify-content-center" size={5} minSize={5}>
+                    {(isMobile) ? <Outlet /> : <Header />}
+                </SplitterPanel>
+                <SplitterPanel className="flex align-items-center justify-content-center" size={95}>
+                    {(isMobile) ? <Header /> : <Outlet />}
+                </SplitterPanel>
+            </Splitter>
         </main>
     )
 }
