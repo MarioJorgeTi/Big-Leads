@@ -1,0 +1,14 @@
+.bg-details {
+    background-color: var(--light-color);
+}
+
+.view-container .p-dataview-content {
+    margin: 1rem;
+}
+
+.p-paginator{
+    position: fixed;
+    bottom: 10px;
+    left: 40%;
+    display: flex;
+}

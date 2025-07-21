@@ -1,0 +1,496 @@
+{
+  "processos": [
+    {
+      "numero_processo": "0903964-94.2025.8.19.0001",
+      "polo_ativo": [
+        {
+          "nome": "BANCO VOTORANTIM S.A.",
+          "cpf_cnpj": "59.588.111/0001-03"
+        }
+      ],
+      "polo_passivo": [
+        {
+          "nome": "ALZERITA PINTO NUNES",
+          "cpf_cnpj": "611.079.137-72"
+        }
+      ],
+      "classe_judicial": "busca e apreensão em alienação fiduciária (81)",
+      "assunto": "alienação fiduciária (9582)",
+      "jurisdicao": "comarca da capital",
+      "data_autuacao": "2025-07-18",
+      "ultima_distribuicao": "2025-07-18",
+      "valor_causa": 105842.44,
+      "segredo_justica": 0,
+      "justica_gratuita": 0,
+      "tutela_liminar": 0,
+      "prioridade": "não",
+      "orgao_julgador": "1ª vara cível da regional do méier",
+      "cargo_judicial": "juiz de direito",
+      "competencia": "cível"
+    },
+    {
+      "numero_processo": "0903957-05.2025.8.19.0001",
+      "polo_ativo": [
+        {
+          "nome": "BANCO VOTORANTIM S.A.",
+          "cpf_cnpj": "59.588.111/0001-03"
+        }
+      ],
+      "polo_passivo": [
+        {
+          "nome": "MARIA DE FATIMA BARBOSA FONSECA",
+          "cpf_cnpj": "609.308.707-78"
+        }
+      ],
+      "classe_judicial": "busca e apreensão em alienação fiduciária (81)",
+      "assunto": "alienação fiduciária (9582)",
+      "jurisdicao": "comarca da capital",
+      "data_autuacao": "2025-07-18",
+      "ultima_distribuicao": "2025-07-18",
+      "valor_causa": 94798.97,
+      "segredo_justica": 0,
+      "justica_gratuita": 0,
+      "tutela_liminar": 1,
+      "prioridade": "não",
+      "orgao_julgador": "1ª vara cível da regional de santa cruz",
+      "cargo_judicial": "juiz de direito",
+      "competencia": "cível"
+    },
+    {
+      "numero_processo": "0805763-32.2025.8.19.0045",
+      "polo_ativo": [
+        {
+          "nome": "BANCO BRADESCO FINANCIAMENTO S.A.",
+          "cpf_cnpj": "07.207.996/0001-50"
+        }
+      ],
+      "polo_passivo": [
+        {
+          "nome": "MARCOS VINICIUS ARANTES DE CARVALHO",
+          "cpf_cnpj": "144.768.466-45"
+        }
+      ],
+      "classe_judicial": "busca e apreensão em alienação fiduciária (81)",
+      "assunto": "alienação fiduciária (9582)",
+      "jurisdicao": "comarca de resende",
+      "data_autuacao": "2025-07-17",
+      "ultima_distribuicao": "2025-07-17",
+      "valor_causa": 50518.72,
+      "segredo_justica": 0,
+      "justica_gratuita": 0,
+      "tutela_liminar": 1,
+      "prioridade": "não",
+      "orgao_julgador": "1ª vara cível da comarca de resende",
+      "cargo_judicial": "juiz de direito",
+      "competencia": "cível"
+    },
+    {
+      "numero_processo": "0815506-39.2025.8.19.0054",
+      "polo_ativo": [
+        {
+          "nome": "BANCO RCI BRASIL S.A",
+          "cpf_cnpj": "62.307.848/0001-15"
+        }
+      ],
+      "polo_passivo": [
+        {
+          "nome": "BRASIL LOCAFACIL RENTCAR LOCACAO DE AUTOMOVEIS LTDA",
+          "cpf_cnpj": "30.787.245/0001-71"
+        }
+      ],
+      "classe_judicial": "busca e apreensão em alienação fiduciária (81)",
+      "assunto": "alienação fiduciária (9582)",
+      "jurisdicao": "comarca de são joão de meriti",
+      "data_autuacao": "2025-07-17",
+      "ultima_distribuicao": "2025-07-17",
+      "valor_causa": 140962.86,
+      "segredo_justica": 0,
+      "justica_gratuita": 0,
+      "tutela_liminar": 1,
+      "prioridade": "juízo 100% digital",
+      "orgao_julgador": "1ª vara cível da comarca de são joão de meriti",
+      "cargo_judicial": "juiz de direito",
+      "competencia": "cível"
+    },
+    {
+      "numero_processo": "0807821-35.2025.8.19.0036",
+      "polo_ativo": [
+        {
+          "nome": "BANCO DO BRASIL SA",
+          "cpf_cnpj": "00.000.000/0001-91"
+        }
+      ],
+      "polo_passivo": [
+        {
+          "nome": "A. FERREIRA ROCHA COMERCIO E REPRESENTACOES LTDA",
+          "cpf_cnpj": "26.563.364/0001-73"
+        },
+        {
+          "nome": "ALESSANDRA FERREIRA DA ROCHA",
+          "cpf_cnpj": "085.386.327-01"
+        }
+      ],
+      "classe_judicial": "execução de título extrajudicial (12154)",
+      "assunto": "cédula de crédito bancário (4960)",
+      "jurisdicao": "comarca de nilópolis",
+      "data_autuacao": "2025-07-18",
+      "ultima_distribuicao": "2025-07-18",
+      "valor_causa": 97614.81,
+      "segredo_justica": 0,
+      "justica_gratuita": 0,
+      "tutela_liminar": 0,
+      "prioridade": "não",
+      "orgao_julgador": "1ª vara cível da comarca de nilópolis",
+      "cargo_judicial": "juiz de direito",
+      "competencia": "cível"
+    },
+    {
+      "numero_processo": "0813543-32.2025.8.19.0042",
+      "polo_ativo": [
+        {
+          "nome": "banco bradesco sa",
+          "cpf_cnpj": "60.746.948/0001-12"
+        }
+      ],
+      "polo_passivo": [
+        {
+          "nome": "EDUARDO MOURAO PEREIRA",
+          "cpf_cnpj": "076.749.627-25"
+        }
+      ],
+      "classe_judicial": "execução de título extrajudicial (12154)",
+      "assunto": "confissão de dívida (30182)",
+      "jurisdicao": "comarca de petrópolis",
+      "data_autuacao": "2025-07-18",
+      "ultima_distribuicao": "2025-07-18",
+      "valor_causa": 165494.18,
+      "segredo_justica": 0,
+      "justica_gratuita": 0,
+      "tutela_liminar": 0,
+      "prioridade": "não",
+      "orgao_julgador": "3ª vara cível da comarca de petrópolis",
+      "cargo_judicial": "juiz de direito",
+      "competencia": "cível"
+    },
+    {
+      "numero_processo": "0903484-19.2025.8.19.0001",
+      "polo_ativo": [
+        {
+          "nome": "CAPRI II FUNDO DE INVESTIMENTO FINANCEIRO MULTIMERCADO",
+          "cpf_cnpj": "53.703.737/0001-37"
+        },
+        {
+          "nome": "FOKA II FUNDO DE INVESTIMENTO FINANCEIRO MULTIMERCADO",
+          "cpf_cnpj": "53.704.225/0001-95"
+        },
+        {
+          "nome": "GAUDI II FUNDO DE INVESTIMENTO FINANCEIRO MULTIMERCADO",
+          "cpf_cnpj": "53.703.334/0001-98"
+        },
+        {
+          "nome": "RAFAEL IMPROTA VIEIRA",
+          "cpf_cnpj": "025.042.547-50"
+        }
+      ],
+      "polo_passivo": [
+        {
+          "nome": "UBOOK EDITORA S.A.",
+          "cpf_cnpj": "19.141.082/0001-12"
+        }
+      ],
+      "classe_judicial": "execução de título extrajudicial (12154)",
+      "assunto": "obrigação de fazer / não fazer (10671)",
+      "jurisdicao": "comarca da capital",
+      "data_autuacao": "2025-07-17",
+      "ultima_distribuicao": "2025-07-17",
+      "valor_causa": 12854932.49,
+      "segredo_justica": 0,
+      "justica_gratuita": 0,
+      "tutela_liminar": 0,
+      "prioridade": "não",
+      "orgao_julgador": "13ª vara cível da comarca da capital",
+      "cargo_judicial": "juiz de direito",
+      "competencia": "cível"
+    },
+    {
+      "numero_processo": "0903469-50.2025.8.19.0001",
+      "polo_ativo": [
+        {
+          "nome": "SCS GERADORES LTDA",
+          "cpf_cnpj": "22.134.768/0004-33"
+        }
+      ],
+      "polo_passivo": [
+        {
+          "nome": "LAF TECH LTDA",
+          "cpf_cnpj": "48.246.439/0001-25"
+        }
+      ],
+      "classe_judicial": "execução de título extrajudicial (159)",
+      "assunto": "rescisão / resolução (10582)",
+      "jurisdicao": "comarca da capital",
+      "data_autuacao": "2025-07-17",
+      "ultima_distribuicao": "2025-07-17",
+      "valor_causa": 414463.42,
+      "segredo_justica": 0,
+      "justica_gratuita": 0,
+      "tutela_liminar": 0,
+      "prioridade": "não",
+      "orgao_julgador": "21º juizado especial cível da comarca da capital",
+      "cargo_judicial": "juiz de direito",
+      "competencia": "juizado especial cível"
+    },
+    {
+      "numero_processo": "0834611-04.2025.8.19.0021",
+      "polo_ativo": [
+        {
+          "nome": "CASA DO ACO PARAFUSOS E FERRAGENS LTDA",
+          "cpf_cnpj": "45.745.654/0001-82"
+        }
+      ],
+      "polo_passivo": [
+        {
+          "nome": "REATIVA CENOGRAFIA, PRODUCOES E EVENTOS LTDA",
+          "cpf_cnpj": "42.427.558/0001-06"
+        }
+      ],
+      "classe_judicial": "monitória (40)",
+      "assunto": "obrigação de fazer / não fazer (10671)",
+      "jurisdicao": "comarca de duque de caxias",
+      "data_autuacao": "2025-07-18",
+      "ultima_distribuicao": "2025-07-18",
+      "valor_causa": 55252.38,
+      "segredo_justica": 0,
+      "justica_gratuita": 1,
+      "tutela_liminar": 0,
+      "prioridade": "não",
+      "orgao_julgador": "7ª vara cível da comarca de duque de caxias",
+      "cargo_judicial": "juiz de direito",
+      "competencia": "cível"
+    },
+    {
+      "numero_processo": "0904003-91.2025.8.19.0001",
+      "polo_ativo": [
+        {
+          "nome": "BANCO DO BRASIL SA",
+          "cpf_cnpj": "00.000.000/0001-91"
+        }
+      ],
+      "polo_passivo": [
+        {
+          "nome": "ACMA LABS SOLUCOES LABORATORIAIS COMERCIO E IMPORTACAO LTDA",
+          "cpf_cnpj": "22.874.774/0001-84"
+        },
+        {
+          "nome": "ELAINE ADIB NOGUEIRA PONTES",
+          "cpf_cnpj": "899.832.547-00"
+        },
+        {
+          "nome": "MARCO AURELIO NEVES CRISPIM",
+          "cpf_cnpj": "787.764.737-91"
+        }
+      ],
+      "classe_judicial": "monitória (40)",
+      "assunto": "cédula de crédito bancário (4960)",
+      "jurisdicao": "comarca da capital",
+      "data_autuacao": "2025-07-18",
+      "ultima_distribuicao": "2025-07-18",
+      "valor_causa": 159131.6,
+      "segredo_justica": 0,
+      "justica_gratuita": 0,
+      "tutela_liminar": 0,
+      "prioridade": "não",
+      "orgao_julgador": "12ª vara cível da comarca da capital",
+      "cargo_judicial": "juiz de direito",
+      "competencia": "cível"
+    },
+    {
+      "numero_processo": "0901857-77.2025.8.19.0001",
+      "polo_ativo": [
+        {
+          "nome": "BANCO DO BRASIL SA",
+          "cpf_cnpj": "00.000.000/0001-91"
+        }
+      ],
+      "polo_passivo": [
+        {
+          "nome": "MAURO CESAR MACIEL DE ANDRADE",
+          "cpf_cnpj": "012.298.617-26"
+        }
+      ],
+      "classe_judicial": "monitória (40)",
+      "assunto": "cédula de crédito bancário (4960)",
+      "jurisdicao": "comarca da capital",
+      "data_autuacao": "2025-07-16",
+      "ultima_distribuicao": "2025-07-16",
+      "valor_causa": 428604.89,
+      "segredo_justica": 0,
+      "justica_gratuita": 0,
+      "tutela_liminar": 0,
+      "prioridade": "não",
+      "orgao_julgador": "13ª vara cível da comarca da capital",
+      "cargo_judicial": "juiz de direito",
+      "competencia": "cível"
+    },
+    {
+      "numero_processo": "0802273-84.2025.8.19.0050",
+      "polo_ativo": [
+        {
+          "nome": "COOPERATIVA DE CREDITO DOS PROPRIETARIOS DA INDUS",
+          "cpf_cnpj": "03.358.914/0001-17"
+        }
+      ],
+      "polo_passivo": [
+        {
+          "nome": "MARCIO MUNIZ COLINO",
+          "cpf_cnpj": "092.363.717-60"
+        }
+      ],
+      "classe_judicial": "monitória (40)",
+      "assunto": "cartão de crédito (9585)",
+      "jurisdicao": "comarca de santo antônio de pádua e aperibé",
+      "data_autuacao": "2025-07-15",
+      "ultima_distribuicao": "2025-07-15",
+      "valor_causa": 87712.55,
+      "segredo_justica": 0,
+      "justica_gratuita": 0,
+      "tutela_liminar": 0,
+      "prioridade": "não",
+      "orgao_julgador": "1ª vara da comarca de santo antônio de pádua e aperibé",
+      "cargo_judicial": "juiz de direito",
+      "competencia": "cível"
+    },
+    {
+      "numero_processo": "0807223-06.2025.8.19.0061",
+      "polo_ativo": [
+        {
+          "nome": "RENAN DIAS DOS SANTOS",
+          "cpf_cnpj": "014.167.157-20"
+        }
+      ],
+      "polo_passivo": [
+        {
+          "nome": "ANDERSON BALONECKER DE MENDONCA",
+          "cpf_cnpj": "084.616.127-36"
+        }
+      ],
+      "classe_judicial": "despejo por falta de pagamento cumulado com cobrança (94)",
+      "assunto": "despejo por inadimplemento (14915)",
+      "jurisdicao": "comarca de teresópolis",
+      "data_autuacao": "2025-07-17",
+      "ultima_distribuicao": "2025-07-17",
+      "valor_causa": 74491.83,
+      "segredo_justica": 0,
+      "justica_gratuita": 0,
+      "tutela_liminar": 0,
+      "prioridade": "idoso(a)",
+      "orgao_julgador": "2ª vara cível da comarca de teresópolis",
+      "cargo_judicial": "juiz de direito",
+      "competencia": "cível"
+    },
+    {
+      "numero_processo": "0903884-33.2025.8.19.0001",
+      "polo_ativo": [
+        {
+          "nome": "CELIA FERREIRA ALVES DE CARVALHO",
+          "cpf_cnpj": "660.998.387-91"
+        },
+        {
+          "nome": "DIAMANTINO PINTO ALVES",
+          "cpf_cnpj": "073.036.967-68"
+        }
+      ],
+      "polo_passivo": [
+        {
+          "nome": "LEONARDO SANTOS OLIVEIRA",
+          "cpf_cnpj": "124.833.867-76"
+        }
+      ],
+      "classe_judicial": "despejo por falta de pagamento cumulado com cobrança (94)",
+      "assunto": "despejo por inadimplemento (14915)",
+      "jurisdicao": "comarca da capital",
+      "data_autuacao": "2025-07-17",
+      "ultima_distribuicao": "2025-07-17",
+      "valor_causa": 72651.88,
+      "segredo_justica": 0,
+      "justica_gratuita": 1,
+      "tutela_liminar": 1,
+      "prioridade": "idoso(a), juízo 100% digital",
+      "orgao_julgador": "15ª vara cível da comarca da capital",
+      "cargo_judicial": "juiz de direito",
+      "competencia": "cível"
+    },
+    {
+      "numero_processo": "0901436-87.2025.8.19.0001",
+      "polo_ativo": [
+        {
+          "nome": "LUIZ EDUARDO GONCALVES GABARRA",
+          "cpf_cnpj": "164.193.407-72"
+        }
+      ],
+      "polo_passivo": [
+        {
+          "nome": "LUIZ TADEU PERUZINI",
+          "cpf_cnpj": "934.159.237-20"
+        }
+      ],
+      "classe_judicial": "despejo por falta de pagamento cumulado com cobrança (94)",
+      "assunto": "despejo por inadimplemento (14915)",
+      "jurisdicao": "comarca da capital",
+      "data_autuacao": "2025-07-15",
+      "ultima_distribuicao": "2025-07-15",
+      "valor_causa": 66373.33,
+      "segredo_justica": 0,
+      "justica_gratuita": 0,
+      "tutela_liminar": 0,
+      "prioridade": "não",
+      "orgao_julgador": "7ª vara cível da regional do méier",
+      "cargo_judicial": "juiz de direito",
+      "competencia": "cível"
+    },
+    {
+      "numero_processo": "0819798-02.2025.8.19.0205",
+      "polo_ativo": [
+        {
+          "nome": "RAUL LEONARDO DE MENEZES",
+          "cpf_cnpj": "021.839.437-34"
+        },
+        {
+          "nome": "DILSON DEL CIMA DE ALVARENGA MENEZES",
+          "cpf_cnpj": "625.795.847-49"
+        }
+      ],
+      "polo_passivo": [
+        {
+          "nome": "INSTITUTO SEGUMED",
+          "cpf_cnpj": "29.578.473/0011-24"
+        },
+        {
+          "nome": "SOLLIDEZ CONSULTORIA, ADMINISTRACAO, PARTICIPACOES E NEGOCIOS LTDA.",
+          "cpf_cnpj": "26.456.669/0001-86"
+        },
+        {
+          "nome": "JOSE TERUO WATARI",
+          "cpf_cnpj": "328.197.548-80"
+        },
+        {
+          "nome": "MARCELA MARIA MUCCI BARBIERI",
+          "cpf_cnpj": "332.548.628-21"
+        }
+      ],
+      "classe_judicial": "despejo (92)",
+      "assunto": "despejo por inadimplemento (14915)",
+      "jurisdicao": "comarca da capital - regional de campo grande",
+      "data_autuacao": "2025-07-15",
+      "ultima_distribuicao": "2025-07-15",
+      "valor_causa": 372528.25,
+      "segredo_justica": 0,
+      "justica_gratuita": 0,
+      "tutela_liminar": 0,
+      "prioridade": "idoso(a)",
+      "orgao_julgador": "18º juizado especial cível da regional de campo grande",
+      "cargo_judicial": "juiz de direito",
+      "competencia": "juizado especial cível"
+    }
+  ]
+}
