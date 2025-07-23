@@ -9,11 +9,11 @@ const ProtectedLayout = () => {
 
     return (
         <main>
-            <Splitter className="h-screen" layout={isMobile ? "vertical" : "horizontal"}>
+            <Splitter className="h-full" layout={isMobile ? "vertical" : "horizontal"}>
                 <SplitterPanel className="flex align-items-center justify-content-center" size={5} minSize={5}>
                     {(isMobile) ? <Outlet /> : <Header />}
                 </SplitterPanel>
-                <SplitterPanel className="flex align-items-center justify-content-center" size={95}>
+                <SplitterPanel size={95}>
                     {(isMobile) ? <Header /> : <Outlet />}
                 </SplitterPanel>
             </Splitter>

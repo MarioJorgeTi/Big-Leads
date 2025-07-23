@@ -1,45 +1,34 @@
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import '../assets/css/generalTable.css';
+import { useState } from 'react';
 
-const GeneralTable = ({ data, columns }) => {
-    const getNestedValue = (obj, path) => {
-    return path.split('.').reduce((acc, part) => {
-        const match = part.match(/(\w+)\[(\d+)\]/);
-        if (match) {
-            const [, prop, index] = match;
-            return acc?.[prop]?.[index];
-        }
-        return acc?.[part];
-    }, obj);
-};
-
-const rowClassName = () => {
-        return 'custom-row-style';
-    };
+export default function GeneralTable({ data, columns }) {
 
     return (
-        <div>
+        <div className='p-2'>
             <DataTable
                 value={data}
+                scrollable
+                scrollHeight='600px'
                 removableSort
-                tableStyle={{ minWidth: '50rem', tableLayout: 'fixed' }}
-                size="large"
                 paginator
                 rows={5}
+                sortMode="multiple"
+                className='text-sm lg:text-md xl:text-lg'
             >
                 {columns.map((column) => (
                     <Column
-                        key={column.field}
-                        header={column.header}
-                        sortable={!column.sortableDisabled}
-                        sortableDisabled={column.sortableDisabled}
-                        body={(rowData) => getNestedValue(rowData, column.field)}
+                        key={column?.field || column?.id}
+                        frozen={column.frozen}
+                        field={column?.field}
+                        header={column?.header}
+                        sortable={!column?.sortableDisabled}
+                        body={column?.body}
+                        className='text-sm lg:text-md xl:text-lg'
                     />
                 ))}
             </DataTable>
         </div>
     );
-};
-
-export default GeneralTable;
+}

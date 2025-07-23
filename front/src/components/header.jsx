@@ -8,9 +8,9 @@ import { Button } from 'primereact/button';
 const Header = () => {
 
   return (
-    <header className='fixed bottom-0 w-full flex justify-content-center gap-8 py-4 md:relative md:flex md:flex-column md:m-0 md:h-screen bg md:justify-content-between'>
+    <header className='fixed bottom-0 w-full flex justify-content-center gap-8 py-4 md:relative md:flex md:flex-column md:m-0 md:h-full bg md:justify-content-between'>
       <div className="flex md:flex-column md:align-items-center md:mt-3">
-        <img src={LogoIcon} alt="logo" className='hidden md:block  w-9 mb-4' />
+        <img src={LogoIcon} alt="logo" className='hidden md:block  max-w-7rem mb-4 p-3' />
         <div className='flex md:flex-column md:row-gap-4 gap-8'>
           <div>
             <Button

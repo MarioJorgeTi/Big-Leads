@@ -1,3 +1,75 @@
-.p-datatable-thead{
-    padding: 1rem 0 !important;
+.p-datatable .p-datatable-thead>tr>th {
+    padding: 1.1rem 1.5rem;
+}
+
+
+.p-datatable .p-datatable-tbody>tr>td {
+    padding: 1rem 1rem;
+}
+
+.p-datatable>.p-datatable-wrapper {
+    margin-bottom: 1rem;
+}
+
+.p-paginator {
+    background: unset;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+    background: var(--primary-color);
+    color: var(--light-color);
+}
+
+.p-datatable-table {
+    border-spacing: 0 0.5rem;
+}
+
+.p-datatable-thead tr th {
+    background: #ffffff !important;
+    border: unset;
+}
+
+.p-datatable-tbody tr td {
+    background: unset;
+}
+
+.p-datatable .p-datatable-tbody>tr>td {
+    border: unset;
+    background: unset !important;
+}
+
+.p-datatable-tbody tr {
+    background-color: #fff;
+    border-radius: 1rem !important;
+}
+
+.p-datatable-thead tr {
+    overflow: hidden;
+    padding: 0 1rem;
+}
+
+.p-datatable-thead>tr>th:first-child {
+    border-top-left-radius: 3rem;
+    border-bottom-left-radius: 3rem;
+}
+
+.p-datatable-thead>tr>th:last-child {
+    border-top-right-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+}
+
+.p-datatable-tbody>tr>td:first-child {
+    border-top-left-radius: 3rem;
+    border-bottom-left-radius: 3rem;
+}
+
+.p-datatable-tbody>tr>td:last-child {
+    border-top-right-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+}
+
+.p-datatable .p-datatable-tbody>tr>td,
+.p-datatable .p-datatable-thead>tr>th {
+    border: none;
+    background-color: #fff;
 }
