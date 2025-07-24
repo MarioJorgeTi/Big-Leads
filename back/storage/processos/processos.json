@@ -1,34 +1,34 @@
 [
   {
-    "numero_processo": "0820392-37.2025.8.19.0004",
+    "numero_processo": "0812879-06.2025.8.19.0008",
     "polo_ativo": [
       {
-        "nome": "BANCO VOTORANTIM S.A.",
-        "cpf_cnpj": "59.588.111/0001-03"
+        "nome": "BANCO BRADESCO FINANCIAMENTO S.A.",
+        "cpf_cnpj": "07.207.996/0001-50"
       }
     ],
     "polo_passivo": [
       {
-        "nome": "WALLACE PINTO MARINHO",
-        "cpf_cnpj": "126.607.817-70"
+        "nome": "ALESSANDRA PAES DOS SANTOS CORDEIRO",
+        "cpf_cnpj": "078.824.317-96"
       }
     ],
     "classe_judicial": "busca e apreensão em alienação fiduciária (81)",
     "assunto": "alienação fiduciária (9582)",
-    "jurisdicao": "comarca de são gonçalo",
-    "data_autuacao": "2025-07-18",
-    "ultima_distribuicao": "2025-07-18",
-    "valor_causa": 85842.69,
+    "jurisdicao": "comarca de belford roxo",
+    "data_autuacao": "2025-07-22",
+    "ultima_distribuicao": "2025-07-22",
+    "valor_causa": 89069.28,
     "segredo_justica": 0,
     "justica_gratuita": 0,
     "tutela_liminar": 1,
     "prioridade": "não",
-    "orgao_julgador": "6ª vara cível da comarca de são gonçalo",
+    "orgao_julgador": "3ª vara cível da comarca de belford roxo",
     "cargo_judicial": "juiz de direito",
     "competencia": "cível"
   },
   {
-    "numero_processo": "0808074-62.2025.8.19.0023",
+    "numero_processo": "0906411-55.2025.8.19.0001",
     "polo_ativo": [
       {
         "nome": "ITAU UNIBANCO HOLDING S.A.",
@@ -37,170 +37,82 @@
     ],
     "polo_passivo": [
       {
-        "nome": "JOSE CARLA DA CUNHA RODRIGUES",
-        "cpf_cnpj": "998.824.697-87"
+        "nome": "FELIPE SALIM GOMES",
+        "cpf_cnpj": "137.296.147-03"
       }
     ],
     "classe_judicial": "busca e apreensão em alienação fiduciária (81)",
     "assunto": "alienação fiduciária (9582)",
-    "jurisdicao": "comarca de itaboraí",
-    "data_autuacao": "2025-07-18",
-    "ultima_distribuicao": "2025-07-18",
-    "valor_causa": 145146.7,
-    "segredo_justica": 0,
-    "justica_gratuita": 0,
-    "tutela_liminar": 1,
-    "prioridade": "não",
-    "orgao_julgador": "2ª vara cível da comarca de itaboraí",
-    "cargo_judicial": "juiz de direito",
-    "competencia": "cível"
-  },
-  {
-    "numero_processo": "0815506-39.2025.8.19.0054",
-    "polo_ativo": [
-      {
-        "nome": "BANCO RCI BRASIL S.A",
-        "cpf_cnpj": "62.307.848/0001-15"
-      }
-    ],
-    "polo_passivo": [
-      {
-        "nome": "BRASIL LOCAFACIL RENTCAR LOCACAO DE AUTOMOVEIS LTDA",
-        "cpf_cnpj": "30.787.245/0001-71"
-      }
-    ],
-    "classe_judicial": "busca e apreensão em alienação fiduciária (81)",
-    "assunto": "alienação fiduciária (9582)",
-    "jurisdicao": "comarca de são joão de meriti",
-    "data_autuacao": "2025-07-17",
-    "ultima_distribuicao": "2025-07-17",
-    "valor_causa": 140962.86,
-    "segredo_justica": 0,
-    "justica_gratuita": 0,
-    "tutela_liminar": 1,
-    "prioridade": "juízo 100% digital",
-    "orgao_julgador": "1ª vara cível da comarca de são joão de meriti",
-    "cargo_judicial": "juiz de direito",
-    "competencia": "cível"
-  },
-  {
-    "numero_processo": "0840042-65.2025.8.19.0038",
-    "polo_ativo": [
-      {
-        "nome": "AYMORE CREDITO, FINANCIAMENTO E INVESTIMENTO S.A",
-        "cpf_cnpj": "07.707.650/0001-10"
-      }
-    ],
-    "polo_passivo": [
-      {
-        "nome": "MATHEUS FRANCISCO DA SILVA",
-        "cpf_cnpj": "159.345.827-47"
-      }
-    ],
-    "classe_judicial": "busca e apreensão em alienação fiduciária (81)",
-    "assunto": "alienação fiduciária (9582)",
-    "jurisdicao": "comarca de nova iguaçu",
-    "data_autuacao": "2025-07-17",
-    "ultima_distribuicao": "2025-07-17",
-    "valor_causa": 151319.52,
-    "segredo_justica": 0,
-    "justica_gratuita": 0,
-    "tutela_liminar": 1,
-    "prioridade": "não",
-    "orgao_julgador": "4ª vara cível da comarca de nova iguaçu",
-    "cargo_judicial": "juiz de direito",
-    "competencia": "cível"
-  },
-  {
-    "numero_processo": "0904260-19.2025.8.19.0001",
-    "polo_ativo": [
-      {
-        "nome": "ANDRE LUIS DE MATOS SANTOS",
-        "cpf_cnpj": "337.449.548-62"
-      }
-    ],
-    "polo_passivo": [
-      {
-        "nome": "REBECCA AZEVEDO SOUZA DO CARMO FILGUEIRA",
-        "cpf_cnpj": "174.459.717-00"
-      }
-    ],
-    "classe_judicial": "execução de título extrajudicial (12154)",
-    "assunto": "câmbio (4728)",
     "jurisdicao": "comarca da capital",
-    "data_autuacao": "2025-07-18",
-    "ultima_distribuicao": "2025-07-18",
-    "valor_causa": 403847.4,
+    "data_autuacao": "2025-07-22",
+    "ultima_distribuicao": "2025-07-22",
+    "valor_causa": 137154.25,
     "segredo_justica": 0,
     "justica_gratuita": 0,
     "tutela_liminar": 0,
     "prioridade": "não",
-    "orgao_julgador": "42ª vara cível da comarca da capital",
+    "orgao_julgador": "3ª vara cível da regional da leopoldina",
     "cargo_judicial": "juiz de direito",
     "competencia": "cível"
   },
   {
-    "numero_processo": "0804054-25.2025.8.19.0024",
+    "numero_processo": "0807458-49.2025.8.19.0068",
     "polo_ativo": [
       {
-        "nome": "COOPERATIVA DE CREDITO DOS PROPRIETARIOS DA INDUS",
-        "cpf_cnpj": "03.358.914/0001-17"
+        "nome": "BANCO BRADESCO FINANCIAMENTO S.A.",
+        "cpf_cnpj": "07.207.996/0001-50"
       }
     ],
     "polo_passivo": [
       {
-        "nome": "CRB TRANSPORTE MARITIMO LTDA",
-        "cpf_cnpj": "48.296.166/0001-23"
-      },
-      {
-        "nome": "CREMILSON BARBOSA DE OLIVEIRA",
-        "cpf_cnpj": "054.212.167-05"
+        "nome": "RENANN CAETANO DOS SANTOS AZEVEDO",
+        "cpf_cnpj": "177.131.237-84"
       }
     ],
-    "classe_judicial": "execução de título extrajudicial (12154)",
-    "assunto": "cédula de crédito bancário (4960)",
-    "jurisdicao": "comarca de itaguaí",
-    "data_autuacao": "2025-07-18",
-    "ultima_distribuicao": "2025-07-18",
-    "valor_causa": 111727.35,
+    "classe_judicial": "busca e apreensão em alienação fiduciária (81)",
+    "assunto": "alienação fiduciária (9582)",
+    "jurisdicao": "comarca de rio das ostras",
+    "data_autuacao": "2025-07-21",
+    "ultima_distribuicao": "2025-07-21",
+    "valor_causa": 80476.16,
     "segredo_justica": 0,
     "justica_gratuita": 0,
-    "tutela_liminar": 0,
+    "tutela_liminar": 1,
     "prioridade": "não",
-    "orgao_julgador": "1ª vara cível da comarca de itaguaí",
+    "orgao_julgador": "1ª vara da comarca de rio das ostras",
     "cargo_judicial": "juiz de direito",
     "competencia": "cível"
   },
   {
-    "numero_processo": "0813508-72.2025.8.19.0042",
+    "numero_processo": "0905576-67.2025.8.19.0001",
     "polo_ativo": [
       {
-        "nome": "COOP DE ECON E CRED MUTUO DOS MEDICOS DE P ALEGRE LTDA",
-        "cpf_cnpj": "94.433.109/0001-66"
+        "nome": "BANCO BRADESCO FINANCIAMENTO S.A.",
+        "cpf_cnpj": "07.207.996/0001-50"
       }
     ],
     "polo_passivo": [
       {
-        "nome": "ADERBAL DE SOUZA CYPRIANO NEVES",
-        "cpf_cnpj": "443.545.927-20"
+        "nome": "ALEXANDRE BISOGNI RODRIGUES",
+        "cpf_cnpj": "008.987.077-81"
       }
     ],
-    "classe_judicial": "execução de título extrajudicial (12154)",
-    "assunto": "cédula de crédito bancário (4960)",
-    "jurisdicao": "comarca de petrópolis",
-    "data_autuacao": "2025-07-17",
-    "ultima_distribuicao": "2025-07-17",
-    "valor_causa": 236824.97,
+    "classe_judicial": "busca e apreensão em alienação fiduciária (81)",
+    "assunto": "alienação fiduciária (9582)",
+    "jurisdicao": "comarca da capital",
+    "data_autuacao": "2025-07-21",
+    "ultima_distribuicao": "2025-07-21",
+    "valor_causa": 170370,
     "segredo_justica": 0,
     "justica_gratuita": 0,
-    "tutela_liminar": 0,
+    "tutela_liminar": 1,
     "prioridade": "não",
-    "orgao_julgador": "2ª vara cível da comarca de petrópolis",
+    "orgao_julgador": "3ª vara cível da regional de campo grande",
     "cargo_judicial": "juiz de direito",
     "competencia": "cível"
   },
   {
-    "numero_processo": "0801383-85.2025.8.19.0070",
+    "numero_processo": "0906385-57.2025.8.19.0001",
     "polo_ativo": [
       {
         "nome": "banco bradesco sa",
@@ -209,30 +121,146 @@
     ],
     "polo_passivo": [
       {
-        "nome": "NOEL MARTINEZ BLANCO",
-        "cpf_cnpj": "47.185.548/0001-17"
-      },
-      {
-        "nome": "NOEL MARTINEZ BLANCO",
-        "cpf_cnpj": "054.917.477-00"
+        "nome": "MARCOS VALERIO DE SOUZA GOMES ELIAS",
+        "cpf_cnpj": "090.988.657-12"
       }
     ],
     "classe_judicial": "execução de título extrajudicial (12154)",
-    "assunto": "contratos bancários (9607)",
-    "jurisdicao": "comarca de são francisco do itabapoana",
-    "data_autuacao": "2025-07-17",
-    "ultima_distribuicao": "2025-07-17",
-    "valor_causa": 161027.27,
+    "assunto": "cédula de crédito bancário (4960)",
+    "jurisdicao": "comarca da capital",
+    "data_autuacao": "2025-07-22",
+    "ultima_distribuicao": "2025-07-22",
+    "valor_causa": 196305.08,
     "segredo_justica": 0,
     "justica_gratuita": 0,
     "tutela_liminar": 0,
     "prioridade": "não",
-    "orgao_julgador": "vara única da comarca de são francisco de itabapoana",
+    "orgao_julgador": "6ª vara cível da comarca da capital",
     "cargo_judicial": "juiz de direito",
     "competencia": "cível"
   },
   {
-    "numero_processo": "0904003-91.2025.8.19.0001",
+    "numero_processo": "0906428-91.2025.8.19.0001",
+    "polo_ativo": [
+      {
+        "nome": "banco bradesco sa",
+        "cpf_cnpj": "60.746.948/0001-12"
+      }
+    ],
+    "polo_passivo": [
+      {
+        "nome": "CAP PROMOTORA DE VENDAS LTDA",
+        "cpf_cnpj": "43.363.297/0001-62"
+      },
+      {
+        "nome": "CARLOS EDUARDO LEONEL DA SILVA",
+        "cpf_cnpj": "055.174.597-57"
+      }
+    ],
+    "classe_judicial": "execução de título extrajudicial (12154)",
+    "assunto": "contratos bancários (9607)",
+    "jurisdicao": "comarca da capital",
+    "data_autuacao": "2025-07-22",
+    "ultima_distribuicao": "2025-07-22",
+    "valor_causa": 108039.54,
+    "segredo_justica": 0,
+    "justica_gratuita": 0,
+    "tutela_liminar": 0,
+    "prioridade": "não",
+    "orgao_julgador": "20ª vara cível da comarca da capital",
+    "cargo_judicial": "juiz de direito",
+    "competencia": "cível"
+  },
+  {
+    "numero_processo": "0815763-64.2025.8.19.0054",
+    "polo_ativo": [
+      {
+        "nome": "BANCO SANTANDER (BRASIL) S A",
+        "cpf_cnpj": "90.400.888/0001-42"
+      }
+    ],
+    "polo_passivo": [
+      {
+        "nome": "LINK DIGITAL TELECOM LTDA - ME",
+        "cpf_cnpj": "25.528.901/0001-81"
+      },
+      {
+        "nome": "LUIZ HENRIQUE DOS SANTOS MARQUES",
+        "cpf_cnpj": "129.339.757-18"
+      }
+    ],
+    "classe_judicial": "execução de título extrajudicial (12154)",
+    "assunto": "cédula de crédito bancário (4960)",
+    "jurisdicao": "comarca de são joão de meriti",
+    "data_autuacao": "2025-07-21",
+    "ultima_distribuicao": "2025-07-21",
+    "valor_causa": 165791.43,
+    "segredo_justica": 0,
+    "justica_gratuita": 0,
+    "tutela_liminar": 0,
+    "prioridade": "não",
+    "orgao_julgador": "4ª vara cível da comarca de são joão de meriti",
+    "cargo_judicial": "juiz de direito",
+    "competencia": "cível"
+  },
+  {
+    "numero_processo": "0806733-56.2025.8.19.0037",
+    "polo_ativo": [
+      {
+        "nome": "banco bradesco sa",
+        "cpf_cnpj": "60.746.948/0001-12"
+      }
+    ],
+    "polo_passivo": [
+      {
+        "nome": "ROSANGELA CARINO ALMEIDA DE CARVALHO",
+        "cpf_cnpj": "072.356.307-10"
+      }
+    ],
+    "classe_judicial": "execução de título extrajudicial (12154)",
+    "assunto": "contratos bancários (9607)",
+    "jurisdicao": "comarca de nova friburgo",
+    "data_autuacao": "2025-07-21",
+    "ultima_distribuicao": "2025-07-21",
+    "valor_causa": 191888.71,
+    "segredo_justica": 0,
+    "justica_gratuita": 0,
+    "tutela_liminar": 0,
+    "prioridade": "não",
+    "orgao_julgador": "3ª vara cível da comarca de nova friburgo",
+    "cargo_judicial": "juiz de direito",
+    "competencia": "cível"
+  },
+  {
+    "numero_processo": "0906092-87.2025.8.19.0001",
+    "polo_ativo": [
+      {
+        "nome": "Banco C6 S.A.",
+        "cpf_cnpj": "31.872.495/0001-72"
+      }
+    ],
+    "polo_passivo": [
+      {
+        "nome": "ALINE MARIA SOUZA CARVALHO",
+        "cpf_cnpj": "093.753.637-75"
+      }
+    ],
+    "classe_judicial": "monitória (40)",
+    "assunto": "prestação de serviços (9596)",
+    "jurisdicao": "comarca da capital",
+    "data_autuacao": "2025-07-21",
+    "ultima_distribuicao": "2025-07-21",
+    "valor_causa": 476260.64,
+    "segredo_justica": 0,
+    "justica_gratuita": 0,
+    "tutela_liminar": 0,
+    "prioridade": "não",
+    "orgao_julgador": "31ª vara cível da comarca da capital",
+    "cargo_judicial": "juiz de direito",
+    "competencia": "cível"
+  },
+  {
+    "numero_processo": "0906281-65.2025.8.19.0001",
     "polo_ativo": [
       {
         "nome": "BANCO DO BRASIL SA",
@@ -241,285 +269,141 @@
     ],
     "polo_passivo": [
       {
-        "nome": "ACMA LABS SOLUCOES LABORATORIAIS COMERCIO E IMPORTACAO LTDA",
-        "cpf_cnpj": "22.874.774/0001-84"
+        "nome": "TRANSPORTADORA MARIVAN LTDA",
+        "cpf_cnpj": "15.729.812/0001-40"
       },
       {
-        "nome": "ELAINE ADIB NOGUEIRA PONTES",
-        "cpf_cnpj": "899.832.547-00"
-      },
-      {
-        "nome": "MARCO AURELIO NEVES CRISPIM",
-        "cpf_cnpj": "787.764.737-91"
-      }
-    ],
-    "classe_judicial": "monitória (40)",
-    "assunto": "cédula de crédito bancário (4960)",
-    "jurisdicao": "comarca da capital",
-    "data_autuacao": "2025-07-18",
-    "ultima_distribuicao": "2025-07-18",
-    "valor_causa": 159131.6,
-    "segredo_justica": 0,
-    "justica_gratuita": 0,
-    "tutela_liminar": 0,
-    "prioridade": "não",
-    "orgao_julgador": "12ª vara cível da comarca da capital",
-    "cargo_judicial": "juiz de direito",
-    "competencia": "cível"
-  },
-  {
-    "numero_processo": "0904080-03.2025.8.19.0001",
-    "polo_ativo": [
-      {
-        "nome": "GOOD PRICE LOGISTICA E TRANSPORTES LTDA",
-        "cpf_cnpj": "37.026.362/0001-61"
-      }
-    ],
-    "polo_passivo": [
-      {
-        "nome": "BEBA RIO DISTRIBUIDORA DE GENEROS ALIMENTICIOS LTDA",
-        "cpf_cnpj": "55.987.322/0001-68"
-      }
-    ],
-    "classe_judicial": "monitória (40)",
-    "assunto": "adimplemento e extinção (7690)",
-    "jurisdicao": "comarca da capital",
-    "data_autuacao": "2025-07-18",
-    "ultima_distribuicao": "2025-07-18",
-    "valor_causa": 143301.81,
-    "segredo_justica": 0,
-    "justica_gratuita": 0,
-    "tutela_liminar": 0,
-    "prioridade": "não",
-    "orgao_julgador": "3ª vara cível da regional de campo grande",
-    "cargo_judicial": "juiz de direito",
-    "competencia": "cível"
-  },
-  {
-    "numero_processo": "0901634-27.2025.8.19.0001",
-    "polo_ativo": [
-      {
-        "nome": "ENI AGENCY LTDA",
-        "cpf_cnpj": "26.229.532/0001-99"
-      }
-    ],
-    "polo_passivo": [
-      {
-        "nome": "SEM QUERER PRODUCOES ARTISTICAS LTDA",
-        "cpf_cnpj": "21.857.777/0001-47"
-      }
-    ],
-    "classe_judicial": "monitória (40)",
-    "assunto": "prestação de serviços (9596)",
-    "jurisdicao": "comarca da capital",
-    "data_autuacao": "2025-07-15",
-    "ultima_distribuicao": "2025-07-15",
-    "valor_causa": 650725.01,
-    "segredo_justica": 0,
-    "justica_gratuita": 0,
-    "tutela_liminar": 0,
-    "prioridade": "não",
-    "orgao_julgador": "9ª vara cível da comarca da capital",
-    "cargo_judicial": "juiz de direito",
-    "competencia": "cível"
-  },
-  {
-    "numero_processo": "0813969-31.2025.8.19.0014",
-    "polo_ativo": [
-      {
-        "nome": "COOPERATIVA DE CREDITO POUPANCA E INVESTIMENTO CE",
-        "cpf_cnpj": "78.907.607/0001-47"
-      }
-    ],
-    "polo_passivo": [
-      {
-        "nome": "OSMAR GOMES BARRETO JUNIOR 14243824754",
-        "cpf_cnpj": "24.993.619/0001-02"
-      },
-      {
-        "nome": "OSMAR GOMES BARRETO JUNIOR",
-        "cpf_cnpj": "142.438.247-54"
-      },
-      {
-        "nome": "OSMAR GOMES BARRETO",
-        "cpf_cnpj": "846.001.367-72"
+        "nome": "FLAVIO LUIZ DA COSTA AZEVEDO",
+        "cpf_cnpj": "052.164.797-59"
       }
     ],
     "classe_judicial": "monitória (40)",
     "assunto": "contratos bancários (9607)",
-    "jurisdicao": "comarca de campos dos goytacazes",
-    "data_autuacao": "2025-07-15",
-    "ultima_distribuicao": "2025-07-15",
-    "valor_causa": 89142.1,
+    "jurisdicao": "comarca da capital",
+    "data_autuacao": "2025-07-22",
+    "ultima_distribuicao": "2025-07-22",
+    "valor_causa": 187806.53,
     "segredo_justica": 0,
     "justica_gratuita": 0,
     "tutela_liminar": 0,
     "prioridade": "não",
-    "orgao_julgador": "3ª vara cível da comarca de campos dos goytacazes",
+    "orgao_julgador": "5ª vara cível da regional de madureira",
     "cargo_judicial": "juiz de direito",
     "competencia": "cível"
   },
   {
-    "numero_processo": "0903617-61.2025.8.19.0001",
+    "numero_processo": "0808633-04.2025.8.19.0028",
     "polo_ativo": [
       {
-        "nome": "CLAUDIO MARCIO DA ROCHA CORNELIO",
-        "cpf_cnpj": "030.305.057-82"
-      },
-      {
-        "nome": "LESSANDRA CARDOSO DA SILVA",
-        "cpf_cnpj": "082.142.587-07"
+        "nome": "BANCO DO BRASIL SA",
+        "cpf_cnpj": "00.000.000/0001-91"
       }
     ],
     "polo_passivo": [
       {
-        "nome": "FREDERICO ALEX DE LIMA CAVALCANTE",
-        "cpf_cnpj": "111.340.787-57"
+        "nome": "I C M VICENTE COMERCIO DE MATERIAIS ELETRICOS",
+        "cpf_cnpj": "23.612.402/0001-42"
       },
       {
-        "nome": "MONIQUE CORREA CORDEIRO",
-        "cpf_cnpj": "144.715.177-16"
+        "nome": "ISABEL CRISTINA MELO VICENTE",
+        "cpf_cnpj": "101.654.727-74"
+      }
+    ],
+    "classe_judicial": "monitória (40)",
+    "assunto": "cédula de crédito bancário (4960)",
+    "jurisdicao": "comarca de macaé",
+    "data_autuacao": "2025-07-17",
+    "ultima_distribuicao": "2025-07-17",
+    "valor_causa": 521333.1,
+    "segredo_justica": 0,
+    "justica_gratuita": 0,
+    "tutela_liminar": 0,
+    "prioridade": "não",
+    "orgao_julgador": "1ª vara cível da comarca de macaé",
+    "cargo_judicial": "juiz de direito",
+    "competencia": "cível"
+  },
+  {
+    "numero_processo": "0906439-23.2025.8.19.0001",
+    "polo_ativo": [
+      {
+        "nome": "SONIA MOREIRA ALVES PINTO",
+        "cpf_cnpj": "382.102.157-87"
+      }
+    ],
+    "polo_passivo": [
+      {
+        "nome": "SAA PARTICIPACOES E SERVICOS LTDA",
+        "cpf_cnpj": "29.415.254/0001-52"
+      }
+    ],
+    "classe_judicial": "despejo (92)",
+    "assunto": "despejo para uso de ascendentes e descendentes (9611)",
+    "jurisdicao": "comarca da capital",
+    "data_autuacao": "2025-07-22",
+    "ultima_distribuicao": "2025-07-22",
+    "valor_causa": 109030.11,
+    "segredo_justica": 0,
+    "justica_gratuita": 0,
+    "tutela_liminar": 0,
+    "prioridade": "idoso(a)",
+    "orgao_julgador": "4ª vara cível da regional de madureira",
+    "cargo_judicial": "juiz de direito",
+    "competencia": "cível"
+  },
+  {
+    "numero_processo": "0820057-18.2025.8.19.0004",
+    "polo_ativo": [
+      {
+        "nome": "SILVIA REGINA RIBEIRO ANTUNES registrado(a) civilmente como SILVIA REGINA RIBEIRO ANTUNES CESARIO DOS SANTOS",
+        "cpf_cnpj": "516.554.897-04"
+      }
+    ],
+    "polo_passivo": [
+      {
+        "nome": "JOSE FERNANDO COSTA DE MEDEIROS",
+        "cpf_cnpj": "427.804.977-34"
       }
     ],
     "classe_judicial": "despejo por falta de pagamento cumulado com cobrança (94)",
     "assunto": "despejo por inadimplemento (14915)",
-    "jurisdicao": "comarca da capital",
-    "data_autuacao": "2025-07-17",
-    "ultima_distribuicao": "2025-07-17",
-    "valor_causa": 414728.43,
+    "jurisdicao": "comarca de são gonçalo",
+    "data_autuacao": "2025-07-16",
+    "ultima_distribuicao": "2025-07-16",
+    "valor_causa": 96000,
     "segredo_justica": 0,
     "justica_gratuita": 0,
     "tutela_liminar": 1,
-    "prioridade": "não",
-    "orgao_julgador": "10ª vara cível da comarca da capital",
+    "prioridade": "idoso(a)",
+    "orgao_julgador": "6ª vara cível da comarca de são gonçalo",
     "cargo_judicial": "juiz de direito",
     "competencia": "cível"
   },
   {
-    "numero_processo": "0904023-82.2025.8.19.0001",
+    "numero_processo": "0810505-71.2025.8.19.0087",
     "polo_ativo": [
       {
-        "nome": "RIO DESIGN BARRA SHOPPING CENTER LTDA",
-        "cpf_cnpj": "03.022.119/0001-53"
+        "nome": "ADMINISTRACAO MARTINS DE SOUZA LTDA",
+        "cpf_cnpj": "31.701.543/0001-60"
       }
     ],
     "polo_passivo": [
       {
-        "nome": "DANILIMA FASHION DESIGN LTDA",
-        "cpf_cnpj": "23.097.679/0001-84"
-      }
-    ],
-    "classe_judicial": "despejo (92)",
-    "assunto": "despejo por inadimplemento (14915)",
-    "jurisdicao": "comarca da capital",
-    "data_autuacao": "2025-07-18",
-    "ultima_distribuicao": "2025-07-18",
-    "valor_causa": 216000,
-    "segredo_justica": 0,
-    "justica_gratuita": 0,
-    "tutela_liminar": 0,
-    "prioridade": "não",
-    "orgao_julgador": "2ª vara cível da regional de bangu",
-    "cargo_judicial": "juiz de direito",
-    "competencia": "cível"
-  },
-  {
-    "numero_processo": "0819592-09.2025.8.19.0004",
-    "polo_ativo": [
-      {
-        "nome": "SAGON EMPREENDIMENTOS E PARTICIPACOES LTDA",
-        "cpf_cnpj": "08.323.866/0001-45"
-      },
-      {
-        "nome": "PRIMES EMPREENDIMENTOS IMOBILIARIOS S/A",
-        "cpf_cnpj": "05.468.743/0001-04"
-      },
-      {
-        "nome": "BARI -DL EMPREENDIMENTOS IMOBILIARIOS LTDA",
-        "cpf_cnpj": "08.631.873/0001-04"
-      },
-      {
-        "nome": "CEZANE EMPREENDIMENTOS IMOBILIARIOS LTDA",
-        "cpf_cnpj": "08.631.892/0001-30"
-      },
-      {
-        "nome": "SEDICI EMPREENDIMENTOS IMOBILIARIOS LTDA",
-        "cpf_cnpj": "08.631.908/0001-05"
-      },
-      {
-        "nome": "INARI EMPREENDIMENTOS IMOBILIARIOS LTDA",
-        "cpf_cnpj": "08.631.883/0001-40"
-      },
-      {
-        "nome": "RRLM ADMINISTRADORA DE BENS LTDA",
-        "cpf_cnpj": "09.299.784/0001-75"
-      },
-      {
-        "nome": "SENDAS EMPREENDIMENTOS E PARTICIPACOES LTDA",
-        "cpf_cnpj": "30.630.362/0001-27"
-      },
-      {
-        "nome": "ABL CX3 EMPREENDIMENTOS E PARTICIPACOES LTDA",
-        "cpf_cnpj": "17.763.037/0001-74"
-      },
-      {
-        "nome": "GERR COMPRA E VENDA DE IMOVEIS LTDA",
-        "cpf_cnpj": "30.490.422/0001-53"
-      },
-      {
-        "nome": "PARTAGE ADMINISTRACAO DE SHOPPING CENTER LTDA",
-        "cpf_cnpj": "09.324.208/0001-30"
-      }
-    ],
-    "polo_passivo": [
-      {
-        "nome": "RESTAURANTE LEGADO A MESA LTDA",
-        "cpf_cnpj": "58.188.219/0001-46"
+        "nome": "CARISMA COMERCIO DE EMBALAGENS E UTILIDADES LTDA - ME",
+        "cpf_cnpj": "31.226.525/0001-73"
       }
     ],
     "classe_judicial": "despejo por falta de pagamento (93)",
     "assunto": "despejo por inadimplemento (14915)",
-    "jurisdicao": "comarca de são gonçalo",
-    "data_autuacao": "2025-07-11",
-    "ultima_distribuicao": "2025-07-11",
-    "valor_causa": 425465.4,
+    "jurisdicao": "comarca de são gonçalo - regional de alcântara",
+    "data_autuacao": "2025-07-16",
+    "ultima_distribuicao": "2025-07-16",
+    "valor_causa": 87896.4,
     "segredo_justica": 0,
     "justica_gratuita": 0,
     "tutela_liminar": 0,
     "prioridade": "não",
-    "orgao_julgador": "8ª vara cível da comarca de são gonçalo",
-    "cargo_judicial": "juiz de direito",
-    "competencia": "cível"
-  },
-  {
-    "numero_processo": "0899025-71.2025.8.19.0001",
-    "polo_ativo": [
-      {
-        "nome": "ELIANA MARIA MENDES CAMARGO",
-        "cpf_cnpj": "599.895.647-87"
-      }
-    ],
-    "polo_passivo": [
-      {
-        "nome": "TABAS TECNOLOGIA IMOBILIARIA LTDA.",
-        "cpf_cnpj": "37.010.059/0001-70"
-      },
-      {
-        "nome": "LEONARDO RODRIGUES MORGATTO",
-        "cpf_cnpj": "361.807.418-24"
-      }
-    ],
-    "classe_judicial": "despejo por falta de pagamento cumulado com cobrança (94)",
-    "assunto": "locação de imóvel - inadimplemento (30019)",
-    "jurisdicao": "comarca da capital",
-    "data_autuacao": "2025-07-11",
-    "ultima_distribuicao": "2025-07-11",
-    "valor_causa": 105970.4,
-    "segredo_justica": 0,
-    "justica_gratuita": 0,
-    "tutela_liminar": 1,
-    "prioridade": "idoso(a) com mais de 80 anos",
-    "orgao_julgador": "4ª vara cível da regional de madureira",
+    "orgao_julgador": "1ª vara cível da regional de alcântara",
     "cargo_judicial": "juiz de direito",
     "competencia": "cível"
   }

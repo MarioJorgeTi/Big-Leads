@@ -6,13 +6,13 @@ use App\Models\Processo;
 
 class ProcessoController extends Controller
 {
-    public function pegarProcessos()
+    public function lerProcessos()
     {
         $processos = Processo::with(['polosAtivos', 'polosPassivos'])->get();
         return response()->json($processos);
     }
 
-    public function pegarProcesso($id)
+    public function lerProcesso($id)
     {
         $processo = Processo::with(['polosAtivos', 'polosPassivos'])->find($id);
         if (!$processo) {
