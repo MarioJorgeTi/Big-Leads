@@ -16,7 +16,7 @@
 }
 
 .login-img div {
-  margin: 30px;
+  margin: 30px 0;
 }
 
 .login-img div h1 {
@@ -47,10 +47,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 40px 0;
 }
 
 .login-form div img {
-  width: 60%;
+  width: 35%;
+}
+
+.login-form-mobile div img {
+  width:70%;
 }
 
 .login-container-mobile {

@@ -16,7 +16,7 @@ export const ProcessesProvider = ({ children }) => {
 
     useEffect(() => {
         getAllProcesses();
-    });
+    }, []);
 
     return (
         <ProcessesContext.Provider value={{
