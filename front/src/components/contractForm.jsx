@@ -1,23 +1,39 @@
 import { Dropdown } from 'primereact/dropdown';
-import { useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { templatesMap } from '../models/templates';
+import { ContractsContext } from '../contexts/contracts/contractsContext';
 
-const ContractForm = ({ }) => {
-    const [selectedModel, setSelectedModel] = useState('');
+const ContractForm = () => {
+  const {
+    selectedModelValue,
+    setSelectedModelValue,
+    getFormComponent,
+  } = useContext(ContractsContext);
 
-    return (
-        <div className="flex flex-column p-3 w-full">
-            <div>
-                <Dropdown
-                    value={selectedModel}
-                    onChange={(e) => setSelectedModel(e.value)}
-                    options={templatesMap}
-                    placeholder="Selecione o Modelo de Contrato"
-                    className="w-full"
-                />
-            </div>
-        </div>
-    );
+  const FormComponent = getFormComponent(selectedModelValue);
+
+  useEffect(() => {
+    console.log('Modelo selecionado:', selectedModelValue);
+    console.log('Componente retornado:', FormComponent);
+  }, [selectedModelValue]);
+
+  return (
+    <div className="flex flex-column p-3 w-full gap-4">
+      <div>
+        <Dropdown
+          value={selectedModelValue}
+          onChange={(e) => setSelectedModelValue(e.value)}
+          options={templatesMap}
+          optionLabel="label"
+          placeholder="Selecione o Modelo de Contrato"
+          className="w-full"
+        />
+      </div>
+      <div className="mt-3">
+        {FormComponent && <FormComponent />}
+      </div>
+    </div>
+  );
 };
 
 export default ContractForm;

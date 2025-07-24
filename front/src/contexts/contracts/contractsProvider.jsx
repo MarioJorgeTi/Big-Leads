@@ -1,14 +1,24 @@
-import { ContractsContext } from './contractsContext'
+import { useState } from 'react';
+import { ContractsContext } from './contractsContext';
+import { templatesMap } from '../../models/templates';
 
-const ContractsProvider = ({ children }) => {
+export const ContractsProvider = ({ children }) => {
+  const [selectedModelValue, setSelectedModelValue] = useState('');
 
-    return (
-        <ContractsContext.Provider value={{
-            
-        }}>
-            {children}
-        </ContractsContext.Provider>
-    )
-}
+  const getFormComponent = (contractModelValue) => {
+    if (!contractModelValue) return null;
 
-export default ContractsProvider
+    const formTemplate = templatesMap.find(e => e.value === contractModelValue);
+    return formTemplate?.template || null;
+  };
+
+  return (
+    <ContractsContext.Provider value={{
+      selectedModelValue,
+      setSelectedModelValue,
+      getFormComponent,
+    }}>
+      {children}
+    </ContractsContext.Provider>
+  );
+};

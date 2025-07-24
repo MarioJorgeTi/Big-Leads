@@ -1,13 +1,14 @@
-import React from 'react'
+import { Field } from 'formik';
 
-const Fees = ({ valuesandsubmit }) => {
+const FeesForm = () => {
+
   return (
-    <form onSubmit={valuesandsubmit}>
-      <div>
-        <Dropdown value={selectedCity} onChange={(e) => setSelectedCity(e.value)} options={cities} optionLabel="name" placeholder="Select a City" className="w-full md:w-14rem" />
-      </div>
-    </form>
-  )
-}
+    <div>
+      <label htmlFor="nome">Nome do contrato</label>
 
-export default Fees
+      <label htmlFor="descricao">Descrição</label>
+      
+    </div>
+  );
+}
+export default FeesForm;

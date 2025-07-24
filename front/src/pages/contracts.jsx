@@ -1,13 +1,17 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { FaPlus } from 'react-icons/fa'
 import Breadcrumb from '../components/breadcrumb';
 import { Button } from 'primereact/button'
 import GeneralSidebar from '../components/generalSidebar';
 import ContractForm from '../components/contractForm';
 import '../assets/css/contracts.css'
+import { ContractsContext } from '../contexts/contracts/contractsContext';
 
 const Contracts = () => {
   const [showForm, setShowForm] = useState(false);
+  const {
+    setSelectedModelValue
+  } = useContext(ContractsContext);
 
   const items = [
     {
@@ -27,7 +31,7 @@ const Contracts = () => {
               icon={() => <FaPlus />}
               label="Novo Modelo"
               className="p-2 flex gap-2"
-              style={{color: 'var(--primary-color)'}}
+              style={{ color: 'var(--primary-color)' }}
               outlined
               onClick={() => setShowForm(!showForm)}
             />
@@ -36,7 +40,10 @@ const Contracts = () => {
       </section>
       <GeneralSidebar
         showDetails={showForm}
-        closeDetails={() => setShowForm(false)}
+        closeDetails={() => {
+          setShowForm(false);
+          setSelectedModelValue('');
+        }}
         template={() => <ContractForm />}
       />
     </main>
