@@ -1,10 +1,31 @@
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import '../assets/css/login.css';
+import { InputText } from 'primereact/inputtext'
 import { GlobalContext } from '../contexts/global/globalContext';
 import Logo from '../assets/imgs/logo/logo.svg';
+import { AuthContext } from '../contexts/auth/authContext';
+import { useFormik } from 'formik';
+import { Toast } from 'primereact/toast';
 
 const Login = () => {
-  const { isMobile } = useContext(GlobalContext);
+  const {
+    isMobile,
+    errorCatcher,
+    setErrorCatcher
+  } = useContext(GlobalContext);
+  const { loginAction } = useContext(AuthContext);
+  const toastRef = useRef(null);
+
+  const formik = useFormik({
+    initialValues: {
+      username: '',
+      password: ''
+    },
+    onSubmit: async (values) => {
+
+      await loginAction(values);
+    },
+  });
 
   return (
     <main className='grid h-screen m-0'>
@@ -14,15 +35,27 @@ const Login = () => {
         <div>
           <img src={Logo} alt='logo' />
           <div>
-            <form className='md:px-8 lg:px-8 xl:px-8 py-3'>
-              <input type="email" id="email" placeholder="Digite seu e-mail" />
-
-              <input type="password" id="password" placeholder="Digite sua senha" className="mt-2 mb-5" />
-
+            <form onSubmit={formik.handleSubmit} className='md:px-8 lg:px-8 xl:px-8 py-3'>
+              <InputText
+                type="email"
+                id="username"
+                placeholder="Digite seu e-mail"
+                value={formik.values.username}
+                onChange={(e) => formik.handleChange(e)}
+              />
+              <InputText
+                type="password"
+                id="password"
+                placeholder="Digite sua senha"
+                className="mt-2 mb-5"
+                value={formik.values.password}
+                onChange={(e) => formik.handleChange(e)}
+              />
               <button type="submit">Entrar</button>
             </form>
           </div>
         </div>
+        <Toast ref={toastRef} />
       </aside>
     </main >
   )
