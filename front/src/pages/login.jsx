@@ -18,11 +18,10 @@ const Login = () => {
 
   const formik = useFormik({
     initialValues: {
-      username: '',
-      password: ''
+      email: '',
+      senha: ''
     },
     onSubmit: async (values) => {
-
       await loginAction(values);
     },
   });
@@ -38,17 +37,17 @@ const Login = () => {
             <form onSubmit={formik.handleSubmit} className='md:px-8 lg:px-8 xl:px-8 py-3'>
               <InputText
                 type="email"
-                id="username"
+                id="email"
                 placeholder="Digite seu e-mail"
-                value={formik.values.username}
+                value={formik.values.email}
                 onChange={(e) => formik.handleChange(e)}
               />
               <InputText
                 type="password"
-                id="password"
+                id="senha"
                 placeholder="Digite sua senha"
                 className="mt-2 mb-5"
-                value={formik.values.password}
+                value={formik.values.senha}
                 onChange={(e) => formik.handleChange(e)}
               />
               <button type="submit">Entrar</button>
