@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class DeletarUsuarioRequest extends FormRequest
 {
@@ -14,7 +16,7 @@ class DeletarUsuarioRequest extends FormRequest
     public function rules()
     {
         return [
-            'senha' => 'required|string|min:6|max:255',
+            'senha' => ['required', 'string', 'min:6', 'max:255'],
         ];
     }
 
@@ -22,9 +24,14 @@ class DeletarUsuarioRequest extends FormRequest
     {
         return [
             'senha.required' => 'A senha é obrigatória.',
-            'senha.string' => 'A senha deve ser uma string.',
+            'senha.string' => 'A senha deve ser uma sequência de caracteres.',
             'senha.min' => 'A senha deve ter no mínimo 6 caracteres.',
             'senha.max' => 'A senha deve ter no máximo 255 caracteres.',
         ];
+    }
+
+    public function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json(['errors' => $validator->errors()], 422));
     }
 }

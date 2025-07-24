@@ -27,6 +27,8 @@ return new class extends Migration
             $table->string('prioridade');
             $table->string('cargo_judicial');
             $table->string('competencia');
+            $table->enum('status', ['disponível', 'alocado', 'assinado', 'recorrido', 'tramitando', 'devolvido'])->default('disponível');
+            $table->string('estado')->default('RJ');
             $table->timestamps();
         });
     }

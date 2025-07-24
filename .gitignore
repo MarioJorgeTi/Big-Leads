@@ -24,3 +24,4 @@ front/.vscode/*
 *.njsproj
 *.sln
 *.sw?
+back/storage/processos/*

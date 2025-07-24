@@ -300,7 +300,7 @@ function converterDataBrasilParaISO(dataStr) {
     await fazerLogin(page, cpf, senha);
     await acessarPainelAdvogado(page);
     const consultaProcessoFrame = await acessarConsultaProcesso(page);
-    const pastaDestino = 'C:/Users/Pc-18/Documents/big-fish-pje/back/storage/processos';
+    const pastaDestino = 'C:/Users/Pc-18/Documents/Big-Leads/back/storage/processos';
     const tiposDeAcao = ['Busca e Apreensão', 'Execução de Título', 'Monitória', 'Despejo'];
     const quantidadePaginas = 3;
     const processos = await coletarProcessos(consultaProcessoFrame, browser, page, pastaDestino, tiposDeAcao, quantidadePaginas);
