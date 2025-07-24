@@ -3,9 +3,9 @@ import Home from '../pages/home';
 import MainLayout from '../components/layouts/mainLayout';
 import Login from '../pages/login';
 import ProtectedLayout from '../components/layouts/protectedLayout';
+import Contracts from '../pages/contracts';
 
 const Routes = () => {
-
     const publicRoutes = [
         {
             path: '/',
@@ -17,20 +17,24 @@ const Routes = () => {
                 },
             ]
         }
-    ]
+    ];
 
     const privateRoutes = [
         {
-            path: '/home',
+            path: '/dashboard',
             element: <ProtectedLayout />,
             children: [
                 {
                     path: '',
                     element: <Home />,
                 },
+                {
+                    path: 'contratos',
+                    element: <Contracts />
+                }
             ]
         }
-    ]
+    ];
 
     const allRoutes = createBrowserRouter([
         ...publicRoutes,
@@ -40,6 +44,7 @@ const Routes = () => {
     return (
         <RouterProvider router={allRoutes} />
     );
-}
+};
+
 
 export default Routes;

@@ -36,22 +36,18 @@
     box-sizing: border-box;
 }
 
-.p-button:focus,
-.p-button.p-button-text:not(:disabled):hover {
+.p-splitter {
+    background: unset;
     border: unset;
-    color: unset;
-    box-shadow: unset
 }
 
-.p-dataview .p-dataview-content {
-    background: unset;
+::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
 }
-
-.p-paginator{
-    background: unset;
+::-webkit-scrollbar {
+    width: 4px;
+    background: #F4F4F4;
 }
-
-.p-paginator .p-paginator-pages .p-paginator-page.p-highlight{
-    background:var(--primary-color);
-    color: var(--light-color);
+::-webkit-scrollbar-thumb {
+    background: #dad7d7;
 }

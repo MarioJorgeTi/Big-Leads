@@ -1,40 +1,61 @@
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import '../assets/css/login.css';
+import { InputText } from 'primereact/inputtext'
 import { GlobalContext } from '../contexts/global/globalContext';
 import Logo from '../assets/imgs/logo/logo.svg';
+import { AuthContext } from '../contexts/auth/authContext';
+import { useFormik } from 'formik';
+import { Toast } from 'primereact/toast';
 
 const Login = () => {
-  const { isMobile } = useContext(GlobalContext);
+  const {
+    isMobile,
+    errorCatcher,
+    setErrorCatcher
+  } = useContext(GlobalContext);
+  const { loginAction } = useContext(AuthContext);
+  const toastRef = useRef(null);
+
+  const formik = useFormik({
+    initialValues: {
+      username: '',
+      password: ''
+    },
+    onSubmit: async (values) => {
+
+      await loginAction(values);
+    },
+  });
 
   return (
     <main className='grid h-screen m-0'>
       <section className='login-img sm:col-12 md:col-6 lg:col-6 xl:col-6'>
-        <div>
-          <h1 className='text-3xl md:text-6xl'>Portal BIG Leads</h1>
-          <p>Desenvolvido e Distribuido Por: Bigfish</p>
-          <p>Para: Mario Jorge Advocacia</p>
-        </div>
       </section>
       <aside className={`${(!isMobile) ? 'login-form' : 'login-form-mobile'} sm: p-5 md:col-6 lg:col-6 xl:col-6`}>
         <div>
           <img src={Logo} alt='logo' />
           <div>
-            <form className='md:px-8 lg:px-8 xl:px-8 py-3'>
-              <input type="email" id="email" placeholder="Digite seu e-mail" />
-
-              <input type="password" id="password" placeholder="Digite sua senha" />
-
+            <form onSubmit={formik.handleSubmit} className='md:px-8 lg:px-8 xl:px-8 py-3'>
+              <InputText
+                type="email"
+                id="username"
+                placeholder="Digite seu e-mail"
+                value={formik.values.username}
+                onChange={(e) => formik.handleChange(e)}
+              />
+              <InputText
+                type="password"
+                id="password"
+                placeholder="Digite sua senha"
+                className="mt-2 mb-5"
+                value={formik.values.password}
+                onChange={(e) => formik.handleChange(e)}
+              />
               <button type="submit">Entrar</button>
             </form>
-
-            <div className="separator-wrapper-mobile">
-              <span className="separator-line-mobile" />
-              <span className="separator-text-mobile">ou</span>
-              <span className="separator-line-mobile" />
-            </div>
-            <a href="/cadastro">Crie uma conta!</a>
           </div>
         </div>
+        <Toast ref={toastRef} />
       </aside>
     </main >
   )

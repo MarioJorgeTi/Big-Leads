@@ -4,6 +4,7 @@ import useWindowSize from "../../hooks/useWindowSize";
 
 export const GlobalProvider = ({ children }) => {
     const { width } = useWindowSize();
+    const [errorCatcher, setErrorCatcher] = useState('')
     const [isMobile, setIsMobile] = useState(false);
     const [isTablet, setIsTablet] = useState(false);
     const [isDesktop, setIsDesktop] = useState(false);
@@ -32,7 +33,9 @@ export const GlobalProvider = ({ children }) => {
         <GlobalContext.Provider value={{
             isMobile,
             isTablet,
-            isDesktop
+            isDesktop, 
+            errorCatcher,
+            setErrorCatcher
         }}>
             {children}
         </GlobalContext.Provider>

@@ -1,0 +1,21 @@
+.p-dropdown {
+    padding: 0.5rem !important;
+}
+
+.p-dropdown-items-wrapper {
+    padding: 1rem;
+
+}
+
+.p-dropdown-items {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    padding: 0.2rem;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item:not(.p-highlight):not(.p-disabled).p-focus,
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight.p-focus {
+    padding: 0.5rem;
+    border-radius: 3px;
+}
