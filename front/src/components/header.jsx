@@ -4,8 +4,32 @@ import { GoHomeFill } from "react-icons/go";
 import '../assets/css/header.css'
 import LogoIcon from '../assets/imgs/logo/logo-icon.png';
 import { Button } from 'primereact/button';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../contexts/auth/authContext';
 
 const Header = () => {
+  const {
+    updateToken,
+    updateUserAccessLevel,
+    updateUserInfos
+  } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const logOutBehavior = async () => {
+    // await signOut(data);
+    localStorage.removeItem("token");
+    localStorage.removeItem("user_access_level");
+    localStorage.removeItem("user_name");
+    localStorage.removeItem("user_email");
+    localStorage.removeItem("user_cpf_cnpj");
+
+    updateToken("");
+    updateUserAccessLevel(null);
+    updateUserInfos({})
+
+    navigate('/');
+  }
 
   return (
     <header className='fixed bottom-0 w-full flex justify-content-center gap-8 py-4 md:relative md:flex md:flex-column md:m-0 md:h-full bg md:justify-content-between'>
@@ -28,8 +52,9 @@ const Header = () => {
       </div>
       <div className='flex md:justify-content-center md:mb-4'>
         <Button
-          icon={() => <IoExit  size={46} color='#ffffff' />}
+          icon={() => <IoExit size={46} color='#ffffff' />}
           text
+          onClick={logOutBehavior}
         />
       </div>
     </header>
