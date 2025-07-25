@@ -3,6 +3,7 @@ import Header from '../header'
 import { Splitter, SplitterPanel } from 'primereact/splitter';
 import { useContext } from 'react';
 import { GlobalContext } from '../../contexts/global/globalContext';
+import RouterProtect from '../../routes/routerProtect';
 
 const ProtectedLayout = () => {
     const { isMobile } = useContext(GlobalContext);
@@ -11,10 +12,10 @@ const ProtectedLayout = () => {
         <main>
             <Splitter className="h-full" layout={isMobile ? "vertical" : "horizontal"}>
                 <SplitterPanel className="flex align-items-center justify-content-center" size={5} minSize={5}>
-                    {(isMobile) ? <Outlet /> : <Header />}
+                    {(isMobile) ? <RouterProtect /> : <Header />}
                 </SplitterPanel>
                 <SplitterPanel size={95}>
-                    {(isMobile) ? <Header /> : <Outlet />}
+                    {(isMobile) ? <Header /> : <RouterProtect />}
                 </SplitterPanel>
             </Splitter>
         </main>

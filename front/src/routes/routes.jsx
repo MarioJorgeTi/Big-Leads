@@ -4,8 +4,12 @@ import MainLayout from '../components/layouts/mainLayout';
 import Login from '../pages/login';
 import ProtectedLayout from '../components/layouts/protectedLayout';
 import Contracts from '../pages/contracts';
+import { useContext } from 'react';
+import { AuthContext } from '../contexts/auth/authContext';
 
 const Routes = () => {
+    const { token, user } = useContext(AuthContext);
+
     const publicRoutes = [
         {
             path: '/',
@@ -37,7 +41,7 @@ const Routes = () => {
     ];
 
     const allRoutes = createBrowserRouter([
-        ...publicRoutes,
+        ...(!token || !user ? publicRoutes : []),
         ...privateRoutes
     ]);
 
