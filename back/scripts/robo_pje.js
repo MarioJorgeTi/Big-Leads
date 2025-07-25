@@ -2,6 +2,7 @@ import puppeteer from 'puppeteer';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
+import axios from 'axios';
 
 const cpf = '08740641716';
 const senha = '1020304050Mj#';
@@ -170,7 +171,7 @@ async function extrairProcessoPorLinha(frame, browser, page, linhaIndex, pastaDe
     return null;
   }
   if (!temAdvogado) {
-    await baixarPDFDoProcesso(numero_processo, abaDetalhes, pastaDestino);
+    await baixarPDFDoProcesso(browser, numero_processo, abaDetalhes, pastaDestino);
     await abaDetalhes.close();
     await page.bringToFront();
     return final;
@@ -210,26 +211,30 @@ async function voltarParaPrimeiraPagina(frame) {
   await new Promise(res => setTimeout(res, 3000));
 }
 
-async function baixarPDFDoProcesso(numero, aba, destino) {
+async function baixarPDFDoProcesso(browser, numero, aba, destino) {
   console.log('Função baixarPDFDoProcesso');
-  const dialogHandler = new Promise(resolve => {
-    aba.once('dialog', async dialog => {
-      await dialog.accept();
-      resolve();
-    });
+  const novaAbaPromise = new Promise((resolve) => {
+    const handler = async (target) => {
+      const newPage = await target.page();
+      if (newPage) {
+        browser.off('targetcreated', handler);
+        await newPage.bringToFront();
+        resolve(newPage);
+      }
+    };
+    browser.on('targetcreated', handler);
   });
   await aba.waitForSelector('i.fa.fa-download', { visible: true });
   await aba.click('i.fa.fa-download');
-  await new Promise(res => setTimeout(res, 1000));
+  await esperar(1000);
   await aba.waitForSelector('#navbar\\:cbCronologia', { visible: true });
   await aba.select('#navbar\\:cbCronologia', 'ASC');
-  await aba.click('#navbar\\:downloadProcesso');
-  await Promise.race([dialogHandler, new Promise(res => setTimeout(res, 10000))]);
-  const downloads = path.join(os.homedir(), 'Downloads');
-  const nomeArquivo = numero + '.pdf';
-  const origem = await esperarArquivoEspecifico(downloads, nomeArquivo);
-  const destinoFinal = path.join(destino, nomeArquivo);
-  fs.renameSync(origem, destinoFinal);
+  await aba.click('input[type="button"][value="Download"]');
+  const abaDownload = await novaAbaPromise;
+  const urlPDF = abaDownload.url();
+  const destinoFinal = path.join(destino, numero + '.pdf');
+  await esperarBaixarArquivo(urlPDF, destinoFinal);
+  await abaDownload.close();
 }
 
 function tratarValoresDoObjeto(obj) {
@@ -259,24 +264,26 @@ function tratarValoresDoObjeto(obj) {
   return novo;
 }
 
-function esperarArquivoEspecifico(dir, nomeArquivo, tentativas = 30, intervalo = 3000) {
-  console.log('Função esperarArquivoEspecifico');
-  return new Promise((resolve, reject) => {
-    let tentativasFeitas = 0;
-    const checar = () => {
-      const caminho = path.join(dir, nomeArquivo);
-      const caminhoCrdownload = caminho + '.crdownload';
-      if (fs.existsSync(caminho) && !fs.existsSync(caminhoCrdownload)) {
-        return resolve(caminho);
+async function esperarBaixarArquivo(url, destino, tentativas = 5) {
+  console.log('Função esperarBaixarArquivo');
+  for (let i = 1; i <= tentativas; i++) {
+    try {
+      const response = await axios.get(url, { responseType: 'stream' });
+      if (response.status !== 200) {
+        throw new Error(`Status inesperado: ${response.status}`);
       }
-      tentativasFeitas++;
-      if (tentativasFeitas >= tentativas) {
-        return reject(new Error(`Arquivo ${nomeArquivo} não apareceu após várias tentativas.`));
-      }
-      setTimeout(checar, intervalo);
-    };
-    checar();
-  });
+      await new Promise((resolve, reject) => {
+        const writer = fs.createWriteStream(destino);
+        response.data.pipe(writer);
+        writer.on('finish', resolve);
+        writer.on('error', reject);
+      });
+      return;
+    } catch (error) {
+      if (i === tentativas) throw error;
+      await new Promise(r => setTimeout(r, 2000));
+    }
+  }
 }
 
 function converterDataBrasilParaISO(dataStr) {
@@ -300,7 +307,7 @@ function converterDataBrasilParaISO(dataStr) {
     await fazerLogin(page, cpf, senha);
     await acessarPainelAdvogado(page);
     const consultaProcessoFrame = await acessarConsultaProcesso(page);
-    const pastaDestino = 'C:/Users/Pc-18/Documents/Big-Leads/back/storage/processos';
+    const pastaDestino = 'C:/Users/Pc-18/Documents/Big-Leads/back/storage/app/private/processos';
     const tiposDeAcao = ['Busca e Apreensão', 'Execução de Título', 'Monitória', 'Despejo'];
     const quantidadePaginas = 3;
     const processos = await coletarProcessos(consultaProcessoFrame, browser, page, pastaDestino, tiposDeAcao, quantidadePaginas);

@@ -15,7 +15,7 @@ class ImportarProcessos extends Command
 
     public function handle()
     {
-        $caminhoJson = storage_path('processos\processos.json');
+        $caminhoJson = storage_path('app/private/processos/processos.json');
 
         if (!file_exists($caminhoJson)) {
             $this->error("Arquivo JSON não encontrado em: {$caminhoJson}");
@@ -70,11 +70,11 @@ class ImportarProcessos extends Command
             }
 
             $nomeArquivo = $processoJson['numero_processo'] . '.pdf';
-            $caminhoPdf = storage_path("processos/{$nomeArquivo}");
+            $caminhoPdf = storage_path("app/private/processos/{$nomeArquivo}");
 
             if (file_exists($caminhoPdf)) {
 
-                $caminhoRelativo = "processos/{$nomeArquivo}";
+                $caminhoRelativo = "private/processos/{$nomeArquivo}";
 
                 Documento::create([
                     'id_processo' => $processo->id,

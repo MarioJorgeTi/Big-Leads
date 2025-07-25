@@ -533,13 +533,24 @@
 
     <br>
 
+    @php
+    $nome = $anexo5['contratante'];
+    $tamanhoNome = strlen($nome);
+    $espacosFaltando = max(0, 50 - $tamanhoNome);
+    $nomeComEspacos = $nome . str_repeat('&nbsp;', $espacosFaltando);
+    $nomeContratado = 'Mario Jorge S. Tavares';
+    $tamanhoNomeContratado = strlen($nomeContratado);
+    $espacosContratado = max(0, 50 - $tamanhoNomeContratado);
+    $nomeContratadoComEspacos = $nomeContratado . str_repeat('&nbsp;', $espacosContratado);
+    @endphp
+
     <table width="100%" style="font-size: 12pt;">
         <tr>
             <td>
                 <b>CONTRATANTE: </b>
                 <br><br>
                 <div style="width: 300px; text-align: center; font-family: 'greatvibes', cursive; font-size: 20pt; text-decoration: underline;">
-                    {{ $anexo5['contratante'] }}
+                    {!! $nomeComEspacos !!}
                 </div>
                 <i>Assinatura</i>
             </td>
@@ -550,7 +561,7 @@
                 <b>CONTRATADO: </b>
                 <br><br>
                 <div style="width: 300px; text-align: center; font-family: 'greatvibes', cursive; font-size: 20pt; text-decoration: underline;">
-                    Mario Jorge S. Tavares
+                    {!! $nomeContratadoComEspacos !!}
                 </div>
                 <i>Assinatura</i>
             </td>
@@ -564,11 +575,17 @@
 
     <table width="100%" style="font-size: 12pt;">
         @foreach ($anexo5['testemunhas'] as $testemunha)
+        @php
+        $nomeTestemunha = $testemunha['nome'];
+        $tamanhoNome = strlen($nomeTestemunha);
+        $espacosFaltando = max(0, 50 - $tamanhoNome); // ajuste visual fino
+        $nomeComEspacos = $nomeTestemunha . str_repeat('&nbsp;', $espacosFaltando);
+        @endphp
         <tr>
             <td>
                 <b>Nome: </b>
                 <span style="display: inline-block; width: 300px; text-align: center; font-family: 'greatvibes', cursive; font-size: 16pt; text-decoration: underline;">
-                    {{ $testemunha['nome'] }}
+                    {!! $nomeComEspacos !!}
                 </span>
                 <br>
                 CPF: {{ $testemunha['cpf'] }}
