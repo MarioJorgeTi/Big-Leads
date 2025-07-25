@@ -18,7 +18,7 @@ class ApiAutenticacao extends Middleware
         if (!$request->bearerToken()) {
             return response()->json([
                 'errors' => [
-                    'autenticacao' => ['Token ausente.']
+                    'autenticacao' => 'Token ausente.'
                 ]
             ], 401);
         }
@@ -27,7 +27,7 @@ class ApiAutenticacao extends Middleware
         } catch (AuthenticationException $e) {
             return response()->json([
                 'errors' => [
-                    'autenticacao' => ['Token inválido ou expirado.']
+                    'autenticacao' => 'Token inválido ou expirado.'
                 ]
             ], 401);
         }

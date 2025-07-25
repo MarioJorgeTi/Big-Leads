@@ -111,13 +111,20 @@ class ContratoController extends Controller
 
         $pdfContent = $mpdf->Output('', 'S');
 
-        $nomeArquivo = 'contrato_honorario_teste' . '.pdf';
+        $nomeArquivo = 'contrato_honorario_' . $numero_processo . '.pdf';
         $caminho = 'contratos/' . $nomeArquivo;
 
         Storage::put($caminho, $pdfContent);
 
+        $pdfBase64 = base64_encode($pdfContent);
+
         return response()->json([
-            'mensagem' => 'PDF gerado e salvo com sucesso!',
-        ]);
+            'success' => [
+                'mensagem' => 'PDF gerado e salvo com sucesso!',
+                'pdf' => $pdfBase64,
+                'nome_arquivo' => $nomeArquivo,
+                'tipo' => 'application/pdf'
+            ]
+        ], 200);
     }
 }
