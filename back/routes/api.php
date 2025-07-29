@@ -5,6 +5,7 @@ use App\Http\Controllers\ProcessoController;
 use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ContratoController;
+use App\Http\Controllers\AssertivaController;
 
 Route::post('/login', [UsuarioController::class, 'login']);
 

@@ -22,7 +22,7 @@ class DbBoot extends Command
         Artisan::call('db:seed');
         $this->line(Artisan::output());
 
-        $this->info('🔐 Criando Personal Access Client (Passport)...');
+        $this->info('Criando Personal Access Client (Passport)...');
         $process = new Process(['php', 'artisan', 'passport:client', '--personal', '--provider=users']);
         $process->setInput("yes\nusers\n");
         $process->run();
