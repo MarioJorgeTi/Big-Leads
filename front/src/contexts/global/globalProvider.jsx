@@ -5,34 +5,33 @@ import useWindowSize from "../../hooks/useWindowSize";
 export const GlobalProvider = ({ children }) => {
     const { width } = useWindowSize();
     const [isMobile, setIsMobile] = useState(false);
-    const [isTablet, setIsTablet] = useState(false);
-    const [isDesktop, setIsDesktop] = useState(false);
+    const [menuIsBigger, setMenuIsBigger] = useState(false)
+
+    const updateMenuSize = () => {
+        setMenuIsBigger(!menuIsBigger);
+    }
 
     useEffect(() => {
         if (width <= 425) {
             setIsMobile(true);
-            setIsTablet(false);
-            setIsDesktop(false);
         }
 
         if (width > 425 && width <= 1024) {
             setIsMobile(false);
-            setIsTablet(true);
-            setIsDesktop(false);
         }
 
         if (width > 1024) {
             setIsMobile(false);
-            setIsTablet(false);
-            setIsDesktop(true);
         }
-    }, [width]);
+
+        
+    }, [width, menuIsBigger]);
 
     return (
         <GlobalContext.Provider value={{
             isMobile,
-            isTablet,
-            isDesktop
+            menuIsBigger,
+            updateMenuSize
         }}>
             {children}
         </GlobalContext.Provider>

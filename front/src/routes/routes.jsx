@@ -3,8 +3,13 @@ import Home from '../pages/home';
 import MainLayout from '../components/layouts/mainLayout';
 import Login from '../pages/login';
 import ProtectedLayout from '../components/layouts/protectedLayout';
+import Contracts from '../pages/contracts';
+import PersonalArea from '../pages/personalArea';
+import { useContext } from 'react';
+import { AuthContext } from '../contexts/auth/authContext';
 
 const Routes = () => {
+    const { token, userAccessLevel } = useContext(AuthContext);
 
     const publicRoutes = [
         {
@@ -17,29 +22,38 @@ const Routes = () => {
                 },
             ]
         }
-    ]
+    ];
 
     const privateRoutes = [
         {
-            path: '/home',
+            path: '/dashboard',
             element: <ProtectedLayout />,
             children: [
                 {
                     path: '',
                     element: <Home />,
                 },
+                {
+                    path: 'contratos',
+                    element: <Contracts />
+                },
+                {
+                    path: 'meus-leads',
+                    element: <PersonalArea />
+                }
             ]
         }
-    ]
+    ];
 
     const allRoutes = createBrowserRouter([
-        ...publicRoutes,
+        ...(!token || !userAccessLevel ? publicRoutes : []),
         ...privateRoutes
     ]);
 
     return (
         <RouterProvider router={allRoutes} />
     );
-}
+};
+
 
 export default Routes;

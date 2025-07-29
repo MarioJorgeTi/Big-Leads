@@ -16,6 +16,9 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\ImportarDatajud::class,
         \App\Console\Commands\ImportarProcessos::class,
         \App\Console\Commands\ExecutarRoboPje::class,
+        \App\Console\Commands\ImportarContatosProcesso::class,
+        \App\Console\Commands\ImportarDadosBanco::class,
+        \App\Console\Commands\DbBoot::class,
     ];
 
     /**

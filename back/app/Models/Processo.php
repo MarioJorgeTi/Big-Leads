@@ -26,6 +26,7 @@ class Processo extends Model
         'prioridade',
         'cargo_judicial',
         'competencia',
+        'status',
     ];
 
     protected $hidden = [

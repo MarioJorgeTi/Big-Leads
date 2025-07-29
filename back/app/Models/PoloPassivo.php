@@ -25,4 +25,14 @@ class PoloPassivo extends Model
     {
         return $this->belongsTo(Processo::class, 'id_processo');
     }
+
+    public function telefones()
+    {
+        return $this->hasMany(Telefone::class, 'id_polo_passivo');
+    }
+
+    public function emails()
+    {
+        return $this->hasMany(Email::class, 'id_polo_passivo');
+    }
 }

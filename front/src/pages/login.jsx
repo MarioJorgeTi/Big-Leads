@@ -1,40 +1,110 @@
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import '../assets/css/login.css';
+import { useNavigate } from 'react-router-dom';
+import { InputText } from 'primereact/inputtext';
 import { GlobalContext } from '../contexts/global/globalContext';
 import Logo from '../assets/imgs/logo/logo.svg';
+import { AuthContext } from '../contexts/auth/authContext';
+import { useFormik } from 'formik';
+import { Toast } from 'primereact/toast';
+import { Button } from 'primereact/button';
 
 const Login = () => {
-  const { isMobile } = useContext(GlobalContext);
+  const {
+    isMobile
+  } = useContext(GlobalContext);
+
+  const {
+    loginAction,
+    updateToken,
+    updateUserAccessLevel,
+    updateUserInfos
+  } = useContext(AuthContext);
+
+  const toastRef = useRef(null);
+  const navigate = useNavigate();
+
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      senha: ''
+    },
+    onSubmit: async (values, { setSubmitting }) => {
+      setSubmitting(true);
+
+      if (!values?.email || !values?.senha) {
+        toastRef.current.show({
+          severity: 'error',
+          summary: 'Erro',
+          detail: "E-mail e Senha são obrigatórios",
+          life: 3000
+        });
+
+        return;
+      }
+
+      const results = await loginAction(values);
+
+      if (results?.success?.token && results?.success?.usuario) {
+        navigate('/dashboard', { replace: true });
+      }
+
+      if (results?.errors) {
+        toastRef.current.show({
+          severity: 'error',
+          summary: 'Erro',
+          detail: results?.errors?.autenticacao,
+          life: 3000
+        });
+
+        return;
+      }
+
+      setSubmitting(false);
+    }
+  });
 
   return (
-    <main className='grid h-screen m-0'>
-      <section className='login-img sm:col-12 md:col-6 lg:col-6 xl:col-6'>
-        <div>
-          <h1 className='text-3xl md:text-6xl'>Portal BIG Leads</h1>
-          <p>Desenvolvido e Distribuido Por: Bigfish</p>
-          <p>Para: Mario Jorge Advocacia</p>
-        </div>
+    <main className='grid h-screen m-0 p-0 border-box'>
+      <section className='login-img bg-no-repeat bg-center bg-cover sm:col-12 md:col-6 lg:col-6 xl:col-6'>
       </section>
-      <aside className={`${(!isMobile) ? 'login-form' : 'login-form-mobile'} sm: p-5 md:col-6 lg:col-6 xl:col-6`}>
+      <aside className={`${(!isMobile) ? 'login-form flex flex-column align-itmes-center justify-content-center' : 'login-form-mobile'} p-5 md:col-6 lg:col-6 xl:col-6`}>
         <div>
-          <img src={Logo} alt='logo' />
-          <div>
-            <form className='md:px-8 lg:px-8 xl:px-8 py-3'>
-              <input type="email" id="email" placeholder="Digite seu e-mail" />
-
-              <input type="password" id="password" placeholder="Digite sua senha" />
-
-              <button type="submit">Entrar</button>
+          <div className='flex justify-content-center mb-3 md:mb-4'>
+            <img src={Logo} alt='logo' className='w-8 xl:w-5' />
+          </div>
+          <div className='xl:px-8'>
+            <form onSubmit={formik.handleSubmit} className='xl:px-8'>
+              <InputText
+                type="email"
+                id="email"
+                placeholder="Digite seu e-mail"
+                className=' py-3'
+                value={formik.values.email}
+                onChange={(e) => formik.handleChange(e)}
+                disabled={formik.isSubmitting}
+              />
+              <InputText
+                type="password"
+                id="senha"
+                placeholder="Digite sua senha"
+                className="mt-2 mb-5 py-3"
+                value={formik.values.senha}
+                onChange={(e) => formik.handleChange(e)}
+                disabled={formik.isSubmitting}
+              />
+              <Button
+                type="submit"
+                label=
+                {formik.isSubmitting ?
+                  ". . . . ." : "Entrar"}
+                disabled={formik.isSubmitting}
+                className={`text-2xl w-full py-3 border-round-lg border-none  flex justify-content-center`} style={{ background: '#183584ff' }}
+              />
             </form>
-
-            <div className="separator-wrapper-mobile">
-              <span className="separator-line-mobile" />
-              <span className="separator-text-mobile">ou</span>
-              <span className="separator-line-mobile" />
-            </div>
-            <a href="/cadastro">Crie uma conta!</a>
           </div>
         </div>
+        <Toast ref={toastRef} />
       </aside>
     </main >
   )
