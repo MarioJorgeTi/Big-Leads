@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ContractsContext } from './contractsContext';
-import { templatesMap } from '../../models/templates';
+import { templatesMap } from '../../models/formsTemplates';
 
 export const ContractsProvider = ({ children }) => {
   const [selectedModelValue, setSelectedModelValue] = useState('');

@@ -1,17 +1,24 @@
 import { Dialog } from 'primereact/dialog'
-import React from 'react'
+import { useContext } from 'react'
+import { GlobalContext } from '../contexts/global/globalContext'
+import '../assets/css/generalDialog.css'
 
-const GeneralDialog = ({ showDetails, closeDetails, chosedOne, template }) => {
+const GeneralDialog = ({ showDetails, closeDetails, headerTemplate, bodyTemplate }) => {
+    const { isMobile } = useContext(GlobalContext);
+
     return (
         <Dialog
             visible={showDetails}
             onHide={closeDetails}
+            header={headerTemplate}
             position='right'
-            className='h-screen w-6'
+            className='h-full w-8'
             draggable
             resizable
+            modal
+            maximizable={isMobile}
         >
-            <div>{template()}</div>
+            <div>{bodyTemplate()}</div>
         </Dialog>
     )
 }
