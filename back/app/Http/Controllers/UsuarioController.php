@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Processo;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Hash;
@@ -61,50 +60,13 @@ class UsuarioController extends Controller
         ], 200);
     }
 
-    public function lerProcessosUsuario(Request $request)
+    public function lerUsuarios()
     {
-        $usuario = $request->user();
-        $processos = Processo::where('id_usuario', $usuario->id)->get();
-        if ($processos->isEmpty()) {
-            return response()->json([
-                'errors' => [
-                    'processos' => 'Nenhum processo encontrado'
-                ]
-            ], 404);
-        }
+        $usuarios = Usuario::all();
         return response()->json([
             'success' => [
-                'mensagem' => 'Processos recuperados com sucesso.',
-                'processos' => $processos
-            ]
-        ], 200);
-    }
-
-    public function atribuirProcessoUsuario(Request $request, $id)
-    {
-        $usuario = $request->user();
-        $processo = Processo::find($id);
-        if (!$processo) {
-            return response()->json([
-                'errors' => [
-                    'processo' => 'Processo não encontrado'
-                ]
-            ], 404);
-        }
-        if ($processo->id_usuario) {
-            return response()->json([
-                'errors' => [
-                    'processo' => 'Este processo já está atribuído a um usuário'
-                ]
-            ], 409);
-        }
-        $processo->id_usuario = $usuario->id;
-        $processo->status = 'alocado';
-        $processo->save();
-        return response()->json([
-            'success' => [
-                'mensagem' => 'Processo atribuído com sucesso.',
-                'processo' => $processo
+                'mensagem' => 'Usuários encontrados com sucesso.',
+                'usuarios' => $usuarios
             ]
         ], 200);
     }
