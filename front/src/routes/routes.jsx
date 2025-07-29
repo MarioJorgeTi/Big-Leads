@@ -4,11 +4,12 @@ import MainLayout from '../components/layouts/mainLayout';
 import Login from '../pages/login';
 import ProtectedLayout from '../components/layouts/protectedLayout';
 import Contracts from '../pages/contracts';
+import PersonalArea from '../pages/personalArea';
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/auth/authContext';
 
 const Routes = () => {
-    const { token, user } = useContext(AuthContext);
+    const { token, userAccessLevel } = useContext(AuthContext);
 
     const publicRoutes = [
         {
@@ -35,13 +36,17 @@ const Routes = () => {
                 {
                     path: 'contratos',
                     element: <Contracts />
+                },
+                {
+                    path: 'meus-leads',
+                    element: <PersonalArea />
                 }
             ]
         }
     ];
 
     const allRoutes = createBrowserRouter([
-        ...(!token || !user ? publicRoutes : []),
+        ...(!token || !userAccessLevel ? publicRoutes : []),
         ...privateRoutes
     ]);
 

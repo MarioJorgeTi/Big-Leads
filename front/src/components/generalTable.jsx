@@ -1,7 +1,6 @@
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import '../assets/css/generalTable.css';
-import { useState } from 'react';
 
 export default function GeneralTable({ data, columns }) {
 
@@ -10,7 +9,7 @@ export default function GeneralTable({ data, columns }) {
             <DataTable
                 value={data}
                 scrollable
-                scrollHeight='600px'
+                scrollHeight='800px'
                 removableSort
                 paginator
                 rows={5}

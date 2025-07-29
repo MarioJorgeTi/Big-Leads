@@ -21,7 +21,7 @@
 }
 
 .p-datatable-table {
-    border-spacing: 0 0.5rem;
+    border-spacing: 0 0.7rem;
 }
 
 .p-datatable-thead tr th {
@@ -45,7 +45,6 @@
 
 .p-datatable-thead tr {
     overflow: hidden;
-    padding: 0 1rem;
 }
 
 .p-datatable-thead>tr>th:first-child {

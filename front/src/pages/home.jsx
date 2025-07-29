@@ -1,26 +1,16 @@
 import { useContext, useState } from 'react';
-import GeneralTable from '../components/generalTable';
-import { ProcessesContext } from '../contexts/processes/processesContext';
 import { Button } from 'primereact/button';
-import '../assets/css/home.css'
 import { FaEye } from 'react-icons/fa';
-import GeneralSidebar from '../components/generalSidebar';
-import FunnelSelect from '../components/funnelSelect';
+import GeneralTable from '../components/generalTable';
+import { ProcessesContext } from '../contexts/processes/processesContext'
+import { GlobalContext } from '../contexts/global/globalContext';
+import { FaCircleCheck } from 'react-icons/fa6';
+import GeneralDialog from '../components/generalDialog';
 
 const Home = () => {
+  const { isMobile } = useContext(GlobalContext);
   const { processes } = useContext(ProcessesContext);
   const [expandDetailsDialog, setExpandDetailsDialog] = useState(false);
-
-  const getNestedValue = (obj, path) => {
-    return path.split('.').reduce((acc, part) => {
-      const match = part.match(/(\w+)\[(\d+)\]/);
-      if (match) {
-        const [, prop, index] = match;
-        return acc?.[prop]?.[index];
-      }
-      return acc?.[part];
-    }, obj);
-  };
 
   const columns = [
     {
@@ -28,12 +18,7 @@ const Home = () => {
       field: 'numero_processo',
       header: 'Processo',
       sortableDisabled: false,
-      frozen: false,
-      body: (rowData) => (
-        <div className="overflow-hidden space-nowrap max-w-12rem text-overflow-ellipsis">
-          {getNestedValue(rowData, 'numero_processo')}
-        </div>
-      )
+      frozen: false
     },
     {
       id: 3,
@@ -42,11 +27,20 @@ const Home = () => {
       sortableDisabled: false,
       frozen: false,
       body: (rowData) => {
-        const value = rowData.valor_causa;
+        const valor = parseFloat(rowData.valor_causa?.toString().replace(',', '.'));
 
-        return typeof value === 'number'
-          ? value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-          : '-';
+        return !isNaN(valor) ? (
+          <div className="pl-2">
+            {valor.toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL',
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
+          </div>
+        ) : (
+          '-'
+        );
       }
     },
     {
@@ -54,12 +48,7 @@ const Home = () => {
       field: 'classe_judicial',
       header: 'Classe Judicial',
       sortableDisabled: false,
-      frozen: false,
-      body: (rowData) => (
-        <div className="overflow-hidden space-nowrap max-w-15rem text-overflow-ellipsis">
-          {getNestedValue(rowData, 'classe_judicial')}
-        </div>
-      )
+      frozen: false
     },
     {
       id: 5,
@@ -112,6 +101,7 @@ const Home = () => {
       sortableDisabled: true,
       isAction: true,
       frozen: false,
+      body: (rowData) => (rowData?.status == 'disponível') ? <FaCircleCheck color='#11ac1eff' size={30} /> : null,
     },
     {
       id: 9,
@@ -131,30 +121,38 @@ const Home = () => {
     }
   ];
 
-  const sidebarTemplate = (item) => {
-    return (
+  const dialogTemplate = () => {
+    return(
       <div>
-
+        teste
       </div>
     )
   }
 
   return (
-    <main className='flex justify-content-center align-items-center h-screen w-full'>
+    <main className='flex md:flex-column h-screen w-full p-3'>
       <div>
-        <FunnelSelect />
-        <GeneralTable
-          data={processes}
-          columns={columns}
-          showDetails={expandDetailsDialog}
-          closeDetails={() => setExpandDetailsDialog(!expandDetailsDialog)}
-        />
-        <GeneralSidebar
-          showDetails={expandDetailsDialog}
-          closeDetails={() => setExpandDetailsDialog(!expandDetailsDialog)}
-          template={sidebarTemplate}
-        />
+        <h1
+          className='px-3'
+          style={{
+            fontSize: '3rem',
+            color: 'var(--primary-color)'
+          }}
+        >Funil Geral</h1>
       </div>
+      <div>
+        {(!isMobile) ?
+          <GeneralTable
+            columns={columns}
+            data={processes}
+          /> :
+          null}
+      </div>
+      <GeneralDialog
+        showDetails={expandDetailsDialog}
+        closeDetails={() => setExpandDetailsDialog(!expandDetailsDialog)}
+        template={dialogTemplate}
+      />
     </main>
   );
 };
