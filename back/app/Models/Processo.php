@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Processo extends Model
 {
+    use HasFactory;
+    
     protected $table = 'processo';
 
     protected $fillable = [

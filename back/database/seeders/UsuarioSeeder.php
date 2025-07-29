@@ -28,9 +28,18 @@ class UsuarioSeeder extends Seeder
         ]);
 
         Usuario::create([
+            'nome' => 'Teste Gerente Geral',
+            'cpf_cnpj' => '65432132100',
+            'email' => 'testegerentegeral@teste.com',
+            'senha' => '123',
+            'email_verificado' => true,
+            'nivel_acesso' => 1,
+        ]);
+
+        Usuario::create([
             'nome' => 'Teste Gerente',
             'cpf_cnpj' => '25765432100',
-            'email' => 'testegerente@gmail.com',
+            'email' => 'testegerente@teste.com',
             'senha' => '123',
             'email_verificado' => true,
             'nivel_acesso' => 2,
@@ -39,12 +48,30 @@ class UsuarioSeeder extends Seeder
         Usuario::create([
             'nome' => 'Teste Comercial',
             'cpf_cnpj' => '34765432100',
-            'email' => 'testecomercial@gmail.com',
+            'email' => 'testecomercial@teste.com',
             'senha' => '123',
             'email_verificado' => true,
             'nivel_acesso' => 3,
         ]);
 
-        Usuario::factory()->count(8)->create();
+        Usuario::create([
+            'nome' => 'Teste Financeiro',
+            'cpf_cnpj' => '30956732790',
+            'email' => 'testefinanceiro@teste.com',
+            'senha' => '123',
+            'email_verificado' => true,
+            'nivel_acesso' => 4,
+        ]);
+
+        Usuario::create([
+            'nome' => 'Teste Tramit',
+            'cpf_cnpj' => '31985452180',
+            'email' => 'testetramit@teste.com',
+            'senha' => '123',
+            'email_verificado' => true,
+            'nivel_acesso' => 5,
+        ]);
+
+        Usuario::factory()->count(10)->create();
     }
 }
