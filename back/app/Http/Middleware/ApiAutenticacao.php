@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Illuminate\Auth\AuthenticationException;
+use League\OAuth2\Server\Exception\OAuthServerException;
 
 class ApiAutenticacao extends Middleware
 {
@@ -24,7 +25,7 @@ class ApiAutenticacao extends Middleware
         }
         try {
             return parent::handle($request, $next, ...$guards);
-        } catch (AuthenticationException $e) {
+        } catch (OAuthServerException | AuthenticationException $e) {
             return response()->json([
                 'errors' => [
                     'autenticacao' => 'Token inválido ou expirado.'
