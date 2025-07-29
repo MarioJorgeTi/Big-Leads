@@ -4,7 +4,6 @@ import Breadcrumb from '../components/breadcrumb';
 import { Button } from 'primereact/button'
 import GeneralSidebar from '../components/generalSidebar';
 import ContractForm from '../components/contractForm';
-import '../assets/css/contracts.css'
 import { ContractsContext } from '../contexts/contracts/contractsContext';
 
 const Contracts = () => {
@@ -30,7 +29,7 @@ const Contracts = () => {
             <Button
               icon={() => <FaPlus />}
               label="Novo Modelo"
-              className="p-2 flex gap-2"
+              className="flex gap-2"
               style={{ color: 'var(--primary-color)' }}
               outlined
               onClick={() => setShowForm(!showForm)}

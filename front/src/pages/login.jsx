@@ -11,18 +11,18 @@ import { Button } from 'primereact/button';
 
 const Login = () => {
   const {
-    isMobile,
-    errorCatcher,
-    setErrorCatcher
+    isMobile
   } = useContext(GlobalContext);
-  const navigate = useNavigate();
+
   const {
     loginAction,
     updateToken,
     updateUserAccessLevel,
     updateUserInfos
   } = useContext(AuthContext);
+
   const toastRef = useRef(null);
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -30,38 +30,37 @@ const Login = () => {
       senha: ''
     },
     onSubmit: async (values, { setSubmitting }) => {
-      try {
-        const results = await loginAction(values);
+      setSubmitting(true);
 
-        if (results?.token && results?.usuario) {
-          updateToken(results?.token);
-          updateUserAccessLevel(results?.usuario?.nivel_acesso);
-          updateUserInfos({ ...results?.usuario });
+      if (!values?.email || !values?.senha) {
+        toastRef.current.show({
+          severity: 'error',
+          summary: 'Erro',
+          detail: "E-mail e Senha são obrigatórios",
+          life: 3000
+        });
 
-          localStorage.setItem("token", results?.token);
-          localStorage.setItem("user_access_level", results?.usuario?.nivel_acesso);
-          localStorage.setItem("user_name", results?.usuario?.nome);
-          localStorage.setItem("user_email", results?.usuario?.email);
-          localStorage.setItem("user_cpf_cnpj", results?.usuario?.cpf_cnpj);
-
-          navigate('/dashboard', { replace: true });
-        } else {
-          const errorMessage = results?.errors?.autenticacao?.[0] || 'Erro ao autenticar.';
-          setErrorCatcher(errorMessage);
-          toastRef.current.show({
-            severity: 'error',
-            summary: 'Erro',
-            detail: errorMessage,
-            life: 3000
-          });
-
-        }
-      } catch (error) {
-        setErrorCatcher("Não foi possível realizar o login! Tente novamente.");
-        console.error("Erro no login:", error);
-      } finally {
-        setSubmitting(false);
+        return;
       }
+
+      const results = await loginAction(values);
+
+      if (results?.success?.token && results?.success?.usuario) {
+        navigate('/dashboard', { replace: true });
+      }
+
+      if (results?.errors) {
+        toastRef.current.show({
+          severity: 'error',
+          summary: 'Erro',
+          detail: results?.errors?.autenticacao,
+          life: 3000
+        });
+
+        return;
+      }
+
+      setSubmitting(false);
     }
   });
 
@@ -69,7 +68,7 @@ const Login = () => {
     <main className='grid h-screen m-0 p-0 border-box'>
       <section className='login-img bg-no-repeat bg-center bg-cover sm:col-12 md:col-6 lg:col-6 xl:col-6'>
       </section>
-      <aside className={`${(!isMobile) ? 'login-form' : 'login-form-mobile'} sm: p-5 md:col-6 lg:col-6 xl:col-6`}>
+      <aside className={`${(!isMobile) ? 'login-form flex flex-column align-itmes-center justify-content-center' : 'login-form-mobile'} p-5 md:col-6 lg:col-6 xl:col-6`}>
         <div>
           <div className='flex justify-content-center mb-3 md:mb-4'>
             <img src={Logo} alt='logo' className='w-8 xl:w-5' />
@@ -97,9 +96,10 @@ const Login = () => {
               <Button
                 type="submit"
                 label=
-                {formik.isSubmitting ? "Entrando..." : "Entrar"}
+                {formik.isSubmitting ?
+                  ". . . . ." : "Entrar"}
                 disabled={formik.isSubmitting}
-                className='w-full py-3 border-round-lg border-none text-2xl' style={{ background: '#183584ff' }}
+                className={`text-2xl w-full py-3 border-round-lg border-none  flex justify-content-center`} style={{ background: '#183584ff' }}
               />
             </form>
           </div>

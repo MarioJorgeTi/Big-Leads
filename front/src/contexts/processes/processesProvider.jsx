@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { ProcessesContext } from "./processesContext"
 import { getAll } from "../../services/legalProcesses";
 import { AuthContext } from "../auth/authContext";
@@ -10,15 +10,20 @@ export const ProcessesProvider = ({ children }) => {
     const getAllProcesses = async () => {
         try {
             const results = await getAll();
-            setProcesses(results?.data);
+            if (results?.data?.success?.processos) {
+                setProcesses(results?.data?.success?.processos);
+            }
+            
+            console.log(results);
+            return results;
         } catch (error) {
             console.log(`Error: ` + error);
         }
     }
+    
     useEffect(() => {
         if (token && userAccessLevel) getAllProcesses();
-        console.log(processes)
-    }, []);
+    }, [token]);
 
     return (
         <ProcessesContext.Provider value={{
