@@ -4,8 +4,12 @@ import useWindowSize from "../../hooks/useWindowSize";
 
 export const GlobalProvider = ({ children }) => {
     const { width } = useWindowSize();
-    const [errorCatcher, setErrorCatcher] = useState('')
     const [isMobile, setIsMobile] = useState(false);
+    const [menuIsBigger, setMenuIsBigger] = useState(false)
+
+    const updateMenuSize = () => {
+        setMenuIsBigger(!menuIsBigger);
+    }
 
     useEffect(() => {
         if (width <= 425) {
@@ -19,13 +23,15 @@ export const GlobalProvider = ({ children }) => {
         if (width > 1024) {
             setIsMobile(false);
         }
-    }, [width]);
+
+        
+    }, [width, menuIsBigger]);
 
     return (
         <GlobalContext.Provider value={{
             isMobile,
-            errorCatcher,
-            setErrorCatcher
+            menuIsBigger,
+            updateMenuSize
         }}>
             {children}
         </GlobalContext.Provider>

@@ -87,6 +87,7 @@ class ImportarProcessos extends Command
             }
             $nomeArquivo = $processoJson['numero_processo'] . '.pdf';
             $caminhoPdf = storage_path("app/private/processos/{$nomeArquivo}");
+
             if (file_exists($caminhoPdf)) {
                 $caminhoRelativo = "private/processos/{$nomeArquivo}";
                 Documento::create([

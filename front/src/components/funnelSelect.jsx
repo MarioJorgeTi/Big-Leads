@@ -1,53 +1,42 @@
-import { useState, useEffect } from 'react';
-
-const funnelOptions = [
-  { label: 'Funil Geral', value: 'geral' },
-  { label: 'Pré-qualificados', value: 'pre' },
-  { label: 'Negociação', value: 'negociacao' },
-  { label: 'Fechados', value: 'fechados' },
-];
+import 'primereact/resources/themes/lara-light-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeflex/primeflex.css';
+import { Dropdown } from 'primereact/dropdown';
+import { useContext } from 'react';
+import { GlobalContext } from '../contexts/global/globalContext';
 
 const FunnelSelect = ({ selectedFunnel, onChange }) => {
-  const [open, setOpen] = useState(false);
+  const { isMobile } = useContext(GlobalContext);
+  const funnelOptions = [
+    { label: 'Funil Geral', value: 'geral' },
+    { label: 'Pré-qualificados', value: 'pre' },
+    { label: 'Negociação', value: 'negociacao' },
+    { label: 'Fechados', value: 'fechados' },
+  ];
 
-  const handleSelect = (option) => {
-    onChange(option.value);
-    setOpen(false);
-  };
+  const getLabelByValue = (val) =>
+    funnelOptions.find((opt) => opt.value === val)?.label || '';
 
   return (
-    <div style={{ position: 'relative' }}>
-      <h2
-        style={{ cursor: 'pointer' }}
-        onClick={() => setOpen(!open)}
-      >
-        {funnelOptions.find(opt => opt.value === selectedFunnel)?.label} ▼
-      </h2>
-      {open && (
-        <ul
-          style={{
-            position: 'absolute',
-            backgroundColor: '#fff',
-            boxShadow: '0px 2px 6px rgba(0,0,0,0.1)',
-            zIndex: 10,
-            listStyle: 'none',
-            padding: 0,
-            margin: 0,
-            width: '200px',
-          }}
-        >
-          {funnelOptions.map((option) => (
-            <li
-              key={option.value}
-              onClick={() => handleSelect(option)}
-              style={{ padding: '8px 12px', cursor: 'pointer', borderBottom: '1px solid #eee' }}
-            >
-              {option.label}
-            </li>
-          ))}
-        </ul>
+    <Dropdown
+      value={selectedFunnel}
+      options={funnelOptions}
+      onChange={(e) => onChange(e.value)}
+      optionLabel="label"
+      valueTemplate={() => (
+        <div className="flex align-items-center font-bold" style={{
+          color: 'var(--primary-color)',
+          fontSize: (isMobile)?'2.5rem':'3rem'
+        }}>
+          {getLabelByValue(selectedFunnel)}
+        </div>
       )}
-    </div>
+      itemTemplate={(option) => (
+        <div className="text-md">{option.label}</div>
+      )}
+      className="border-none shadow-none p-0 min-w-min bg-transparent"
+      panelClassName="shadow-2"
+    />
   );
 };
 
