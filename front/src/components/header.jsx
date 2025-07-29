@@ -12,6 +12,7 @@ import { BiSolidExit } from 'react-icons/bi';
 import { GlobalContext } from '../contexts/global/globalContext';
 import { IoFunnel } from 'react-icons/io5';
 import { CgClose } from 'react-icons/cg';
+import { FaBookOpenReader, FaPaperPlane } from 'react-icons/fa6';
 
 const Header = () => {
   const { menuIsBigger, updateMenuSize } = useContext(GlobalContext);
@@ -42,11 +43,15 @@ const Header = () => {
   return (
     <header className={`fixed bottom-0 w-full flex justify-content-center gap-8 py-4 md:relative md:flex md:flex-column md:m-0 md:h-full bg md:justify-content-between`}>
       <div className="flex md:flex-column md:align-items-center md:mt-3">
-        <img src={menuIsBigger ? Logo : LogoIcon} alt="logo" className={`hidden md:block ${menuIsBigger ? 'max-w-12rem mb-6' : ' max-w-6rem mb-4'}`} />
+        <img
+          src={menuIsBigger ? Logo : LogoIcon}
+          alt="logo"
+          className={`hidden md:block ${menuIsBigger ? 'max-w-12rem mb-6' : ' max-w-6rem mb-4'}`}
+        />
         <div className='flex md:flex-column md:row-gap-4 gap-8'>
           <div>
             <Button
-              icon={() => <IoFunnel size={45} color='#ffffff' />}
+              icon={() => <IoFunnel size={40} color='#ffffff' />}
               text
               label={!menuIsBigger ? '' : 'Funil Geral'}
               className={`p-0 ${menuIsBigger ? 'gap-2' : ''} text-white`}
@@ -64,11 +69,21 @@ const Header = () => {
               onClick={() => navigate('/dashboard/meus-leads')}
             />
           </div>
+          <div>
+            <Button
+              icon={() => <FaBookOpenReader size={40} color='#ffffff' />}
+              text
+              label={!menuIsBigger ? '' : 'Contratos'}
+              className={`p-0 py-1 ${menuIsBigger ? 'gap-2' : ''}  text-white`}
+              style={{ color: '#ffffff !important' }}
+              onClick={() => navigate('/dashboard/contratos')}
+            />
+          </div>
         </div>
       </div >
       <div className='flex md:flex-column md:justify-content-center md:align-items-center md:row-gap-4'>
         <Button
-          icon={() => <BiSolidExit size={50} color='#ffffff' />}
+          icon={() => <BiSolidExit size={40} color='#ffffff' />}
           text
           label={!menuIsBigger ? '' : 'Sair'}
           className={`p-0 ${menuIsBigger ? 'gap-2' : ''} text-white`}
@@ -76,7 +91,7 @@ const Header = () => {
           onClick={logOutBehavior}
         />
         <Button
-          icon={() => (!menuIsBigger) ? <TiThMenu size={46} color='#ffffff' /> : <CgClose size={46} color='#ffffff' />}
+          icon={() => (!menuIsBigger) ? <TiThMenu size={40} color='#ffffff' /> : <CgClose size={46} color='#ffffff' />}
           text
           className='p-0 hidden md:flex  text-white'
           onClick={updateMenuSize}

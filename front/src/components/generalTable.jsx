@@ -8,13 +8,11 @@ export default function GeneralTable({ data, columns }) {
         <div className='p-2'>
             <DataTable
                 value={data}
-                scrollable
-                scrollHeight='800px'
                 removableSort
                 paginator
-                rows={5}
+                rows={9}
                 sortMode="multiple"
-                className='text-sm lg:text-md xl:text-lg'
+                className='text-md lg:text-md xl:text-lg'
             >
                 {columns.map((column) => (
                     <Column

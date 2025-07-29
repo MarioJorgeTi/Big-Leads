@@ -1,6 +1,6 @@
 import { Dropdown } from 'primereact/dropdown';
 import { useContext, useEffect } from 'react';
-import { templatesMap } from '../models/templates';
+import { templatesMap } from '../models/formsTemplates';
 import { ContractsContext } from '../contexts/contracts/contractsContext';
 
 const ContractForm = () => {

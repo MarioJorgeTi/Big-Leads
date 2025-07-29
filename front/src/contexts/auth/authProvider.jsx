@@ -25,19 +25,6 @@ export const AuthProvider = ({ children }) => {
         setUserInfos(newUserInfo);
     }
 
-    const verifyUserAccessLevel = (userAccessLevel) => {
-        switch(userAccessLevel){
-            case 1:
-                return "superadm";
-            case 2:
-                return "adm";
-            case 3:
-                return "common";
-            default:
-                return "common";
-        }
-    }
-
     const loginAction = async (data) => {
         try {
             const results = await signIn(data);
@@ -69,8 +56,6 @@ export const AuthProvider = ({ children }) => {
             sessionStorage.setItem('user_name', userInfos?.nome);
             sessionStorage.setItem('user_email', userInfos?.email);
             sessionStorage.setItem('user_cpf_cnpj', userInfos?.cpf_cnpj);
-
-            verifyUserAccessLevel(userAccessLevel);
         }
         else {
             delete api.defaults.headers.common['Authorization'];
