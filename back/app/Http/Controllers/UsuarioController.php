@@ -70,4 +70,50 @@ class UsuarioController extends Controller
             ]
         ], 200);
     }
+
+    public function atribuirSubordinado(Request $request, $id)
+    {
+        $usuario = $request->user();
+        if ($usuario->id == $id) {
+            return response()->json([
+                'errors' => [
+                    'subordinacao' => 'Você não pode se atribuir como subordinado.'
+                ]
+            ], 400);
+        }
+        $subordinado = Usuario::find($id);
+        if (!$subordinado) {
+            return response()->json([
+                'errors' => [
+                    'usuario' => 'Usuário não encontrado.'
+                ]
+            ], 404);
+        }
+        $subordinado->id_superior = $usuario->id;
+        $subordinado->save();
+        return response()->json([
+            'success' => [
+                'mensagem' => 'Subordinação concluida com sucesso.',
+            ]
+        ], 200);
+    }
+
+    public function lerSubordinados(Request $request)
+    {
+        $usuario = $request->user();
+        $subordinados = Usuario::where('id_superior', $usuario->id)->get();
+        if ($subordinados->isEmpty()) {
+            return response()->json([
+                'errors' => [
+                    'subordinados' => 'Nenhum subordinado encontrado.'
+                ]
+            ], 404);
+        }
+        return response()->json([
+            'success' => [
+                'mensagem' => 'Subordinados recuperados com sucesso.',
+                'subordinados' => $subordinados
+            ]
+        ], 200);
+    }
 }
