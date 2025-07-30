@@ -1,39 +1,26 @@
-import { useContext, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Button } from 'primereact/button';
-import { FaEye, FaSearch } from 'react-icons/fa';
-import { FaFileExport, FaFilter, FaLock } from 'react-icons/fa6';
-import { InputText } from 'primereact/inputtext';
-import { IconField } from 'primereact/iconfield';
-import { InputIcon } from 'primereact/inputicon';
-
-import GeneralTable from '../components/generalTable';
-import GeneralDialog from '../components/generalDialog';
-import GeneralSidebar from '../components/generalSidebar';
+import { FaChevronLeft } from 'react-icons/fa6';
+import GeneralTable from '../components/general/generalTable';
+import GeneralDialog from '../components/general/generalDialog';
 import { HeaderTemplate, BodyTemplate } from '../components/templates/dialogTemplates';
-
-import { ProcessesContext } from '../contexts/processes/processesContext';
-import { GlobalContext } from '../contexts/global/globalContext';
-import Filters from '../components/templates/filtersTemplate';
+import { Toast } from 'primereact/toast';
+import { useProcesses } from '../contexts/processesContext';
+import { useGlobal } from '../contexts/globalContext';
+import SearchAndFilters from '../components/modules/searchAndFilters';
 
 const Home = () => {
-  const { isMobile } = useContext(GlobalContext);
-  const {
-    processes,
-    RenderStatusIcon,
-    finalValue,
-    expandFilters,
-    setExpandFilters
-  } = useContext(ProcessesContext);
-
   const [selectedRow, setSelectedRow] = useState(null);
   const [expandDetailsDialog, setExpandDetailsDialog] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
 
-  const filteredProcesses = searchTerm.trim() === ''
-    ? processes
-    : processes.filter((p) =>
-      p.numero_processo?.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+  const { isMobile } = useGlobal();
+  const toastRef = useRef();
+
+  const {
+    RenderStatusIcon,
+    finalValue,
+    filteredProcesses,
+  } = useProcesses();
 
   const columns = [
     {
@@ -111,7 +98,7 @@ const Home = () => {
       id: 7,
       field: 'estado',
       header: 'Estado',
-      sortableDisabled: true,
+      sortableDisabled: false,
       isAction: true,
       frozen: false,
     },
@@ -119,7 +106,7 @@ const Home = () => {
       id: 8,
       field: 'status',
       header: 'Status',
-      sortableDisabled: true,
+      sortableDisabled: false,
       isAction: true,
       frozen: false,
       body: (rowData) => RenderStatusIcon(rowData?.status),
@@ -142,22 +129,10 @@ const Home = () => {
               rounded
               outlined
             >
-              <FaEye size={20} style={{ color: 'var(--primary-color)' }} />
-            </Button>
-            <Button
-              onClick={() => {
-                setSelectedRow(rowData);
-                setExpandDetailsDialog(!expandDetailsDialog);
-              }}
-              className='p-3'
-              style={{ color: 'var(--primary-color)' }}
-              rounded
-              outlined
-            >
-              <FaLock size={20} style={{ color: 'var(--primary-color)' }} />
+              <FaChevronLeft size={20} style={{ color: 'var(--primary-color)' }} />
             </Button>
           </div>
-        )
+        );
       }
     }
   ];
@@ -166,67 +141,29 @@ const Home = () => {
     <main className='flex md:flex-column h-screen w-full px-3'>
       <div className='flex flex-column lg:flex-row lg:justify-content-between lg:align-items-center'>
         <div>
-          <h1
-            className='px-3 mb-0'
-            style={{
-              fontSize: '3.5rem',
-              color: 'var(--primary-color)'
-            }}
-          >Funil Geral</h1>
-          <h2
-            className='px-3 mt-3'
-            style={{
-              fontSize: '2rem',
-              color: 'var(--primary-color)'
-            }}>Valor Total: {finalValue}</h2>
+          <h1 className='px-3 mb-0' style={{
+            fontSize: '3.5rem',
+            color: 'var(--primary-color)'
+          }}>Funil Geral</h1>
+          <h2 className='px-3 mt-3' style={{
+            fontSize: '2rem',
+            color: 'var(--primary-color)'
+          }}>Valor Total: {finalValue}</h2>
         </div>
-        <div className='px-3 flex gap-3'>
-          <Button
-            rounded
-            outlined
-            icon={() => <FaFilter size={20} />}
-            style={{ color: 'var(--primary-color)' }}
-            onClick={()=> setExpandFilters(!expandFilters)}
-          />
-          <Button
-            rounded
-            outlined
-            icon={() => <FaFileExport size={20} />}
-            style={{ color: 'var(--primary-color)' }}
-          />
-          <IconField iconPosition="left">
-            <InputIcon>
-              <FaSearch />
-            </InputIcon>
-            <InputText
-              type='text'
-              placeholder="Buscar por número do processo"
-              className='border-round-3xl w-30rem'
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </IconField>
-        </div>
+        <SearchAndFilters />
       </div>
       <div>
-        {(!isMobile) ? (
-          <GeneralTable
-            columns={columns}
-            data={filteredProcesses}
-          />
-        ) : null}
+        {!isMobile && (
+          <GeneralTable columns={columns} data={filteredProcesses} />
+        )}
       </div>
       <GeneralDialog
         showDetails={expandDetailsDialog}
         closeDetails={() => setExpandDetailsDialog(!expandDetailsDialog)}
-        headerTemplate={() => <HeaderTemplate />}
+        headerTemplate={() => <HeaderTemplate data={selectedRow} />}
         bodyTemplate={() => <BodyTemplate data={selectedRow} />}
       />
-      <GeneralSidebar
-        showDetails={expandFilters}
-        closeDetails={() => setExpandFilters(!expandFilters)}
-        template={Filters}
-      />
+      <Toast ref={toastRef} />
     </main>
   );
 };

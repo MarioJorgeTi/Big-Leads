@@ -3,18 +3,6 @@
 @import 'primeflex/primeflex.css';
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
 
-@font-face {
-    font-family: 'Nordique Pro';
-    src:
-        url('../assets/fonts/fontspring-demo-nordiquepro-bold.otf') format('opentype'),
-        url('../assets/fonts/fontspring-demo-nordiquepro-inline.otf') format('opentype'),
-        url('../assets/fonts/fontspring-demo-nordiquepro-light.otf') format('opentype'),
-        url('../assets/fonts/fontspring-demo-nordiquepro-regular.otf') format('opentype'),
-        url('../assets/fonts/fontspring-demo-nordiquepro-semibold.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
-
 :root {
     --primary-color: #025288 !important;
     --secondary-color: #99C7DE !important;

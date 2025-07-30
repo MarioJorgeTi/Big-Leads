@@ -1,14 +1,14 @@
 import { Dropdown } from 'primereact/dropdown';
-import { useContext, useEffect } from 'react';
-import { templatesMap } from '../models/formsTemplates';
-import { ContractsContext } from '../contexts/contracts/contractsContext';
+import { useEffect } from 'react';
+import { templatesMap } from '../models/contracts';
+import { useContracts } from '../contexts/contractsContext';
 
 const ContractForm = () => {
   const {
     selectedModelValue,
     setSelectedModelValue,
     getFormComponent,
-  } = useContext(ContractsContext);
+  } = useContracts();
 
   const FormComponent = getFormComponent(selectedModelValue);
 

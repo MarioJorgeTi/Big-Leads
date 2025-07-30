@@ -1,12 +1,10 @@
-import { Outlet } from 'react-router-dom'
 import Header from '../header'
 import { Splitter, SplitterPanel } from 'primereact/splitter';
-import { useContext } from 'react';
-import { GlobalContext } from '../../contexts/global/globalContext';
 import RouterProtect from '../../routes/routerProtect';
+import { useGlobal } from '../../contexts/globalContext';
 
 const ProtectedLayout = () => {
-    const { isMobile, menuIsBigger } = useContext(GlobalContext);
+    const { isMobile, menuIsBigger } = useGlobal();
 
     return (
         <main>

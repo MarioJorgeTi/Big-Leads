@@ -1,4 +1,9 @@
-import { FaLock, FaTimesCircle, FaCheckCircle, FaClock } from "react-icons/fa"; // Exemplo
+import {
+  FaLock,
+  FaTimesCircle,
+  FaCheckCircle,
+  FaClock
+} from "react-icons/fa"; // Exemplo
 
 export const StatusMap = {
   indisponivel: <FaTimesCircle style={{ color: 'red' }} />,

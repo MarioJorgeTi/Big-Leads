@@ -1,13 +1,13 @@
-import { useContext, useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { DataView } from 'primereact/dataview';
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
-import { ProcessesContext } from '../contexts/processes/processesContext';
 import { Button } from 'primereact/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import '../assets/css/generalView.css';
+import { useProcesses } from '../../contexts/processes/processesContext';
 
 const GeneralView = () => {
-    const { processes } = useContext(ProcessesContext);
+    const { processes } = useProcesses();
     const [expandedProcess, setExpandedProcess] = useState(null);
     const [currentPage, setCurrentPage] = useState(0);
 

@@ -1,16 +1,16 @@
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { FaPlus } from 'react-icons/fa'
 import Breadcrumb from '../components/breadcrumb';
 import { Button } from 'primereact/button'
-import GeneralSidebar from '../components/generalSidebar';
+import GeneralSidebar from '../components/general/generalSidebar';
 import ContractForm from '../components/contractForm';
-import { ContractsContext } from '../contexts/contracts/contractsContext';
+import { useContracts } from '../contexts/contractsContext';
 
 const Contracts = () => {
   const [showForm, setShowForm] = useState(false);
   const {
     setSelectedModelValue
-  } = useContext(ContractsContext);
+  } = useContracts();
 
   const items = [
     {
@@ -24,12 +24,12 @@ const Contracts = () => {
       <section className="w-full">
         <div>
           <Breadcrumb items={items} />
-          <div className='flex flex-column w-full  md:flex-row md: justify-content-between'>
-            <h1 className="text-5xl mb-2 md:mb-0" style={{ color: 'var(--primary-color)' }}>Contratos</h1>
+          <div className='flex flex-column w-full  md:flex-row md: justify-content-between md:align-items-end'>
+            <h1 className="text-5xl mt-0 mb-3 md:mb-0" style={{ color: 'var(--primary-color)' }}>Contratos</h1>
             <Button
               icon={() => <FaPlus />}
-              label="Novo Modelo"
-              className="flex gap-2"
+              label="Novo Contrato"
+              className="p-3 gap-2"
               style={{ color: 'var(--primary-color)' }}
               outlined
               onClick={() => setShowForm(!showForm)}

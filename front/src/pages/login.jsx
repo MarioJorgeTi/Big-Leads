@@ -1,26 +1,24 @@
-import { useContext, useRef } from 'react';
+import { useRef } from 'react';
 import '../assets/css/login.css';
 import { useNavigate } from 'react-router-dom';
 import { InputText } from 'primereact/inputtext';
-import { GlobalContext } from '../contexts/global/globalContext';
 import Logo from '../assets/imgs/logo/logo.svg';
-import { AuthContext } from '../contexts/auth/authContext';
 import { useFormik } from 'formik';
 import { Toast } from 'primereact/toast';
 import { Button } from 'primereact/button';
+import { useAuth } from '../contexts/authContext';
+import { useGlobal } from '../contexts/globalContext';
 
 const Login = () => {
   const {
     isMobile
-  } = useContext(GlobalContext);
-
+  } = useGlobal();
   const {
     loginAction,
     updateToken,
     updateUserAccessLevel,
     updateUserInfos
-  } = useContext(AuthContext);
-
+  } = useAuth();
   const toastRef = useRef(null);
   const navigate = useNavigate();
 
@@ -39,12 +37,11 @@ const Login = () => {
           detail: "E-mail e Senha são obrigatórios",
           life: 3000
         });
-
         return;
       }
 
       const results = await loginAction(values);
-
+      
       if (results?.success?.token && results?.success?.usuario) {
         navigate('/dashboard', { replace: true });
       }

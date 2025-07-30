@@ -1,10 +1,10 @@
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import Routes from './routes/routes'
-import { GlobalProvider } from './contexts/global/globalProvider'
-import { AuthProvider } from './contexts/auth/authProvider'
 import { PrimeReactProvider } from 'primereact/api';
-import { ProcessesProvider } from "./contexts/processes/processesProvider";
-import { ContractsProvider } from "./contexts/contracts/contractsProvider";
+import { AuthProvider } from './contexts/authContext'
+import { GlobalProvider } from './contexts/globalContext'
+import { ProcessesProvider } from "./contexts/processesContext";
+import { ContractsProvider } from "./contexts/contractsContext";
 
 const App = () => {
   return (

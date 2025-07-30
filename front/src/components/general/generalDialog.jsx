@@ -1,10 +1,9 @@
 import { Dialog } from 'primereact/dialog'
-import { useContext } from 'react'
-import { GlobalContext } from '../contexts/global/globalContext'
-import '../assets/css/generalDialog.css'
+import '../../assets/css/generalDialog.css'
+import { useGlobal } from '../../contexts/globalContext'
 
 const GeneralDialog = ({ showDetails, closeDetails, headerTemplate, bodyTemplate }) => {
-    const { isMobile } = useContext(GlobalContext);
+    const { isMobile } = useGlobal();
 
     return (
         <Dialog

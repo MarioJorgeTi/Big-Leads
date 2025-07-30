@@ -5,11 +5,13 @@ import Login from '../pages/login';
 import ProtectedLayout from '../components/layouts/protectedLayout';
 import Contracts from '../pages/contracts';
 import PersonalArea from '../pages/personalArea';
-import { useContext } from 'react';
-import { AuthContext } from '../contexts/auth/authContext';
+import { useAuth } from '../contexts/authContext';
 
 const Routes = () => {
-    const { token, userAccessLevel } = useContext(AuthContext);
+    const { 
+        token, 
+        userAccessLevel 
+    } = useAuth();
 
     const publicRoutes = [
         {

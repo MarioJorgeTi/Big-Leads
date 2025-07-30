@@ -2,11 +2,10 @@ import 'primereact/resources/themes/lara-light-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeflex/primeflex.css';
 import { Dropdown } from 'primereact/dropdown';
-import { useContext } from 'react';
-import { GlobalContext } from '../contexts/global/globalContext';
+import { useGlobal } from '../contexts/globalContext';
 
 const FunnelSelect = ({ selectedFunnel, onChange }) => {
-  const { isMobile } = useContext(GlobalContext);
+  const { isMobile } = useGlobal()
   const funnelOptions = [
     { label: 'Funil Geral', value: 'geral' },
     { label: 'Pré-qualificados', value: 'pre' },

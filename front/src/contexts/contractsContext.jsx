@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { ContractsContext } from './contractsContext';
-import { templatesMap } from '../../models/formsTemplates';
+import { createContext, useContext, useState } from 'react';
+import { templatesMap } from '../models/contracts';
+
+export const ContractsContext = createContext({});
 
 export const ContractsProvider = ({ children }) => {
   const [selectedModelValue, setSelectedModelValue] = useState('');
@@ -21,4 +22,8 @@ export const ContractsProvider = ({ children }) => {
       {children}
     </ContractsContext.Provider>
   );
+};
+
+export const useContracts = () => {
+  return useContext(ContractsContext);
 };

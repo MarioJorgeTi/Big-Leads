@@ -1,25 +1,14 @@
 import { Accordion, AccordionTab } from "primereact/accordion";
 import { Button } from "primereact/button";
-import { useContext } from "react";
-import { FaEdit } from "react-icons/fa";
-import { FaPlus } from "react-icons/fa6";
-import { ProcessesContext } from "../../contexts/processes/processesContext";
+import { HiPencil } from "react-icons/hi";
+import ButtonPullProcess from "../modules/buttonPullProcess";
 
-export const HeaderTemplate = () => {
-  
+export const HeaderTemplate = ({ data }) => {
+
   return (
     <div className="pl-3 flex gap-3">
-      <Button
-        rounded
-        outlined
-        icon={() => <FaPlus />}
-        style={{ color: 'var(--primary-color)' }}
-      />
-      <Button
-        rounded
-        outlined
-        icon={() => <FaEdit />}
-        style={{ color: 'var(--primary-color)' }}
+      <ButtonPullProcess
+        idProcess={data?.id}
       />
     </div>
   );

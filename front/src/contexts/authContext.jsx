@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "./authContext"
-import { api } from '../../services/api';
-import { signIn } from "../../services/auth";
+import { createContext, useContext, useEffect, useState } from "react";
+import { signIn } from "../services/auth";
+
+export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
     const [userInfos, setUserInfos] = useState({
-        id: 0,
         nome: sessionStorage.getItem("user_name") || "",
         email: sessionStorage.getItem("user_email") || "",
         cpf_cnpj: sessionStorage.getItem("user_cpf_cnpj") || "",
@@ -13,32 +12,14 @@ export const AuthProvider = ({ children }) => {
     const [userAccessLevel, setUserAccessLevel] = useState(sessionStorage.getItem("user_access_level") || null);
     const [token, setToken] = useState(sessionStorage.getItem("token") || "");
 
-    const updateToken = (newToken) => {
-        setToken(newToken);
-    }
-
-    const updateUserAccessLevel = (newUserAccessLevel) => {
-        setUserAccessLevel(newUserAccessLevel);
-    };
-
-    const updateUserInfos = (newUserInfo) => {
-        setUserInfos(newUserInfo);
-    }
-
     const loginAction = async (data) => {
         try {
             const results = await signIn(data);
 
             if (results?.success?.token && results?.success?.usuario) {
-                updateToken(results?.success?.token);
-                updateUserAccessLevel(results?.success?.usuario?.nivel_acesso);
-                updateUserInfos({ ...results?.success?.usuario });
-
-                sessionStorage.setItem("token", results?.success?.token);
-                sessionStorage.setItem("user_access_level", results?.success?.usuario?.nivel_acesso);
-                sessionStorage.setItem("user_name", results?.success?.usuario?.nome);
-                sessionStorage.setItem("user_email", results?.success?.usuario?.email);
-                sessionStorage.setItem("user_cpf_cnpj", results?.success?.usuario?.cpf_cnpj);
+                setToken(results?.success?.token);
+                setUserAccessLevel(results?.success?.usuario?.nivel_acesso);
+                setUserInfos({ ...results?.success?.usuario });
             }
 
             return results;
@@ -48,25 +29,29 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+    const verifyAccessLevel = (allowedLevels) => {
+        if (!userAccessLevel) return false;
+
+        if (Array.isArray(allowedLevels)) {
+            return allowedLevels.includes(Number(userAccessLevel));
+        }
+
+        return Number(userAccessLevel) === Number(allowedLevels);
+    };
+
     useEffect(() => {
         if (token && userAccessLevel) {
-            api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
             sessionStorage.setItem('token', token);
             sessionStorage.setItem('user_access_level', userAccessLevel);
             sessionStorage.setItem('user_name', userInfos?.nome);
             sessionStorage.setItem('user_email', userInfos?.email);
             sessionStorage.setItem('user_cpf_cnpj', userInfos?.cpf_cnpj);
-        }
-        else {
-            delete api.defaults.headers.common['Authorization'];
+        } else {
             sessionStorage.removeItem('token');
             sessionStorage.removeItem('user_access_level');
             sessionStorage.removeItem('user_name');
             sessionStorage.removeItem('user_email');
             sessionStorage.removeItem('user_cpf_cnpj');
-            updateToken("");
-            updateUserAccessLevel(null);
-            updateUserInfos({});
         }
     }, [token, userAccessLevel]);
 
@@ -74,10 +59,11 @@ export const AuthProvider = ({ children }) => {
         <AuthContext.Provider value={{
             token,
             userAccessLevel,
+            verifyAccessLevel,
             loginAction,
-            updateToken,
-            updateUserAccessLevel,
-            updateUserInfos
+            setToken,
+            setUserAccessLevel,
+            setUserInfos
         }}>
             {children}
         </AuthContext.Provider>

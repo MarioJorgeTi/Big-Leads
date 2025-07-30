@@ -1,4 +1,4 @@
-import Fees from '../components/forms/fees';
+import Fees from '../components/templates/forms/fees';
 
 export const templatesMap = [
   {
