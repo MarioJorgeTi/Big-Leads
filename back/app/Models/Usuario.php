@@ -56,4 +56,14 @@ class Usuario extends Authenticatable implements OAuthenticatable
     {
         return $this->hasMany(Processo::class, 'id_usuario');
     }
+
+    public function superior()
+    {
+        return $this->belongsTo(Usuario::class, 'id_superior');
+    }
+
+    public function subordinados()
+    {
+        return $this->hasMany(Usuario::class, 'id_superior');
+    }
 }

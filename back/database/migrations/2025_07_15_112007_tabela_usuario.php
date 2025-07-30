@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('token_email')->nullable();
             $table->string('token_senha')->nullable();
             $table->integer('nivel_acesso')->default(3);
+            $table->foreignId('id_superior')->nullable()->constrained('usuario')->onDelete('set null');
             $table->timestamps();
         });
     }

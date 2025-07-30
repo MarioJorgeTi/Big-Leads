@@ -17,6 +17,7 @@ class UsuarioFactory extends Factory
             'token_email' => null,
             'token_senha' => null,
             'nivel_acesso' => 3,
+            'id_superior' => null,
         ];
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ContratoHonorarioRequest extends FormRequest
+class DeletarProcessoRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -16,10 +16,17 @@ class ContratoHonorarioRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'senha' => 'required',
         ];
     }
 
+    public function messages(): array
+    {
+        return [
+            'senha.required' => 'A senha é obrigatória para excluir o processo.',
+        ];
+    }
+    
     public function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json(['errors' => $validator->errors()], 422));
