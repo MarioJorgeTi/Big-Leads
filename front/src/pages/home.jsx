@@ -1,16 +1,26 @@
-import { useContext, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Button } from 'primereact/button';
-import { FaEye } from 'react-icons/fa';
-import GeneralTable from '../components/generalTable';
-import { ProcessesContext } from '../contexts/processes/processesContext'
-import { GlobalContext } from '../contexts/global/globalContext';
-import { FaCircleCheck } from 'react-icons/fa6';
-import GeneralDialog from '../components/generalDialog';
+import { FaChevronLeft } from 'react-icons/fa6';
+import GeneralTable from '../components/general/generalTable';
+import GeneralDialog from '../components/general/generalDialog';
+import { HeaderTemplate, BodyTemplate } from '../components/templates/dialogTemplates';
+import { Toast } from 'primereact/toast';
+import { useProcesses } from '../contexts/processesContext';
+import { useGlobal } from '../contexts/globalContext';
+import SearchAndFilters from '../components/modules/searchAndFilters';
 
 const Home = () => {
-  const { isMobile } = useContext(GlobalContext);
-  const { processes } = useContext(ProcessesContext);
+  const [selectedRow, setSelectedRow] = useState(null);
   const [expandDetailsDialog, setExpandDetailsDialog] = useState(false);
+
+  const { isMobile } = useGlobal();
+  const toastRef = useRef();
+
+  const {
+    RenderStatusIcon,
+    finalValue,
+    filteredProcesses,
+  } = useProcesses();
 
   const columns = [
     {
@@ -38,9 +48,7 @@ const Home = () => {
               maximumFractionDigits: 2,
             })}
           </div>
-        ) : (
-          '-'
-        );
+        ) : '-';
       }
     },
     {
@@ -90,7 +98,7 @@ const Home = () => {
       id: 7,
       field: 'estado',
       header: 'Estado',
-      sortableDisabled: true,
+      sortableDisabled: false,
       isAction: true,
       frozen: false,
     },
@@ -98,61 +106,64 @@ const Home = () => {
       id: 8,
       field: 'status',
       header: 'Status',
-      sortableDisabled: true,
+      sortableDisabled: false,
       isAction: true,
       frozen: false,
-      body: (rowData) => (rowData?.status == 'disponível') ? <FaCircleCheck color='#11ac1eff' size={30} /> : null,
+      body: (rowData) => RenderStatusIcon(rowData?.status),
     },
     {
       id: 9,
-      field: '',
-      header: 'Detalhes',
       sortableDisabled: true,
       isAction: true,
       frozen: true,
-      body: () => <Button
-        onClick={() => setExpandDetailsDialog(!expandDetailsDialog)}
-        className="p-2"
-        rounded
-        text
-      >
-        <FaEye size={25} style={{ color: 'var(--primary-color)' }} />
-      </Button>
+      body: (rowData) => {
+        return (
+          <div className='flex justify-content-center align-items-center gap-2'>
+            <Button
+              onClick={() => {
+                setSelectedRow(rowData);
+                setExpandDetailsDialog(!expandDetailsDialog);
+              }}
+              className='p-3'
+              style={{ color: 'var(--primary-color)' }}
+              rounded
+              outlined
+            >
+              <FaChevronLeft size={20} style={{ color: 'var(--primary-color)' }} />
+            </Button>
+          </div>
+        );
+      }
     }
   ];
 
-  const dialogTemplate = () => {
-    return(
-      <div>
-        teste
-      </div>
-    )
-  }
-
   return (
-    <main className='flex md:flex-column h-screen w-full p-3'>
-      <div>
-        <h1
-          className='px-3'
-          style={{
-            fontSize: '3rem',
+    <main className='flex md:flex-column h-screen w-full px-3'>
+      <div className='flex flex-column lg:flex-row lg:justify-content-between lg:align-items-center'>
+        <div>
+          <h1 className='px-3 mb-0' style={{
+            fontSize: '3.5rem',
             color: 'var(--primary-color)'
-          }}
-        >Funil Geral</h1>
+          }}>Funil Geral</h1>
+          <h2 className='px-3 mt-3' style={{
+            fontSize: '2rem',
+            color: 'var(--primary-color)'
+          }}>Valor Total: {finalValue}</h2>
+        </div>
+        <SearchAndFilters />
       </div>
       <div>
-        {(!isMobile) ?
-          <GeneralTable
-            columns={columns}
-            data={processes}
-          /> :
-          null}
+        {!isMobile && (
+          <GeneralTable columns={columns} data={filteredProcesses} />
+        )}
       </div>
       <GeneralDialog
         showDetails={expandDetailsDialog}
         closeDetails={() => setExpandDetailsDialog(!expandDetailsDialog)}
-        template={dialogTemplate}
+        headerTemplate={() => <HeaderTemplate data={selectedRow} />}
+        bodyTemplate={() => <BodyTemplate data={selectedRow} />}
       />
+      <Toast ref={toastRef} />
     </main>
   );
 };

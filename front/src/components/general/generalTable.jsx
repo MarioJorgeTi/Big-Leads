@@ -1,20 +1,22 @@
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import '../assets/css/generalTable.css';
+import '../../assets/css/generalTable.css';
+import useWindowSize from '../../hooks/useWindowSize';
 
-export default function GeneralTable({ data, columns }) {
+export default function GeneralTable({ data, columns, rowsNumber }) {
+    const { width } = useWindowSize();
 
     return (
         <div className='p-2'>
             <DataTable
                 value={data}
-                scrollable
-                scrollHeight='800px'
                 removableSort
                 paginator
-                rows={5}
+                rows={width <= 1024 ? 5 : 8}
+                scrollable
+                scrollHeight='900px'
                 sortMode="multiple"
-                className='text-sm lg:text-md xl:text-lg'
+                className='text-md lg:text-md xl:text-lg'
             >
                 {columns.map((column) => (
                     <Column
