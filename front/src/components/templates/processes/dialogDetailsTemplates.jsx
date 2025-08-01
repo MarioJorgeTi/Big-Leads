@@ -1,7 +1,5 @@
 import { Accordion, AccordionTab } from "primereact/accordion";
-import { Button } from "primereact/button";
-import { HiPencil } from "react-icons/hi";
-import ButtonPullProcess from "../modules/buttonPullProcess";
+import ButtonPullProcess from "../../modules/buttonPullProcess";
 
 export const HeaderTemplate = ({ data }) => {
 

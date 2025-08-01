@@ -1,26 +1,32 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from 'primereact/button';
 import { FaChevronLeft } from 'react-icons/fa6';
 import GeneralTable from '../components/general/generalTable';
 import GeneralDialog from '../components/general/generalDialog';
-import { HeaderTemplate, BodyTemplate } from '../components/templates/dialogTemplates';
+import { HeaderTemplate, BodyTemplate } from '../components/templates/processes/dialogDetailsTemplates';
 import { Toast } from 'primereact/toast';
+import { DataScroller } from 'primereact/datascroller'
 import { useProcesses } from '../contexts/processesContext';
 import { useGlobal } from '../contexts/globalContext';
 import SearchAndFilters from '../components/modules/searchAndFilters';
+import PageHeaders from '../components/templates/pageHeaders';
+import ProcessesCards from '../components/templates/processes/processesDataview';
+import useWindowSize from '../hooks/useWindowSize';
+import { ScrollPanel } from 'primereact/scrollpanel';
 
 const Home = () => {
   const [selectedRow, setSelectedRow] = useState(null);
   const [expandDetailsDialog, setExpandDetailsDialog] = useState(false);
-
-  const { isMobile } = useGlobal();
-  const toastRef = useRef();
-
   const {
     RenderStatusIcon,
     finalValue,
     filteredProcesses,
+    processes,
+    setFinalValue
   } = useProcesses();
+  const { width } = useWindowSize();
+  const { isMobile } = useGlobal();
+  const toastRef = useRef();
 
   const columns = [
     {
@@ -138,24 +144,22 @@ const Home = () => {
   ];
 
   return (
-    <main className='flex md:flex-column h-screen w-full px-3'>
+    <main className='flex flex-column h-screen w-full p-4'>
       <div className='flex flex-column lg:flex-row lg:justify-content-between lg:align-items-center'>
-        <div>
-          <h1 className='px-3 mb-0' style={{
-            fontSize: '3.5rem',
-            color: 'var(--primary-color)'
-          }}>Funil Geral</h1>
-          <h2 className='px-3 mt-3' style={{
-            fontSize: '2rem',
-            color: 'var(--primary-color)'
-          }}>Valor Total: {finalValue}</h2>
-        </div>
+        <PageHeaders
+          title={'Funil Geral'}
+          processesValue={finalValue}
+          isFunnel
+        />
         <SearchAndFilters />
       </div>
-      <div>
-        {!isMobile && (
-          <GeneralTable columns={columns} data={filteredProcesses} />
-        )}
+      <div className={`mt-4 md:mt-0`}>
+        {(width <= 768 || isMobile) ?
+         <ScrollPanel style={{ height: '1180px' }}>
+            <ProcessesCards data={filteredProcesses} />
+          </ScrollPanel>
+        :
+        <GeneralTable columns={columns} data={filteredProcesses} />}
       </div>
       <GeneralDialog
         showDetails={expandDetailsDialog}

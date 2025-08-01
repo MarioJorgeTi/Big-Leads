@@ -13,6 +13,7 @@ export const ProcessesProvider = ({ children }) => {
 
     const [processes, setProcesses] = useState([]);
     const [idProcess, setIdProcess] = useState('');
+    const [pulledProcess, setPulledProcess] = useState('');
     const [finalValue, setFinalValue] = useState(0);
     const [searchTerm, setSearchTerm] = useState('');
     const [expandFilters, setExpandFilters] = useState(false);
@@ -73,6 +74,10 @@ export const ProcessesProvider = ({ children }) => {
         }));
     };
 
+    const getLabelByValue = (data, val) => {
+        data.find((opt) => opt.value === val)?.label || ''; //vai pra utils
+    }
+    
     useEffect(() => {
         if (processes.length > 0) {
             sumAllValues();
@@ -95,12 +100,15 @@ export const ProcessesProvider = ({ children }) => {
                 filteredProcesses,
                 filters,
                 idProcess,
+                getLabelByValue,
+                setPulledProcess,
                 setIdProcess,
                 setFilters,
                 setSearchTerm,
                 setExpandFilters,
                 RenderStatusIcon,
                 setProcesses,
+                setFinalValue,
                 getAllProcesses
             }}
         >

@@ -3,7 +3,7 @@ import {
   FaTimesCircle,
   FaCheckCircle,
   FaClock
-} from "react-icons/fa"; // Exemplo
+} from "react-icons/fa";
 
 export const StatusMap = {
   indisponivel: <FaTimesCircle style={{ color: 'red' }} />,

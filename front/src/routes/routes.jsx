@@ -4,8 +4,8 @@ import MainLayout from '../components/layouts/mainLayout';
 import Login from '../pages/login';
 import ProtectedLayout from '../components/layouts/protectedLayout';
 import Contracts from '../pages/contracts';
-import PersonalArea from '../pages/personalArea';
 import { useAuth } from '../contexts/authContext';
+import MyLeads from '../pages/myLeads';
 
 const Routes = () => {
     const { 
@@ -41,7 +41,7 @@ const Routes = () => {
                 },
                 {
                     path: 'meus-leads',
-                    element: <PersonalArea />
+                    element: <MyLeads />
                 }
             ]
         }
