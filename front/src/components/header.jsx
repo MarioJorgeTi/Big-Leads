@@ -27,11 +27,6 @@ const Header = () => {
 
   const logOutBehavior = async () => {
     await signOut(token);
-    sessionStorage.removeItem("token");
-    sessionStorage.removeItem("user_access_level");
-    sessionStorage.removeItem("user_name");
-    sessionStorage.removeItem("user_email");
-    sessionStorage.removeItem("user_cpf_cnpj");
 
     setToken("");
     setUserAccessLevel(null);

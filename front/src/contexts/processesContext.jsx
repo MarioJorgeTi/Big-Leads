@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getAllAvailable } from "../services/processes";
-import { StatusMap } from "../models/processes";
+import { getAllAvailable, getUserProcesses } from "../services/processes";
 import { useAuth } from "../contexts/authContext";
+import { AuthAccessLevels } from "../models/auth";
 
 export const ProcessContext = createContext({});
 
@@ -13,7 +13,7 @@ export const ProcessesProvider = ({ children }) => {
 
     const [processes, setProcesses] = useState([]);
     const [idProcess, setIdProcess] = useState('');
-    const [pulledProcess, setPulledProcess] = useState('');
+    const [pulledProcess, setPulledProcess] = useState([]);
     const [finalValue, setFinalValue] = useState(0);
     const [searchTerm, setSearchTerm] = useState('');
     const [expandFilters, setExpandFilters] = useState(false);
@@ -39,23 +39,43 @@ export const ProcessesProvider = ({ children }) => {
         return matchSearchTerm && matchFilters;
     });
 
-    const getAllProcesses = async () => {
+    const getAllNotAssignedProcesses = async () => {
         try {
             const results = await getAllAvailable();
-            if (results?.data?.success?.processos) {
+
+            if(!results) throw new Error("Houve um erro ao capturar os processos não atribuidos");
+
+            if (results?.data?.success) {
                 setProcesses(results?.data?.success?.processos);
             }
 
-            console.log(results);
             return results;
         } catch (error) {
             console.log(`Error: ` + error);
         }
     };
 
-    const RenderStatusIcon = (status) => {
-        return StatusMap[status] || null;
-    };
+    const getAllMyProcesses = async () => {
+        try {
+            const entry = Object.values(AuthAccessLevels).find(
+                level => level.id === Number(userAccessLevel)
+            );
+
+            if (entry) {
+                const results = await getUserProcesses(entry?.name);
+
+                if (results?.data?.success) {
+                    setPulledProcess(results?.data?.success?.processos)
+                    console.log(results?.data?.success)
+                }
+
+                return results;
+            }
+        } catch (error) {
+            console.log(`Error: ` + error);
+        }
+    }
+
 
     const sumAllValues = () => {
         const total = processes.reduce((acc, processo) => {
@@ -74,10 +94,10 @@ export const ProcessesProvider = ({ children }) => {
         }));
     };
 
-    const getLabelByValue = (data, val) => {
-        data.find((opt) => opt.value === val)?.label || ''; //vai pra utils
-    }
-    
+    useEffect(() => {
+        getAllNotAssignedProcesses();
+    }, [token]);
+
     useEffect(() => {
         if (processes.length > 0) {
             sumAllValues();
@@ -86,30 +106,31 @@ export const ProcessesProvider = ({ children }) => {
 
     useEffect(() => {
         if (token && userAccessLevel) {
-            getAllProcesses();
+            getAllMyProcesses();
         }
-    }, [token]);
+    }, [token, userAccessLevel]);
+
 
     return (
         <ProcessContext.Provider
             value={{
                 processes,
+                pulledProcess,
                 finalValue,
                 searchTerm,
                 expandFilters,
                 filteredProcesses,
                 filters,
                 idProcess,
-                getLabelByValue,
                 setPulledProcess,
                 setIdProcess,
                 setFilters,
                 setSearchTerm,
                 setExpandFilters,
-                RenderStatusIcon,
                 setProcesses,
                 setFinalValue,
-                getAllProcesses
+                getAllNotAssignedProcesses,
+                getAllMyProcesses
             }}
         >
             {children}

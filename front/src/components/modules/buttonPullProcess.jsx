@@ -15,9 +15,8 @@ const ButtonPullProcess = ({ idProcess }) => {
         try {
             const results = await getProcessAvailable(id);
 
-            if (results?.data?.success?.processo) {
+            if (results?.data?.success) {
                 setPulledProcess(results?.data?.success?.processo);
-                console.log(results)
                 toastRef.current.show({
                     severity: 'success',
                     summary: 'Lead Resgatado',
@@ -32,7 +31,6 @@ const ButtonPullProcess = ({ idProcess }) => {
                 summary: 'Lead Não Resgatado',
                 detail: error?.response?.data?.errors?.processo
             });
-            console.error(error);
         } finally {
             setLoading(false);
         }

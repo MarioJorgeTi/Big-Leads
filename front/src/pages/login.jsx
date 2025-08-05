@@ -11,10 +11,11 @@ import { Button } from 'primereact/button';
 import { useAuth } from '../contexts/authContext';
 import { SyncLoader } from 'react-spinners';
 import { FaEye } from 'react-icons/fa';
+import { signIn } from '../services/auth';
 
 const Login = () => {
   const [passwordType, setPasswordType] = useState(true);
-  const { loginAction } = useAuth();
+  const { setToken, setUserAccessLevel, setUserInfos } = useAuth();
   const toastRef = useRef(null);
   const navigate = useNavigate();
 
@@ -25,35 +26,38 @@ const Login = () => {
     },
     onSubmit: async (values, { setSubmitting }) => {
       setSubmitting(true);
+      try {
+        const results = await signIn(values);
 
-      if (!values?.email || !values?.senha) {
-        toastRef.current.show({
-          severity: 'error',
-          summary: 'Erro',
-          detail: "E-mail e Senha são obrigatórios",
-          life: 3000
+        if (results?.success?.token && results?.success?.usuario) {
+          setToken(results?.success?.token);
+          setUserAccessLevel(results?.success?.usuario?.nivel_acesso);
+          setUserInfos({ ...results?.success?.usuario });
+
+          if (results?.success?.token && results?.success?.usuario) {
+            navigate('/dashboard', { replace: true });
+          }
+        }
+
+        return results;
+      } catch (error) {
+        const response = error?.response?.data;
+
+        Object.values(response.errors).forEach((mensagens) => {
+          mensagens.forEach((msg) => {
+            toastRef.current.show({
+              severity: 'error',
+              summary: 'Erro de Validação',
+              detail: msg,
+              life: 5000
+            });
+          });
         });
-        return;
+
+        return error?.response?.data;
+      } finally {
+        setSubmitting(false);
       }
-
-      const results = await loginAction(values);
-
-      if (results?.success?.token && results?.success?.usuario) {
-        navigate('/dashboard', { replace: true });
-      }
-
-      if (results?.errors) {
-        toastRef.current.show({
-          severity: 'error',
-          summary: 'Erro',
-          detail: results?.errors?.autenticacao,
-          life: 3000
-        });
-
-        return;
-      }
-
-      setSubmitting(false);
     }
   });
 
@@ -77,12 +81,12 @@ const Login = () => {
               type="email"
               id="email"
               placeholder="E-mail"
-              className="w-full mb-3 py-3 px-3 border-none "
+              className="w-full mb-3 p-3 border-none "
               value={formik.values.email}
               onChange={formik.handleChange}
               disabled={formik.isSubmitting}
             />
-            <IconField>
+            <IconField className='cursor-pointer'>
               <InputIcon onClick={() => setPasswordType(!passwordType)} className='hover:cursor-pointer text-primary'>
                 <FaEye />
               </InputIcon>
@@ -93,11 +97,8 @@ const Login = () => {
                 placeholder="Senha"
                 value={formik.values.senha}
                 onChange={formik.handleChange}
-                feedback={false}
-                toggleMask
                 disabled={formik.isSubmitting}
                 className="w-full"
-                inputClassName="w-full p-3"
               />
             </IconField>
 

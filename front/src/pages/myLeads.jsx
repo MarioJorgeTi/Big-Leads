@@ -1,4 +1,5 @@
 import PageHeaders from "../components/templates/pageHeaders"
+import KanbanTemplate from "../components/general/generalKanban";
 
 const MyLeads = () => {
 
@@ -18,6 +19,7 @@ const MyLeads = () => {
           isFunnel
         />
       </div>
+      <KanbanTemplate />
     </main>
   )
 }

@@ -1,11 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Button } from 'primereact/button';
 import { FaChevronLeft } from 'react-icons/fa6';
 import GeneralTable from '../components/general/generalTable';
 import GeneralDialog from '../components/general/generalDialog';
 import { HeaderTemplate, BodyTemplate } from '../components/templates/processes/dialogDetailsTemplates';
 import { Toast } from 'primereact/toast';
-import { DataScroller } from 'primereact/datascroller'
 import { useProcesses } from '../contexts/processesContext';
 import { useGlobal } from '../contexts/globalContext';
 import SearchAndFilters from '../components/modules/searchAndFilters';
@@ -18,11 +17,8 @@ const Home = () => {
   const [selectedRow, setSelectedRow] = useState(null);
   const [expandDetailsDialog, setExpandDetailsDialog] = useState(false);
   const {
-    RenderStatusIcon,
     finalValue,
     filteredProcesses,
-    processes,
-    setFinalValue
   } = useProcesses();
   const { width } = useWindowSize();
   const { isMobile } = useGlobal();
@@ -109,15 +105,6 @@ const Home = () => {
       frozen: false,
     },
     {
-      id: 8,
-      field: 'status',
-      header: 'Status',
-      sortableDisabled: false,
-      isAction: true,
-      frozen: false,
-      body: (rowData) => RenderStatusIcon(rowData?.status),
-    },
-    {
       id: 9,
       sortableDisabled: true,
       isAction: true,
@@ -155,11 +142,11 @@ const Home = () => {
       </div>
       <div className={`mt-4 md:mt-0`}>
         {(width <= 768 || isMobile) ?
-         <ScrollPanel style={{ height: '1180px' }}>
+          <ScrollPanel style={{ height: '70vh' }}>
             <ProcessesCards data={filteredProcesses} />
           </ScrollPanel>
-        :
-        <GeneralTable columns={columns} data={filteredProcesses} />}
+          :
+          <GeneralTable columns={columns} data={filteredProcesses} />}
       </div>
       <GeneralDialog
         showDetails={expandDetailsDialog}
