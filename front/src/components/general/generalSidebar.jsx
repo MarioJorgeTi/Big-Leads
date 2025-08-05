@@ -1,7 +1,7 @@
 import { Sidebar } from "primereact/sidebar"
 import { useGlobal } from '../../contexts/globalContext';
 
-const GeneralSidebar = ({ showDetails, closeDetails, template }) => {
+const GeneralSidebar = ({ showDetails, closeDetails, template = null }) => {
     const { isMobile } = useGlobal();
     return (
         <Sidebar

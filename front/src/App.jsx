@@ -3,7 +3,6 @@ import Routes from './routes/routes'
 import { PrimeReactProvider } from 'primereact/api';
 import { AuthProvider } from './contexts/authContext'
 import { GlobalProvider } from './contexts/globalContext'
-import { ProcessesProvider } from "./contexts/processesContext";
 import { ContractsProvider } from "./contexts/contractsContext";
 
 const App = () => {
@@ -11,11 +10,7 @@ const App = () => {
     <PrimeReactProvider>
       <GlobalProvider>
         <AuthProvider>
-          <ProcessesProvider>
-            <ContractsProvider>
-              <Routes />
-            </ContractsProvider>
-          </ProcessesProvider>
+          <Routes />
         </AuthProvider>
       </GlobalProvider>
     </PrimeReactProvider>

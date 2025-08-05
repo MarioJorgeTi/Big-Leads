@@ -4,13 +4,15 @@ import MainLayout from '../components/layouts/mainLayout';
 import Login from '../pages/login';
 import ProtectedLayout from '../components/layouts/protectedLayout';
 import Contracts from '../pages/contracts';
-import PersonalArea from '../pages/personalArea';
+import ContractsLayout from '../components/layouts/contractsLayout';
 import { useAuth } from '../contexts/authContext';
+import MyLeads from '../pages/myLeads';
+import FunnelLayout from '../components/layouts/funnelLayout'
 
 const Routes = () => {
-    const { 
-        token, 
-        userAccessLevel 
+    const {
+        token,
+        userAccessLevel
     } = useAuth();
 
     const publicRoutes = [
@@ -33,22 +35,34 @@ const Routes = () => {
             children: [
                 {
                     path: '',
-                    element: <Home />,
+                    element: <FunnelLayout />,
+                    children: [
+                        {
+                            path: '',
+                            element: <Home />,  
+                        },
+                        {
+                            path: 'meus-leads',
+                            element: <MyLeads />
+                        }
+                    ]
                 },
                 {
                     path: 'contratos',
-                    element: <Contracts />
-                },
-                {
-                    path: 'meus-leads',
-                    element: <PersonalArea />
+                    element: <ContractsLayout />,
+                    children: [
+                        {
+                            path: '',
+                            element: <Contracts />
+                        }
+                    ]
                 }
             ]
         }
     ];
 
     const allRoutes = createBrowserRouter([
-        ...(!token || !userAccessLevel ? publicRoutes : []),
+        ...((!token || !userAccessLevel) ? publicRoutes : []),
         ...privateRoutes
     ]);
 
