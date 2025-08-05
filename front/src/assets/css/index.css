@@ -5,12 +5,12 @@
 
 :root {
     --primary-color: #025288 !important;
-    --secondary-color: #99C7DE !important;
     --success-color: #30CD1C !important;
     --warning-color: #FFCC00 !important;
-    --danger-color: #E61B1E !important;
+    --danger-color: var(--red-500) !important;
     --dark-color: #141414 !important;
     --light-color: #f2f2f2 !important;
+    --light-blue-color: #99C7DE !important;
     --font-general: 'Instrument Sans', sans-serif;
 
     color: var(--primary-color);

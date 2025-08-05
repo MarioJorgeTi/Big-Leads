@@ -50,19 +50,27 @@ const Filters = () => {
         setExpandFilters
     } = useProcesses();
 
+    const initialValues = {
+        numero_processo: '',
+        data_autuacao: '',
+        ultima_distribuicao: '',
+        estado: '',
+        status: ''
+    };
+
     const formik = useFormik({
-        initialValues: {
-            numero_processo: '',
-            data_autuacao: '',
-            ultima_distribuicao: '',
-            estado: '',
-            status: ''
-        },
+        initialValues,
         onSubmit: (values) => {
             setFilters(values);
             setExpandFilters(false);
         },
     });
+
+    const handleClearFilters = () => {
+        formik.resetForm();
+        setFilters(initialValues);
+        setExpandFilters(false);
+    };
 
     return (
         <form onSubmit={formik.handleSubmit} className="p-1 flex flex-column gap-3">
@@ -128,12 +136,18 @@ const Filters = () => {
                 />
             </div>
 
-            <div>
+            <div className='flex flex-column gap-2'>
                 <Button
                     type="submit"
                     label="Aplicar Filtros"
                     className='w-full border-none'
                     style={{ backgroundColor: 'var(--primary-color)' }}
+                />
+                <Button
+                    type="button"
+                    label="Limpar Filtros"
+                    className='w-full p-button-secondary'
+                    onClick={handleClearFilters}
                 />
             </div>
         </form>

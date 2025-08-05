@@ -5,7 +5,7 @@ import { Dropdown } from 'primereact/dropdown';
 import { useGlobal } from '../contexts/globalContext';
 
 const FunnelSelect = ({ selectedFunnel, onChange }) => {
-  const { isMobile } = useGlobal()
+  const { isMobile } = useGlobal();
   const funnelOptions = [
     { label: 'Funil Geral', value: 'geral' },
     { label: 'Pré-qualificados', value: 'pre' },
@@ -25,9 +25,9 @@ const FunnelSelect = ({ selectedFunnel, onChange }) => {
       valueTemplate={() => (
         <div className="flex align-items-center font-bold" style={{
           color: 'var(--primary-color)',
-          fontSize: (isMobile)?'2.5rem':'3rem'
+          fontSize: (isMobile) ? '2.5rem' : '3rem'
         }}>
-          {getLabelByValue(selectedFunnel)}
+          <h1>{getLabelByValue(selectedFunnel)}</h1>
         </div>
       )}
       itemTemplate={(option) => (

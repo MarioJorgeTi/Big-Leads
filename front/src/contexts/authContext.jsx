@@ -12,23 +12,6 @@ export const AuthProvider = ({ children }) => {
     const [userAccessLevel, setUserAccessLevel] = useState(sessionStorage.getItem("user_access_level") || null);
     const [token, setToken] = useState(sessionStorage.getItem("token") || "");
 
-    const loginAction = async (data) => {
-        try {
-            const results = await signIn(data);
-
-            if (results?.success?.token && results?.success?.usuario) {
-                setToken(results?.success?.token);
-                setUserAccessLevel(results?.success?.usuario?.nivel_acesso);
-                setUserInfos({ ...results?.success?.usuario });
-            }
-
-            return results;
-        } catch (error) {
-            console.log(error?.response?.data);
-            return error?.response?.data;
-        }
-    }
-
     const verifyAccessLevel = (allowedLevels) => {
         if (!userAccessLevel) return false;
 
@@ -60,7 +43,6 @@ export const AuthProvider = ({ children }) => {
             token,
             userAccessLevel,
             verifyAccessLevel,
-            loginAction,
             setToken,
             setUserAccessLevel,
             setUserInfos

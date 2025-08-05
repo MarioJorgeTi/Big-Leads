@@ -17,7 +17,7 @@ const SearchAndFilters = () => {
   } = useProcesses();
 
   return (
-    <div className='px-3 flex gap-3'>
+    <div className='p-0 md:pr-2 flex gap-3'>
       <Button
         rounded
         outlined
@@ -32,7 +32,7 @@ const SearchAndFilters = () => {
         <InputText
           type='text'
           placeholder="Buscar por número do processo"
-          className='border-round-3xl w-30rem'
+          className='border-round-3xl w-19rem'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />

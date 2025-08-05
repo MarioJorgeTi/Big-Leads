@@ -10,7 +10,7 @@ const ProtectedLayout = () => {
         <main>
             <Splitter
                 key={menuIsBigger ? 'menu-big' : 'menu-small'}
-                className="h-screen"
+                className="h-screen overflow-hidden border-noround"
                 layout={isMobile ? "vertical" : "horizontal"}
             >
                 <SplitterPanel

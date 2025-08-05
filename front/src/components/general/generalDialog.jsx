@@ -2,7 +2,7 @@ import { Dialog } from 'primereact/dialog'
 import '../../assets/css/generalDialog.css'
 import { useGlobal } from '../../contexts/globalContext'
 
-const GeneralDialog = ({ showDetails, closeDetails, headerTemplate, bodyTemplate }) => {
+const GeneralDialog = ({ showDetails, closeDetails, isFullScreen = false, headerTemplate, bodyTemplate }) => {
     const { isMobile } = useGlobal();
 
     return (
@@ -15,7 +15,7 @@ const GeneralDialog = ({ showDetails, closeDetails, headerTemplate, bodyTemplate
             draggable
             resizable
             modal
-            maximizable={isMobile}
+            maximizable={isMobile || isFullScreen}
         >
             <div>{bodyTemplate()}</div>
         </Dialog>

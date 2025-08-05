@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { FaPlus } from 'react-icons/fa'
-import Breadcrumb from '../components/breadcrumb';
 import { Button } from 'primereact/button'
 import GeneralSidebar from '../components/general/generalSidebar';
 import ContractForm from '../components/contractForm';
 import { useContracts } from '../contexts/contractsContext';
+import PageHeaders from '../components/templates/pageHeaders';
 
 const Contracts = () => {
   const [showForm, setShowForm] = useState(false);
@@ -21,9 +21,11 @@ const Contracts = () => {
     <main className="w-full h-screen p-4">
       <section className="w-full">
         <div>
-          <Breadcrumb items={items} />
           <div className='flex flex-column w-full  md:flex-row md: justify-content-between md:align-items-end'>
-            <h1 className="text-5xl mt-0 mb-3 md:mb-0" style={{ color: 'var(--primary-color)' }}>Contratos</h1>
+            <PageHeaders
+              title={'Contratos'}
+              navItems={items}
+            />
             <Button
               icon={() => <FaPlus />}
               label="Novo Contrato"

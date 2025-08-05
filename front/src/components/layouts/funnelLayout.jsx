@@ -1,8 +1,12 @@
+import { Outlet } from "react-router-dom";
+import { ProcessesProvider } from "../../contexts/processesContext";
 
 const FunnelLayout = () => {
-  return (
-    <div>FunnelLayout</div>
-  )
+    return (
+        <ProcessesProvider>
+            <Outlet />
+        </ProcessesProvider>
+    );
 }
 
-export default FunnelLayout
+export default FunnelLayout;
