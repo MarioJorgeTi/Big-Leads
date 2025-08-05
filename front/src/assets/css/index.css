@@ -29,13 +29,27 @@ body {
     border: unset;
 }
 
+.p-inputtext:focus {
+    box-shadow: 0 0 0 0.2rem rgba(2, 82, 136, 0.5);
+}
+
+.p-inputtext:hover {
+    border: 1px rgba(2, 82, 136, 0.5) solid;
+}
+
+.p-inputwrapper-focus {
+    box-shadow: 0 0 0 0.2rem rgba(2, 82, 136, 0.5);
+}
+
 ::-webkit-scrollbar-track {
     background-color: #F4F4F4;
 }
+
 ::-webkit-scrollbar {
     width: 4px;
     background: #F4F4F4;
 }
+
 ::-webkit-scrollbar-thumb {
     background: #dad7d7;
 }
