@@ -8,9 +8,7 @@ import PageHeaders from '../components/templates/pageHeaders';
 
 const Contracts = () => {
   const [showForm, setShowForm] = useState(false);
-  const {
-    setSelectedModelValue
-  } = useContracts();
+  const { setSelectedModelValue } = useContracts();
 
   const items = [
     {
@@ -46,6 +44,7 @@ const Contracts = () => {
           setSelectedModelValue('');
         }}
         template={() => <ContractForm />}
+        isFullScreen
       />
     </main>
   )

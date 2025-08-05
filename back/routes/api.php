@@ -8,9 +8,6 @@ use App\Http\Controllers\ContratoController;
 
 Route::post('/login', [UsuarioController::class, 'login']);
 
-Route::get('/usuarios', [UsuarioController::class, 'lerUsuarios']);
-Route::get('/usuario/{id}', [UsuarioController::class, 'lerUsuario']);
-
 Route::middleware('auth:api')->group(function () {
 
     Route::get('/processos/funil-geral', [ProcessoController::class, 'processosFunilGeral']);
@@ -22,6 +19,9 @@ Route::middleware('auth:api')->group(function () {
 });
 
 Route::middleware(['auth:api', 'nivel:1'])->prefix('diretor')->group(function () {
+
+    Route::get('/usuarios', [UsuarioController::class, 'lerUsuarios']);
+    Route::get('/usuario/{id}', [UsuarioController::class, 'lerUsuario']);
 
     Route::get('/usuario/subordinados', [UsuarioController::class, 'lerSubordinados']);
     Route::post('/usuario/subordinar/{id}', [UsuarioController::class, 'atribuirSubordinado']);

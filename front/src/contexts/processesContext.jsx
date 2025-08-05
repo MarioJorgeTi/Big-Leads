@@ -48,7 +48,6 @@ export const ProcessesProvider = ({ children }) => {
             if (results?.data?.success) {
                 setProcesses(results?.data?.success?.processos);
             }
-
             return results;
         } catch (error) {
             console.log(`Error: ` + error);

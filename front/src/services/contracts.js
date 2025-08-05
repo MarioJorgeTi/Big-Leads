@@ -1,4 +1,6 @@
-export const getFeesContract = async () => {
-    const results = await api.get('/contrato/honorario');
+import { api } from './api';
+
+export const createFeesContract = async (data) => {
+    const results = await api.post('/contrato/honorario', data);
     return results;
 }
