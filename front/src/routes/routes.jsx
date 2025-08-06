@@ -7,7 +7,8 @@ import Contracts from '../pages/contracts';
 import ContractsLayout from '../components/layouts/contractsLayout';
 import { useAuth } from '../contexts/authContext';
 import MyLeads from '../pages/myLeads';
-import FunnelLayout from '../components/layouts/funnelLayout'
+import ProcessesLayout from '../components/layouts/processesLayout'
+import RouterProtect from './routerProtect';
 
 const Routes = () => {
     const {
@@ -31,15 +32,15 @@ const Routes = () => {
     const privateRoutes = [
         {
             path: '/dashboard',
-            element: <ProtectedLayout />,
+            element: <RouterProtect><ProtectedLayout /></RouterProtect>,
             children: [
                 {
                     path: '',
-                    element: <FunnelLayout />,
+                    element: <ProcessesLayout />,
                     children: [
                         {
                             path: '',
-                            element: <Home />,  
+                            element: <Home />,
                         },
                         {
                             path: 'meus-leads',
