@@ -67,7 +67,7 @@ const parseISOToDate = (isoDate) => {
   return new Date(year, month - 1, day);
 };
 
-const FormularioSupremo = ({ secoes, onSubmit, carregando = false, valoresIniciais = {}, onChangeCampo = null, onResult = null, textoButao = 'texto' }) => {
+const FormularioSupremo = ({ secoes, onSubmit, carregando = false, valoresIniciais = {}, onChangeCampo = null, onResult = null, textoButao = 'texto', isLogin = false }) => {
   const [valores, setValores] = useState(valoresIniciais);
   const [erros, setErros] = useState({});
 
@@ -221,7 +221,7 @@ const FormularioSupremo = ({ secoes, onSubmit, carregando = false, valoresInicia
         </div>
       ))}
       <div className="col-12">
-        <Button style={{ background: 'var(--primary-color)' }} label={carregando ? '' : textoButao} icon={carregando ? 'pi pi-spinner pi-spin' : undefined} type="submit" className="w-full border-none" disabled={carregando} />
+        <Button style={{ background: isLogin ? '#01337dff' : 'var(--primary-color)' }} label={carregando ? '' : textoButao} icon={carregando ? 'pi pi-spinner pi-spin' : undefined} type="submit" className="w-full border-none" disabled={carregando} />
       </div>
     </form>
   );

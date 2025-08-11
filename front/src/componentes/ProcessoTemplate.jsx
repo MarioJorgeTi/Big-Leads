@@ -1,4 +1,5 @@
 import { formatarPreco } from '../utilitarios/funcoes';
+import { useState } from 'react';
 import { SplitButton } from 'primereact/splitbutton';
 import { useState } from 'react';
 import ProcessoDetalhes from './ProcessoDetalhes';
@@ -14,6 +15,7 @@ export const Header = ({ data }) => {
 }
 
 export const Template = ({ data }) => {
+  const [show, setShow] = useState(false);
 
   const [detalhesAberto, setdetalhesAberto] = useState(false);
 
@@ -41,6 +43,8 @@ export const Template = ({ data }) => {
       }
     }
   ];
+
+
 
   return (
     <>
@@ -71,7 +75,7 @@ export const Template = ({ data }) => {
           </h2>
         </div>
       </div>
-      <SplitButton label="Detalhes" onClick={abrirDetalhes} model={acoes} className="w-full my-2 p-0" />
+      <SplitButton label="Detalhes" onClick={abrirDetalhes} model={acoes} className="w-full my-2 p-0" rounded />
       <ProcessoDetalhes
         idProcesso={data.id}
         visible={detalhesAberto}
