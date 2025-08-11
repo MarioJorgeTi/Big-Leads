@@ -2,7 +2,6 @@ import LayoutPainelVendedor from "../../layouts/vendedor/LayoutPainelVendedor";
 import GeradorContratos from "../../componentes/contratos/GeradorContratos";
 import ContratoHonorario from "../../componentes/contratos/ContratoHonorario"
 import ContratoAdmissao from "../../componentes/contratos/ContratoAdmissao";
-import '../../recursos/css/painelvendedor.css'
 
 const ContratosVendedor = () => {
 

@@ -67,4 +67,9 @@ class Usuario extends Authenticatable implements OAuthenticatable
     {
         return $this->hasMany(Usuario::class, 'id_superior');
     }
+
+    public function historicosAlterados()
+    {
+        return $this->hasMany(ProcessoHistorico::class, 'alterado_por');
+    }
 }

@@ -36,8 +36,23 @@ class ProcessosSeeder extends Seeder
                 'id_polo_passivo' => $poloPassivo->id,
             ]);
         });
-        Processo::factory()->count(50)->create();
-
+        Processo::factory()->count(50)->create()->each(function ($processo) {
+            PoloAtivo::factory()->create([
+                'id_processo' => $processo->id,
+            ]);
+            $poloPassivo = PoloPassivo::factory()->create([
+                'id_processo' => $processo->id,
+            ]);
+            Documento::factory()->count(3)->create([
+                'id_processo' => $processo->id,
+            ]);
+            Telefone::factory()->count(rand(1, 3))->create([
+                'id_polo_passivo' => $poloPassivo->id,
+            ]);
+            Email::factory()->count(rand(1, 3))->create([
+                'id_polo_passivo' => $poloPassivo->id,
+            ]);
+        });
         $statusList = ['alocado_dia1', 'alocado_dia2', 'alocado_dia3', 'alocado_dia4', 'alocado_dia5', 'assinado', 'recorrencia', 'devolvido_tramit'];
         $usuario = Usuario::where('email', 'testevendedor@teste.com')->first();
         foreach ($statusList as $status) {
