@@ -56,20 +56,38 @@ const Login = () => {
   }, []);
 
   return (
-    <main>
-      <div className="grid h-screen">
+    <main
+      className="h-screen overflow-hidden">
+      <div className="grid h-full m-0">
         <div className="col-12 md:col-6 order-1 md:order-2 flex align-items-center justify-content-center" style={{ backgroundColor: 'var(--primary-color)' }}>
-          <div className="p-4 md:p-8 text-white">
+          <div className="p-4 md:p-8 text-white w-full">
             <div className="flex justify-content-center mb-4">
-              <img src={Logo} alt="logo" className="max-w-15rem md:max-w-15rem xl:max-w-30rem" />
+              <img
+                src={Logo}
+                alt="logo"
+                className="max-w-15rem md:max-w-15rem xl:max-w-30rem"
+              />
             </div>
             <div className="login">
-              <FormularioSupremo secoes={secoes} onSubmit={(dados) => logar(dados)} carregando={carregando} textoButao='Entrar' />
+              <FormularioSupremo
+                secoes={secoes}
+                onSubmit={(dados) => logar(dados)}
+                carregando={carregando}
+                textoButao="Entrar"
+                isLogin
+              />
             </div>
           </div>
+
         </div>
-        <div className="col-12 md:col-6 order-2 md:order-1 p-0">
-          <img src={ImgLogin} alt="Justiça" className="w-full h-full" />
+        <div className="col-12 md:col-6 order-2 md:order-1 p-0 h-full">
+
+          <img
+            src={ImgLogin}
+            alt="Justiça"
+            className="w-full h-full"
+            style={{ objectFit: 'cover' }}
+          />
         </div>
       </div>
       <Toast ref={toastRef} />
