@@ -18,10 +18,9 @@ class ProcessosSeeder extends Seeder
         $usuariosDisponiveis = Usuario::where('nivel_acesso', '!=', 1)->get();
         Processo::factory()->count(50)->create()->each(function ($processo) use ($usuariosDisponiveis) {
             $usuario = $usuariosDisponiveis->random();
-            // $processo->id_usuario = $usuario->id;
-            $processo->status = 'alocado';
+            $processo->id_usuario = $usuario->id;
             $processo->save();
-            $poloAtivo = PoloAtivo::factory()->create([
+            PoloAtivo::factory()->create([
                 'id_processo' => $processo->id,
             ]);
             $poloPassivo = PoloPassivo::factory()->create([
@@ -37,6 +36,21 @@ class ProcessosSeeder extends Seeder
                 'id_polo_passivo' => $poloPassivo->id,
             ]);
         });
-        Processo::factory()->count(0)->create();
+        Processo::factory()->count(50)->create();
+
+        $statusList = ['alocado_dia1', 'alocado_dia2', 'alocado_dia3', 'alocado_dia4', 'alocado_dia5', 'assinado', 'recorrencia', 'devolvido_tramit'];
+        $usuario = Usuario::where('email', 'testevendedor@teste.com')->first();
+        foreach ($statusList as $status) {
+            Processo::factory()->create([
+                'id_usuario' => $usuario->id,
+                'status' => $status,
+            ]);
+        }
+        $faltam = 50 - count($statusList);
+        if ($faltam > 0) {
+            Processo::factory()->count($faltam)->create([
+                'id_usuario' => $usuario->id,
+            ]);
+        }
     }
 }
