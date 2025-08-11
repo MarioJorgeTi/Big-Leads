@@ -1,7 +1,6 @@
 import { formatarPreco } from '../utilitarios/funcoes';
 import { useState } from 'react';
 import { SplitButton } from 'primereact/splitbutton';
-import { useState } from 'react';
 import ProcessoDetalhes from './ProcessoDetalhes';
 
 export const Header = ({ data }) => {
@@ -43,8 +42,6 @@ export const Template = ({ data }) => {
       }
     }
   ];
-
-
 
   return (
     <>
