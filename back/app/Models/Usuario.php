@@ -21,6 +21,7 @@ class Usuario extends Authenticatable implements OAuthenticatable
         'token_email',
         'token_senha',
         'nivel_acesso',
+        'id_superior',
     ];
 
     protected $hidden = [
@@ -55,5 +56,15 @@ class Usuario extends Authenticatable implements OAuthenticatable
     public function processos()
     {
         return $this->hasMany(Processo::class, 'id_usuario');
+    }
+
+    public function superior()
+    {
+        return $this->belongsTo(Usuario::class, 'id_superior');
+    }
+
+    public function subordinados()
+    {
+        return $this->hasMany(Usuario::class, 'id_superior');
     }
 }

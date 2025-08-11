@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class PoloPassivo extends Model
 {
+    use HasFactory;
+
     protected $table = 'polo_passivo';
 
     protected $fillable = [

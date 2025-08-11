@@ -48,10 +48,17 @@
 
     <h3 class="texto-centralizado">CONTRATO DE HONORÁRIO</h3>
 
+    @php
+    $enderecoCompleto = $anexo1['endereco'];
+    if (!empty($anexo1['numero'])) { $enderecoCompleto .= ', nº ' . $anexo1['numero']; }
+    if (!empty($anexo1['complemento'])) { $enderecoCompleto .= ', ' . $anexo1['complemento']; }
+    @endphp
+
     <p class="texto-medio tab">
         <b>CONTRATANTE:</b> <b>{{ $anexo1['nome_completo'] }}</b>, {{ strtolower($anexo1['nacionalidade']) }}, {{ strtolower($anexo1['estado_civil']) }}, {{ strtolower($anexo1['profissao']) }},
         portador do RG {{ $anexo1['rg'] }}, inscrito no CPF {{ $anexo1['cpf'] }},
-        residente e domiciliado na {{ $anexo1['endereco'] }}, bairro {{ $anexo1['bairro'] }},
+        residente e domiciliado na {{ $enderecoCompleto }},
+        bairro {{ $anexo1['bairro'] }},
         {{ $anexo1['cidade'] }}/{{ $anexo1['estado'] }}, CEP {{ $anexo1['cep'] }},
         e-mail {{ $anexo1['email'] }}.
     </p>
@@ -574,25 +581,40 @@
     <br><br>
 
     <table width="100%" style="font-size: 12pt;">
-        @foreach ($anexo5['testemunhas'] as $testemunha)
         @php
-        $nomeTestemunha = $testemunha['nome'];
-        $tamanhoNome = strlen($nomeTestemunha);
-        $espacosFaltando = max(0, 50 - $tamanhoNome); // ajuste visual fino
-        $nomeComEspacos = $nomeTestemunha . str_repeat('&nbsp;', $espacosFaltando);
+        $nome1 = $anexo5['testemunha1_nome'] ?? '';
+        $cpf1 = $anexo5['testemunha1_cpf'] ?? '';
+        $nome2 = $anexo5['testemunha2_nome'] ?? '';
+        $cpf2 = $anexo5['testemunha2_cpf'] ?? '';
+        $espacos1 = str_repeat('&nbsp;', max(0, 50 - strlen($nome1)));
+        $espacos2 = str_repeat('&nbsp;', max(0, 50 - strlen($nome2)));
         @endphp
+
         <tr>
             <td>
                 <b>Nome: </b>
                 <span style="display: inline-block; width: 300px; text-align: center; font-family: 'greatvibes', cursive; font-size: 16pt; text-decoration: underline;">
-                    {!! $nomeComEspacos !!}
+                    {!! $nome1 . $espacos1 !!}
                 </span>
                 <br>
-                CPF: {{ $testemunha['cpf'] }}
+                CPF: {{ $cpf1 }}
             </td>
         </tr>
-        <br><br>
-        @endforeach
+
+        <tr>
+            <td><br><br></td>
+        </tr>
+
+        <tr>
+            <td>
+                <b>Nome: </b>
+                <span style="display: inline-block; width: 300px; text-align: center; font-family: 'greatvibes', cursive; font-size: 16pt; text-decoration: underline;">
+                    {!! $nome2 . $espacos2 !!}
+                </span>
+                <br>
+                CPF: {{ $cpf2 }}
+            </td>
+        </tr>
     </table>
 
 </body>

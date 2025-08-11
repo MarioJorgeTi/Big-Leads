@@ -10,13 +10,14 @@ class UsuarioFactory extends Factory
     {
         return [
             'nome' => $this->faker->name,
-            'cpf_cnpj' => $this->faker->unique()->numerify('###########'),
+            'cpf_cnpj' => $this->faker->boolean() ? $this->faker->numerify('###.###.###-##') : $this->faker->numerify('##.###.###/0001-##'),
             'email' => $this->faker->unique()->safeEmail,
             'senha' => 'senha123',
             'email_verificado' => true,
             'token_email' => null,
             'token_senha' => null,
             'nivel_acesso' => 3,
+            'id_superior' => null,
         ];
     }
 }
