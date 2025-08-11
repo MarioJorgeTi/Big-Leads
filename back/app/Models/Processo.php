@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\ProcessoHistorico;
 
 class Processo extends Model
 {
     use HasFactory;
-    
+
     protected $table = 'processo';
 
     protected $fillable = [
@@ -41,6 +42,8 @@ class Processo extends Model
         'segredo_justica' => 'boolean',
         'justica_gratuita' => 'boolean',
         'tutela_liminar' => 'boolean',
+        'data_autuacao' => 'date:d/m/Y',
+        'ultima_distribuicao' => 'date:d/m/Y',
     ];
 
     public function usuario()
@@ -61,5 +64,25 @@ class Processo extends Model
     public function polosPassivos()
     {
         return $this->hasMany(PoloPassivo::class, 'id_processo');
+    }
+
+    public function historico()
+    {
+        return $this->hasMany(ProcessoHistorico::class, 'id_processo');
+    }
+
+    protected static function booted()
+    {
+        static::updating(function ($processo) {
+            if ($processo->isDirty('status')) {
+                ProcessoHistorico::create([
+                    'id_processo' => $processo->id,
+                    'status_anterior' => $processo->getOriginal('status'),
+                    'status_novo' => $processo->status,
+                    'alterado_por' => auth('api')->id(),
+                    'data_mudanca' => now()->toDateString(),
+                ]);
+            }
+        });
     }
 }

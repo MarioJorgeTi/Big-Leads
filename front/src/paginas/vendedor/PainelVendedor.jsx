@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { formatarData, formatarPreco } from "../../utilitarios/funcoes.js";
+import { formatarPreco } from "../../utilitarios/funcoes.js";
 import LayoutPainelVendedor from "../../layouts/vendedor/LayoutPainelVendedor";
 import Tabela from "../../componentes/Tabela.jsx";
 import api from "../../servicos/api";
@@ -26,8 +26,6 @@ const PainelVendedor = () => {
 
   const formatadores = {
     valor_causa: formatarPreco,
-    data_autuacao: formatarData,
-    ultima_distribuicao: formatarData,
   };
 
   useEffect(() => {
