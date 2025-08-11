@@ -17,16 +17,10 @@ class CriarUsuarioRequest extends FormRequest
     {
         return [
             'nome' => ['required', 'string', 'max:255'],
-            'cpf_cnpj' => [
-                'required',
-                'string',
-                'max:255',
-                'unique:usuario,cpf_cnpj',
-                'regex:/^(\d{3}\.\d{3}\.\d{3}-\d{2}|\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2})$/'
-            ],
+            'cpf_cnpj' => ['required', 'string', 'max:255', 'unique:usuario,cpf_cnpj', 'regex:/^(\d{3}\.\d{3}\.\d{3}-\d{2}|\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2})$/'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:usuario,email'],
             'senha' => ['required', 'string', 'min:6', 'max:255'],
-            'nivel_acesso' => ['required', 'integer', 'in:1,2,3'],
+            'nivel_acesso' => ['required', 'integer', 'in:1,2,3,4,5,6'],
         ];
     }
 
@@ -56,7 +50,7 @@ class CriarUsuarioRequest extends FormRequest
 
             'nivel_acesso.required' => 'O nível de acesso é obrigatório.',
             'nivel_acesso.integer' => 'O nível de acesso deve ser um número.',
-            'nivel_acesso.in' => 'O nível de acesso deve ser 1, 2 ou 3.',
+            'nivel_acesso.in' => 'O nível de acesso deve ser de 1 a 6.',
         ];
     }
 

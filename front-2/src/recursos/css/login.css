@@ -1,0 +1,8 @@
+.login .p-divider-content {
+  background: var(--primary-color);
+}
+
+.p-button {
+  background: #183584ff !important;
+  padding: 15px 0px;
+}

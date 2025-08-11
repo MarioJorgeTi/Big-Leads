@@ -21,6 +21,7 @@ class Usuario extends Authenticatable implements OAuthenticatable
         'token_email',
         'token_senha',
         'nivel_acesso',
+        'id_superior',
     ];
 
     protected $hidden = [

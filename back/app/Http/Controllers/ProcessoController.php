@@ -82,7 +82,7 @@ class ProcessoController extends Controller
         $processo->save();
         return response()->json([
             'success' => [
-                'mensagem' => 'Processo atribuído com sucesso.',
+                'mensagem' => 'Processo puxado com sucesso.',
                 'processo' => $processo
             ]
         ], 200);
@@ -258,7 +258,6 @@ class ProcessoController extends Controller
         $subordinado = Usuario::find($id_subordinado);
         if (!$subordinado) {
             return response()->json([
-                'success' => false,
                 'errors' => [
                     'usuario' => 'Usuário não encontrado.'
                 ]
@@ -286,7 +285,82 @@ class ProcessoController extends Controller
         $processos = Processo::whereIn('id_usuario', $usuariosJuridicoIds)->get();
         if ($processos->isEmpty()) {
             return response()->json([
-                'success' => false,
+                'errors' => [
+                    'processos' => 'Nenhum processo encontrado para usuários do setor jurídico.'
+                ]
+            ], 404);
+        }
+        return response()->json([
+            'success' => [
+                'mensagem' => 'Processos jurídicos recuperados com sucesso.',
+                'processos' => $processos
+            ]
+        ], 200);
+    }
+
+    public function editarStatus(Request $request, $id_processo, $status)
+    {
+        $usuario = $request->user();
+
+        $statusPorNivel = [
+            1 => ['disponivel', 'alocado_dia1', 'alocado_dia2', 'alocado_dia3', 'alocado_dia4', 'alocado_dia5', 'assinado', 'recorrencia', 'conferir_documentos', 'subsidio', 'pendente', 'novo_processo', 'digitacao_execucao', 'digitacao_demais_acoes', 'busca_apreensao_revisional', 'aguardando_citacao', 'aguardando_protocolo', 'elaborar_distrato', 'execucao_inadimplente', 'revogados', 'iniciar_negociacao', 'busca_apreensao', 'consorcio', 'despejo', 'monitoria', 'execucao', 'revisional', 'veiculos_apreendidos', 'finalizado', 'devolvido_tramit', 'devolvido_juridico', 'devolvido_negociacao'],
+            2 => ['disponivel', 'assinado', 'recorrencia', 'conferir_documentos'],
+            3 => ['disponivel', 'assinado', 'recorrencia', 'conferir_documentos'],
+            4 => ['subsidio', 'pendente', 'novo_processo', 'devolvido_tramit'],
+            5 => ['digitacao_execucao', 'digitacao_demais_acoes', 'busca_apreensao_revisional', 'aguardando_citacao', 'aguardando_protocolo', 'elaborar_distrato', 'execucao_inadimplente', 'revogados', 'iniciar_negociacao', 'devolvido_juridico'],
+            6 => ['busca_apreensao', 'consorcio', 'despejo', 'monitoria', 'execucao', 'revisional', 'veiculos_apreendidos', 'finalizado', 'devolvido_negociacao'],
+        ];
+
+        if (!isset($statusPorNivel[$usuario->nivel_acesso])) {
+            return response()->json([
+                'errors' => [
+                    'processos' => 'Nível de acesso não reconhecido.'
+                ]
+            ], 403);
+        }
+
+        if (!in_array($status, $statusPorNivel[$usuario->nivel_acesso])) {
+            return response()->json([
+                'errors' => [
+                    'processos' => 'Você não tem permissão para alterar o status desse processo.'
+                ]
+            ], 403);
+        }
+
+        $processo = Processo::find($id_processo);
+
+        if (!$processo) {
+            return response()->json([
+                'errors' => [
+                    'processos' => 'Processo não encontrado.'
+                ]
+            ], 404);
+        }
+
+        if ($usuario->nivel_acesso !== 1 && $processo->id_usuario !== $usuario->id) {
+            return response()->json([
+                'errors' => [
+                    'processos' => 'Esse processo não pertence a você.'
+                ]
+            ], 403);
+        }
+
+        $processo->status = $status;
+        $processo->save();
+
+        return response()->json([
+            'success' => [
+                'mensagem' => 'Status do processo atualizado com sucesso.',
+            ]
+        ], 200);
+    }
+
+    public function lerProcessosNegociacao(Request $request)
+    {
+        $usuariosNegociacaoIds = Usuario::where('nivel_acesso', 6)->pluck('id');
+        $processos = Processo::whereIn('id_usuario', $usuariosNegociacaoIds)->get();
+        if ($processos->isEmpty()) {
+            return response()->json([
                 'errors' => [
                     'processos' => 'Nenhum processo encontrado para usuários do setor jurídico.'
                 ]
