@@ -2,10 +2,13 @@ import { SplitButton } from 'primereact/splitbutton';
 import { useRef } from 'react';
 import { Toast } from 'primereact/toast';
 import api from '../servicos/api';
+import { Button } from 'primereact/button';
+import { Menu } from 'primereact/menu';
 
 const AcoesVendedor = ({ processoId, recarregarProcessos }) => {
 
   const toastRef = useRef(null);
+  const menu = useRef(null);
 
   const puxarProcesso = async () => {
     try {
@@ -54,12 +57,14 @@ const AcoesVendedor = ({ processoId, recarregarProcessos }) => {
 
   return (
     <div className="card flex justify-content-center">
-      <SplitButton
-        label=""
-        model={acoes}
-        className="p-button-sm"
+      <Button
+        icon='pi pi-chevron-down'
+        style={{color: 'var(--primary-color)'}}
         rounded
+        outlined
+        onClick={(event) => menu.current.toggle(event)}
       />
+      <Menu model={acoes} popup ref={menu} />
       <Toast ref={toastRef} />
     </div>
   );

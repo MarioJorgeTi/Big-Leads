@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { formatarData, formatarPreco } from '../utilitarios/funcoes';
 import { SplitButton } from 'primereact/splitbutton';
 
@@ -12,6 +13,7 @@ export const Header = ({ data }) => {
 }
 
 export const Template = ({ data }) => {
+  const [show, setShow] = useState(false);
 
   const acoes = [
     {
@@ -33,6 +35,8 @@ export const Template = ({ data }) => {
       }
     }
   ];
+
+
 
   return (
     <>
@@ -63,7 +67,7 @@ export const Template = ({ data }) => {
           </h2>
         </div>
       </div>
-      <SplitButton label="Ações" model={acoes} className="w-full my-2 p-0" />
+      <SplitButton label="Detalhes" model={acoes} className="w-full my-2 p-0" rounded />
     </>
   );
 }

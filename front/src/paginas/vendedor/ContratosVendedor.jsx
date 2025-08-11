@@ -2,6 +2,7 @@ import LayoutPainelVendedor from "../../layouts/vendedor/LayoutPainelVendedor";
 import GeradorContratos from "../../componentes/contratos/GeradorContratos";
 import ContratoHonorario from "../../componentes/contratos/ContratoHonorario"
 import ContratoAdmissao from "../../componentes/contratos/ContratoAdmissao";
+import '../../recursos/css/painelvendedor.css'
 
 const ContratosVendedor = () => {
 
@@ -17,8 +18,13 @@ const ContratosVendedor = () => {
 
   return (
     <LayoutPainelVendedor>
-      <div className='px-3'>
-        <GeradorContratos contratosDisponiveis={contratosDisponiveis} componentesContrato={componentesContrato} />
+      <div className="px-1 flex flex-column">
+        <div className="mb-0">
+          <h1 className=" text-6xl">Contratos</h1>
+        </div>
+        <div >
+          <GeradorContratos contratosDisponiveis={contratosDisponiveis} componentesContrato={componentesContrato} />
+        </div>
       </div>
     </LayoutPainelVendedor>
   )
