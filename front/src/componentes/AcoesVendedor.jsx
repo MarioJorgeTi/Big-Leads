@@ -1,11 +1,13 @@
 import { SplitButton } from 'primereact/splitbutton';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Toast } from 'primereact/toast';
 import api from '../servicos/api';
+import ProcessoDetalhes from './ProcessoDetalhes';
 
 const AcoesVendedor = ({ processoId, recarregarProcessos }) => {
 
   const toastRef = useRef(null);
+  const [detalhesAberto, setdetalhesAberto] = useState(false);
 
   const puxarProcesso = async () => {
     try {
@@ -33,16 +35,18 @@ const AcoesVendedor = ({ processoId, recarregarProcessos }) => {
     }
   };
 
+  const abrirDetalhes = () => {
+    setdetalhesAberto(true);
+  };
+
   const acoes = [
     {
       label: 'Puxar Processo',
       command: puxarProcesso
     },
     {
-      label: 'Ação 2',
-      command: () => {
-        console.log(`Opção 2 para ID: ${processoId}`);
-      }
+      label: 'Ver Detalhes',
+      command: abrirDetalhes
     },
     {
       label: 'Ação 3',
@@ -61,6 +65,11 @@ const AcoesVendedor = ({ processoId, recarregarProcessos }) => {
         rounded
       />
       <Toast ref={toastRef} />
+      <ProcessoDetalhes
+        idProcesso={processoId}
+        visible={detalhesAberto}
+        onHide={() => setdetalhesAberto(false)}
+      />
     </div>
   );
 };

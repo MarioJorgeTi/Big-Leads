@@ -59,6 +59,32 @@ class ProcessoController extends Controller
         ], 200);
     }
 
+    public function lerProcessoUsuario(Request $request, $id)
+    {
+        $usuario = $request->user();
+        $processo = Processo::with(['polosAtivos', 'polosPassivos.telefones', 'polosPassivos.emails'])->find($id);
+        if (!$processo) {
+            return response()->json([
+                'errors' => [
+                    'mensagem' => 'Processo não encontrado.'
+                ]
+            ], 404);
+        }
+        if ($usuario->id != $processo->id_usuario && $processo->id_usuario != null) {
+            return response()->json([
+                'errors' => [
+                    'processo' => 'Não é possível ler processo de outro usuário'
+                ]
+            ], 409);
+        }
+        return response()->json([
+            'success' => [
+                'mensagem' => 'Processo recuperado com sucesso.',
+                'processo' => $processo
+            ]
+        ], 200);
+    }
+
     public function puxarProcesso(Request $request, $id)
     {
         $usuario = $request->user();
@@ -78,7 +104,7 @@ class ProcessoController extends Controller
             ], 409);
         }
         $processo->id_usuario = $usuario->id;
-        $processo->status = 'alocado';
+        $processo->status = 'alocado_dia1';
         $processo->save();
         return response()->json([
             'success' => [
@@ -122,7 +148,7 @@ class ProcessoController extends Controller
             ], 403);
         }
         $processo->id_usuario = $usuarioDestino->id;
-        $processo->status = 'alocado';
+        $processo->status = 'alocado_dia1';
         $processo->save();
         return response()->json([
             'success' => [

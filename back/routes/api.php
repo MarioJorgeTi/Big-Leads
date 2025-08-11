@@ -59,6 +59,7 @@ Route::middleware(['auth:api', 'nivel:2'])->prefix('gerente')->group(function ()
 
 Route::middleware(['auth:api', 'nivel:3'])->prefix('vendedor')->group(function () {
 
+    Route::get('/processo/{id}', [ProcessoController::class, 'lerProcessoUsuario']);
     Route::get('/processos/usuario', [ProcessoController::class, 'lerProcessosUsuario']);
     Route::patch('/processo/{id}', [ProcessoController::class, 'editarProcessoUsuario']);
     Route::post('/processo/atribuir/{id_processo}/{id_usuario}', [ProcessoController::class, 'atribuirProcesso']);

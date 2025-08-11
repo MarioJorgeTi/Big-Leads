@@ -1,5 +1,7 @@
-import { formatarData, formatarPreco } from '../utilitarios/funcoes';
+import { formatarPreco } from '../utilitarios/funcoes';
 import { SplitButton } from 'primereact/splitbutton';
+import { useState } from 'react';
+import ProcessoDetalhes from './ProcessoDetalhes';
 
 export const Header = ({ data }) => {
   return (
@@ -12,6 +14,12 @@ export const Header = ({ data }) => {
 }
 
 export const Template = ({ data }) => {
+
+  const [detalhesAberto, setdetalhesAberto] = useState(false);
+
+  const abrirDetalhes = () => {
+    setdetalhesAberto(true);
+  };
 
   const acoes = [
     {
@@ -59,11 +67,16 @@ export const Template = ({ data }) => {
         <div className="font-semibold text-md" style={{ color: 'var(--primary-color)' }}>
           <span className="font-semibold md:text-sm">Autuado em:</span>
           <h2 className="my-0 text-3xl md:text-lg">
-            {formatarData(data.data_autuacao)}
+            {data.data_autuacao}
           </h2>
         </div>
       </div>
-      <SplitButton label="Ações" model={acoes} className="w-full my-2 p-0" />
+      <SplitButton label="Detalhes" onClick={abrirDetalhes} model={acoes} className="w-full my-2 p-0" />
+      <ProcessoDetalhes
+        idProcesso={data.id}
+        visible={detalhesAberto}
+        onHide={() => setdetalhesAberto(false)}
+      />
     </>
   );
 }
