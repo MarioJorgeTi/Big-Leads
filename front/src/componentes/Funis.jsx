@@ -9,8 +9,8 @@ const Funis = ({ funilOpcoes, funilSelecionado, onChange }) => {
       optionLabel="label"
       valueTemplate={(item) =>
         item ? (
-          <div className="flex align-items-center justify-content-center font-bold" style={{ color: 'var(--primary-color)', fontSize: '1rem' }}>
-            <h1>{item.label}</h1>
+          <div className="flex align-items-center justify-content-center font-bold m-0 p-0" style={{ color: 'var(--primary-color)', fontSize: '1rem' }}>
+            <h1 className='m-0'>{item.label}</h1>
           </div>
         ) : (
           <span>Selecione...</span>

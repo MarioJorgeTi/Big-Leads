@@ -4,6 +4,7 @@ import { Toast } from 'primereact/toast';
 import api from '../../servicos/api';
 import RenderizarPdf from '../../componentes/RenderizarPdf';
 import FormularioSupremo from '../../componentes/FormularioSupremo';
+import '../../recursos/css/contrato.css';
 
 const ContratoHonorario = () => {
 

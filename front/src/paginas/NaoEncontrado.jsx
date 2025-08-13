@@ -1,32 +1,17 @@
 import { useNavigate } from 'react-router-dom';
+import { Button } from 'primereact/button';
 
 export default function NotFound() {
     const navigate = useNavigate();
 
     return (
-        <div style={{
-            textAlign: 'center',
-            padding: '4rem',
-            fontFamily: 'Arial, sans-serif'
-        }}>
-            <h1 style={{ fontSize: '4rem', marginBottom: '1rem' }}>404</h1>
-            <h2>Página não encontrada</h2>
-            <p>Ops! A página que você está procurando não existe.</p>
-            <button
-                onClick={() => navigate('/')}
-                style={{
-                    marginTop: '2rem',
-                    padding: '0.75rem 1.5rem',
-                    fontSize: '1rem',
-                    cursor: 'pointer',
-                    borderRadius: '5px',
-                    border: 'none',
-                    backgroundColor: '#007bff',
-                    color: '#fff'
-                }}
-            >
+        <div className='h-screen w-full flex flex-column justify-content-center align-items-center'>
+            <h1 className='my-0' style={{ fontSize: '10rem' }}>404</h1>
+            <h2 className='text-6xl mb-0'>Página não encontrada!</h2>
+            <p className='text-2xl'>Ops! A página que você está procurando não existe.</p>
+            <Button onClick={() => navigate('/')} className='px-3 text-primary' rounded outlined>
                 Voltar para a página inicial
-            </button>
+            </Button>
         </div>
     );
 }
