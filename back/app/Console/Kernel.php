@@ -4,6 +4,14 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use \App\Console\Commands\ImportarDatajud;
+use \App\Console\Commands\ImportarProcessos;
+use \App\Console\Commands\ExecutarRoboPje;
+use \App\Console\Commands\ImportarContatosProcesso;
+use \App\Console\Commands\ImportarDadosBanco;
+use \App\Console\Commands\DbBoot;
+use \App\Console\Commands\EnviarDadosBitrix;
+use \App\Console\Commands\ExportarDadosBitrix;
 
 class Kernel extends ConsoleKernel
 {
@@ -13,12 +21,14 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        \App\Console\Commands\ImportarDatajud::class,
-        \App\Console\Commands\ImportarProcessos::class,
-        \App\Console\Commands\ExecutarRoboPje::class,
-        \App\Console\Commands\ImportarContatosProcesso::class,
-        \App\Console\Commands\ImportarDadosBanco::class,
-        \App\Console\Commands\DbBoot::class,
+        ImportarDatajud::class,
+        ImportarProcessos::class,
+        ExecutarRoboPje::class,
+        ImportarContatosProcesso::class,
+        ImportarDadosBanco::class,
+        DbBoot::class,
+        ExportarDadosBitrix::class,
+        EnviarDadosBitrix::class,
     ];
 
     /**
