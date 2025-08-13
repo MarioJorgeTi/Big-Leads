@@ -399,4 +399,23 @@ class ProcessoController extends Controller
             ]
         ], 200);
     }
+
+    public function lerVendedores(Request $request)
+    {
+        $usuario = $request->user();
+        $vendedores = Usuario::where('nivel_acesso', 3)->where('id', '!=', $usuario->nivel_acesso === 3 ? $usuario->id : 0)->get();
+        if ($vendedores->isEmpty()) {
+            return response()->json([
+                'errors' => [
+                    'vendedores' => 'Nenhum vendedor encontrado.'
+                ]
+            ], 404);
+        }
+        return response()->json([
+            'success' => [
+                'mensagem' => 'Vendedores recuperados com sucesso.',
+                'vendedores' => $vendedores
+            ]
+        ], 200);
+    }
 }

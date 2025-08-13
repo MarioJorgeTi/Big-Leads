@@ -67,7 +67,7 @@ const Kanban = ({ dados, funilAtual }) => {
         itemSize={150}
         style={{ height: '60vh', width: '100%', backgroundColor: 'var(--gray-200)', borderRadius: '1rem', padding: '0.5rem' }}
         className="flex flex-column"
-        contentClassName="flex flex-column gap-3"
+        contentclassname="flex flex-column gap-3"
         showLoader={false}
         itemTemplate={(item, options) => cardTemplate(item, options.index, dadosFiltrados)}
       />

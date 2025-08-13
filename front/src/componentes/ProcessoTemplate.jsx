@@ -1,6 +1,7 @@
 import { formatarPreco } from '../utilitarios/funcoes';
 import { useState } from 'react';
 import { SplitButton } from 'primereact/splitbutton';
+import { useAcoesProcessoVendedor } from "./AcoesProcessoVendedor";
 import ProcessoDetalhes from './ProcessoDetalhes';
 
 export const Header = ({ data }) => {
@@ -14,7 +15,6 @@ export const Header = ({ data }) => {
 }
 
 export const Template = ({ data }) => {
-  const [show, setShow] = useState(false);
 
   const [detalhesAberto, setdetalhesAberto] = useState(false);
 
@@ -22,26 +22,7 @@ export const Template = ({ data }) => {
     setdetalhesAberto(true);
   };
 
-  const acoes = [
-    {
-      label: 'Ação 1',
-      command: () => {
-        console.log('Ação 1');
-      }
-    },
-    {
-      label: 'Ação 2',
-      command: () => {
-        console.log('Ação 2');
-      }
-    },
-    {
-      label: 'Ação 3',
-      command: () => {
-        console.log('Ação 2');
-      }
-    }
-  ];
+  const [acoes, uiExtras] = useAcoesProcessoVendedor(data);
 
   return (
     <>
@@ -49,14 +30,12 @@ export const Template = ({ data }) => {
         <span className="text-md md:text-sm">Classe Judicial:</span>
         <h2 className='text-3xl my-0 md:text-lg'>{data.classe_judicial}</h2>
       </div>
-
       <div className="font-semibold my-2" style={{ color: 'var(--primary-color)' }}>
         <span className="text-md mb-0 md:text-sm">Valor da Causa:</span>
         <h2 className="text-3xl my-0 md:text-lg">
           {formatarPreco(data.valor_causa)}
         </h2>
       </div>
-
       <div className="text-md flex justify-content-between my-2" style={{ color: 'var(--primary-color)' }}>
         <div className='font-semibold'>
           <span className='md:text-sm'>Estado:</span>
@@ -64,7 +43,6 @@ export const Template = ({ data }) => {
             {data.estado}
           </h2>
         </div>
-
         <div className="font-semibold text-md" style={{ color: 'var(--primary-color)' }}>
           <span className="font-semibold md:text-sm">Autuado em:</span>
           <h2 className="my-0 text-3xl md:text-lg">
@@ -73,11 +51,8 @@ export const Template = ({ data }) => {
         </div>
       </div>
       <SplitButton label="Detalhes" onClick={abrirDetalhes} model={acoes} className="w-full my-2 p-0 " rounded style={{ backgroundColor: 'var(--primary-color) !important' }} />
-      <ProcessoDetalhes
-        idProcesso={data.id}
-        visible={detalhesAberto}
-        onHide={() => setdetalhesAberto(false)}
-      />
+      <ProcessoDetalhes idProcesso={data.id} visible={detalhesAberto} onHide={() => setdetalhesAberto(false)} />
+      {uiExtras}
     </>
   );
 }
