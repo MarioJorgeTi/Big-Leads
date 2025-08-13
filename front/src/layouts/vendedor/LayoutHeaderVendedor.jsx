@@ -12,7 +12,7 @@ const LayoutHeaderVendedor = () => {
   const op = useRef(null);
   const [usuarioInfo, setUsuarioInfo] = useState({ nome: "", email: "", cpf_cnpj: "" });
   const [carregando, setCarregando] = useState(false);
-  const { logout } = usarLogout();
+  const { logout, ToastComponent } = usarLogout();
 
   const pegarUsuarioInfo = () => {
     const usuario = JSON.parse(sessionStorage.getItem("usuario")) || {};
@@ -76,6 +76,7 @@ const LayoutHeaderVendedor = () => {
         </div>
       </OverlayPanel>
       <BlockUI blocked={carregando} fullScreen template={<ProgressSpinner style={{ width: '80px', height: '80px' }} strokeWidth="4" />} />
+      <ToastComponent />
     </header>
   );
 };
