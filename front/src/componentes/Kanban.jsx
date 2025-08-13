@@ -88,7 +88,7 @@ const Kanban = ({ dados, funilAtual }) => {
             style={{
               minWidth: '350px',
               maxWidth: '365px',
-              marginRight: options.last ? 0 : '24px' // <== margem entre colunas
+              marginRight: options.last ? 0 : '24px'
             }}
           >
             <div className="text-white border-round-3xl" style={{ background: coluna.columnColor }}>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Dialog } from 'primereact/dialog';
+import { Dialog } from 'primereact/dialog'; 
 import { Card } from 'primereact/card';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { Tag } from 'primereact/tag';
@@ -24,9 +24,11 @@ export default function ProcessoDetalhes({ idProcesso, visible, onHide }) {
     }
   };
 
-  useEffect(() => {
-    lerProcesso();
-  }, [idProcesso, visible]);
+  useEffect(()=>{
+    if(visible){
+      lerProcesso()
+    }
+  },[visible])
 
   return (
     <Dialog header="Detalhes do Processo" visible={visible} onHide={onHide} style={{ width: '80vw' }} breakpoints={{ '960px': '95vw', '640px': '100vw' }}>

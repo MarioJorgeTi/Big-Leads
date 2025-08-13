@@ -14,7 +14,6 @@ export const Header = ({ data }) => {
 }
 
 export const Template = ({ data }) => {
-  const [show, setShow] = useState(false);
 
   const [detalhesAberto, setdetalhesAberto] = useState(false);
 
