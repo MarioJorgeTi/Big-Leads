@@ -21,6 +21,7 @@ export function usarLogout() {
         sessionStorage.clear();
         navigate('/');
       }, 2000);
+      return true;
     } catch (error) {
       toastRef.current.show({
         severity: 'error',
@@ -28,6 +29,7 @@ export function usarLogout() {
         detail: 'Erro ao fazer logout. Tente novamente.',
         life: 3000,
       });
+      return false;
     }
   };
   const ToastComponent = () => <Toast ref={toastRef} />;

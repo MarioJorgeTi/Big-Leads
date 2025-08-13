@@ -4,11 +4,12 @@ import api from "../../servicos/api";
 import LayoutPainelVendedor from "../../layouts/vendedor/LayoutPainelVendedor";
 import Kanban from '../../componentes/Kanban';
 import Funis from "../../componentes/Funis";
+import { filtrarProcessos } from "../../utilitarios/funcoes.js";
 
 const MeusProcessosVendedor = () => {
-
   const [carregando, setcarregando] = useState(false);
   const [processos, setProcessos] = useState([]);
+  const [filtros, setFiltros] = useState({ data: null, classe: null, estado: null, status: null, valor: null });
   const toastRef = useRef(null);
 
   const pegarProcessosVendedor = async () => {
@@ -54,11 +55,18 @@ const MeusProcessosVendedor = () => {
 
   const [selectedFunnel, setSelectedFunnel] = useState(funnelOptions[0].value);
 
+  const processosFiltrados = filtrarProcessos(processos, filtros);
+
   return (
     <LayoutPainelVendedor>
+      <div>
+        <div className='px-3'>
+          <h1 className="text-6xl my-0">Meus Leads</h1>
+          <Funis funilOpcoes={funnelOptions} funilSelecionado={selectedFunnel} onChange={setSelectedFunnel} />
+        </div>
+      </div>
       <div className='px-3'>
-        <Funis funilOpcoes={funnelOptions} funilSelecionado={selectedFunnel} onChange={setSelectedFunnel} />
-        <Kanban dados={processos} funilAtual={selectedFunnel} />
+        <Kanban dados={processosFiltrados} funilAtual={selectedFunnel} />
       </div>
       <Toast ref={toastRef} />
     </LayoutPainelVendedor>

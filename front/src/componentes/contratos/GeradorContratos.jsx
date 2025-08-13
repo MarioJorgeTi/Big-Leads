@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Dropdown } from 'primereact/dropdown';
 import { Dialog } from 'primereact/dialog';
-import '../../recursos/css/contrato.css';
 
 const GeradorContratos = ({ contratosDisponiveis, componentesContrato }) => {
     const [visible, setVisible] = useState(false);

@@ -72,7 +72,7 @@ export const Template = ({ data }) => {
           </h2>
         </div>
       </div>
-      <SplitButton label="Detalhes" onClick={abrirDetalhes} model={acoes} className="w-full my-2 p-0" rounded />
+      <SplitButton label="Detalhes" onClick={abrirDetalhes} model={acoes} className="w-full my-2 p-0 " rounded style={{ backgroundColor: 'var(--primary-color) !important' }} />
       <ProcessoDetalhes
         idProcesso={data.id}
         visible={detalhesAberto}

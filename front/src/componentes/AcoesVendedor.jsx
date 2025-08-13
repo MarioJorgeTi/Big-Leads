@@ -50,12 +50,6 @@ const AcoesVendedor = ({ processoId, recarregarProcessos }) => {
     {
       label: 'Ver Detalhes',
       command: abrirDetalhes
-    },
-    {
-      label: 'Ação 3',
-      command: () => {
-        console.log(`Opção 3 para ID: ${processoId}`);
-      }
     }
   ];
 
