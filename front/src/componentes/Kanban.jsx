@@ -1,6 +1,7 @@
-import { VirtualScroller } from 'primereact/virtualscroller';
 import { Header, Template } from '../componentes/ProcessoTemplate';
 import Cartao from '../componentes/Cartao';
+import { ProgressSpinner } from 'primereact/progressspinner';
+import '../recursos/css/cartao.css';
 
 const colunasPorFunil = {
   comercial: [
@@ -42,8 +43,29 @@ const colunasPorFunil = {
   ],
 };
 
-const Kanban = ({ dados, funilAtual }) => {
-  const colunas = colunasPorFunil[funilAtual] || [];
+const FUNIS_POR_NIVEL = {
+  1: ['comercial', 'tramit', 'juridico', 'negociacao'],
+  2: ['comercial', 'tramit', 'juridico', 'negociacao'],
+  3: ['comercial'],
+  4: ['tramit'],
+  5: ['juridico'],
+  6: ['negociacao']
+};
+
+
+const resolverFunilEfetivo = (funilAtual) => {
+  const usuario = JSON.parse(sessionStorage.getItem('usuario'));
+  const nivel_acesso = usuario.nivel_acesso;
+  const permitidos = FUNIS_POR_NIVEL[Number(nivel_acesso)] || [];
+  if (permitidos.length === 0) {
+    return colunasPorFunil['comercial'] ? 'comercial' : Object.keys(colunasPorFunil)[0];
+  }
+  return permitidos.includes(funilAtual) ? funilAtual : permitidos[0];
+};
+
+const Kanban = ({ dados, funilAtual, isLoading }) => {
+  const efetivo = resolverFunilEfetivo(funilAtual);
+  const colunas = colunasPorFunil[efetivo] || [];
 
   const cardTemplate = (item, index, dadosFiltrados) => {
     const isLast = index === dadosFiltrados.length - 1;
@@ -58,52 +80,44 @@ const Kanban = ({ dados, funilAtual }) => {
     );
   };
 
-  const renderCardsVirtualScroller = (status) => {
+  const renderCardsScrollPanel = (status) => {
     const dadosFiltrados = dados.filter((item) => item.status === status);
 
+    if (isLoading) {
+      return (
+        <div className="flex justify-content-center align-items-center" style={{ height: '60vh' }}>
+          <ProgressSpinner />
+        </div>
+      );
+    }
+
     return (
-      <VirtualScroller
-        items={dadosFiltrados}
-        itemSize={150}
-        style={{ height: '60vh', width: '100%', backgroundColor: 'var(--gray-200)', borderRadius: '1rem', padding: '0.5rem' }}
-        className="flex flex-column"
-        contentclassname="flex flex-column gap-3"
-        showLoader={false}
-        itemTemplate={(item, options) => cardTemplate(item, options.index, dadosFiltrados)}
-      />
+      <div className='w-full border-round-3xl overflow-y-scroll' style={{ height: '60vh', backgroundColor: 'var(--gray-200)', padding: '0.5rem' }}>
+        <div className="flex flex-column">
+          {dadosFiltrados.map((item, index) => cardTemplate(item, index, dadosFiltrados))}
+        </div>
+      </div>
     );
   };
 
-  const renderColumnsVirtualScroller = () => {
+  const renderColumnsScrollPanel = () => {
     return (
-      <VirtualScroller
-        items={colunas}
-        itemSize={410}
-        orientation="horizontal"
-        style={{ width: '100vw', height: '100%' }}
-        showLoader={false}
-        itemTemplate={(coluna, options) => (
-          <div
-            key={coluna.id}
-            style={{
-              minWidth: '350px',
-              maxWidth: '365px',
-              marginRight: options.last ? 0 : '24px'
-            }}
-          >
+      <div className="flex gap-4 w-full overflow-x-scroll" data-funil={efetivo}>
+        {colunas.map((coluna) => (
+          <div key={coluna.id} className='py-2' style={{ minWidth: '350px', maxWidth: '385px' }}>
             <div className="text-white border-round-3xl" style={{ background: coluna.columnColor }}>
               <h3 className="p-3">{coluna.column}</h3>
             </div>
-            {renderCardsVirtualScroller(coluna.status)}
+            {renderCardsScrollPanel(coluna.status)}
           </div>
-        )}
-      />
+        ))}
+      </div>
     );
   };
 
   return (
     <section className="overflow-hidden" style={{ height: '70vh' }}>
-      {renderColumnsVirtualScroller()}
+      {renderColumnsScrollPanel()}
     </section>
   );
 };

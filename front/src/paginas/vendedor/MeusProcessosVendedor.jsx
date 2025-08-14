@@ -70,7 +70,7 @@ const MeusProcessosVendedor = () => {
                 </div>
             </div>
             <div className='px-3'>
-                <Kanban dados={processosFiltrados} funilAtual={selectedFunnel} />
+                <Kanban dados={processosFiltrados} funilAtual={selectedFunnel} isLoading={carregando} />
             </div>
             <Toast ref={toastRef} />
         </LayoutPainelVendedor>
