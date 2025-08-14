@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Button } from 'primereact/button';
+import { Dialog } from 'primereact/dialog';
 
 const RenderizarPdf = ({ base64Pdf, nomeArquivo = 'documento.pdf' }) => {
+
   const [pdfUrl, setPdfUrl] = useState(null);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     if (!base64Pdf) return;
@@ -38,17 +41,19 @@ const RenderizarPdf = ({ base64Pdf, nomeArquivo = 'documento.pdf' }) => {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <Button onClick={handleDownload} style={{ background: 'var(--primary-color)', alignSelf: 'flex-start' }} label="Baixar" className="border-none p-2" />
-      {pdfUrl && (
-        <iframe
-          src={pdfUrl}
-          title="Visualizador de PDF"
-          width="100%"
-          height="1080px"
-          style={{ border: '1px solid #ccc' }}
-        />
-      )}
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginLeft: '16px' }}>
+      <h4>{nomeArquivo}</h4>
+      <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <Button label="Visualizar PDF" onClick={() => setVisible(true)} className="border-none p-2" />
+        <Button label="Baixar" onClick={handleDownload} className="border-none p-2" />
+      </div>
+      <Dialog header={nomeArquivo} visible={visible} onHide={() => setVisible(false)} style={{ width: '85vw', maxWidth: 1200, height: '90vh' }} draggable={false} blockScroll >
+        {pdfUrl ? (
+          <iframe src={pdfUrl} title="Visualizador de PDF" width="100%" height="100%" style={{ border: '1px solid var(--surface-border)' }} />
+        ) : (
+          <p>Carregando PDF…</p>
+        )}
+      </Dialog>
     </div>
   );
 };

@@ -50,33 +50,35 @@ class ImportarProcessos extends Command
                 'cargo_judicial' => $processoJson['cargo_judicial'],
                 'competencia' => $processoJson['competencia'],
             ]);
-            foreach ($processoJson['polo_ativo'] as $polo) {
-                PoloAtivo::create([
-                    'nome' => $polo['nome'],
-                    'cpf_cnpj' => $polo['cpf_cnpj'],
-                    'id_processo' => $processo->id,
-                ]);
+            if (!empty($processoJson['polo_ativo'])) {
+                foreach ($processoJson['polo_ativo'] as $polo) {
+                    PoloAtivo::create([
+                        'nome' => $polo['nome'] ?? null,
+                        'cpf_cnpj' => $polo['cpf_cnpj'] ?? null,
+                        'id_processo' => $processo->id,
+                    ]);
+                }
             }
-            foreach ($processoJson['polo_passivo'] as $polo) {
-                $poloPassivo = PoloPassivo::create([
-                    'nome' => $polo['nome'],
-                    'cpf_cnpj' => $polo['cpf_cnpj'],
-                    'id_processo' => $processo->id,
-                ]);
-                if (isset($polo['telefones']) && is_array($polo['telefones'])) {
-                    foreach ($polo['telefones'] as $tel) {
-                        if (!empty($tel['numero'])) {
-                            Telefone::create([
-                                'id_polo_passivo' => $poloPassivo->id,
-                                'tipo' => $tel['tipo'] ?? 'desconhecido',
-                                'numero' => $tel['numero'],
-                            ]);
+            if (!empty($processoJson['polo_passivo'])) {
+                foreach ($processoJson['polo_passivo'] as $polo) {
+                    $poloPassivo = PoloPassivo::create([
+                        'nome' => $polo['nome'] ?? null,
+                        'cpf_cnpj' => $polo['cpf_cnpj'] ?? null,
+                        'id_processo' => $processo->id,
+                    ]);
+                    if (!empty($polo['telefones'])) {
+                        foreach ($polo['telefones'] as $tel) {
+                            if (!empty($tel['numero'])) {
+                                Telefone::create([
+                                    'id_polo_passivo' => $poloPassivo->id,
+                                    'tipo' => $tel['tipo'] ?? 'desconhecido',
+                                    'numero' => $tel['numero'] ?? null,
+                                ]);
+                            }
                         }
                     }
-                }
-                if (isset($polo['emails']) && is_array($polo['emails'])) {
-                    foreach ($polo['emails'] as $email) {
-                        if (!empty($email)) {
+                    if (!empty($polo['emails'])) {
+                        foreach ($polo['emails'] as $email) {
                             Email::create([
                                 'id_polo_passivo' => $poloPassivo->id,
                                 'endereco' => $email,
@@ -87,7 +89,6 @@ class ImportarProcessos extends Command
             }
             $nomeArquivo = $processoJson['numero_processo'] . '.pdf';
             $caminhoPdf = storage_path("app/private/processos/{$nomeArquivo}");
-
             if (file_exists($caminhoPdf)) {
                 $caminhoRelativo = "private/processos/{$nomeArquivo}";
                 Documento::create([
