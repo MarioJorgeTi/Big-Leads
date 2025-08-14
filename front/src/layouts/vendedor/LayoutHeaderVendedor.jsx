@@ -7,6 +7,7 @@ import { BiSolidExit } from "react-icons/bi";
 import { usarLogout } from "../../componentes/Logout";
 import { BlockUI } from "primereact/blockui";
 import { ProgressSpinner } from "primereact/progressspinner";
+import { Ripple } from "primereact/ripple";
 
 const LayoutHeaderVendedor = () => {
   const op = useRef(null);
@@ -48,7 +49,7 @@ const LayoutHeaderVendedor = () => {
         onClick={(e) => op.current.toggle(e)}
       >
         <p className="font-bold my-0">Bem vindo, {usuarioInfo.nome}!</p>
-        <Avatar shape="circle">
+        <Avatar shape="circle" className="bg-white">
           {usuarioInfo.nome ? usuarioInfo.nome.charAt(0).toUpperCase() : "?"}
         </Avatar>
       </Button>
@@ -70,12 +71,31 @@ const LayoutHeaderVendedor = () => {
           <p className="py-0 my-0">CPF/CNPJ: {usuarioInfo.cpf_cnpj}</p>
         </div>
         <Divider />
-        <div className="w-full p-2 flex gap-2 align-items-center justify-content-center" onClick={comportamentoLogout}>
-          <BiSolidExit size={25} />
-          <p>Sair</p>
+         <div
+          role="button"
+          tabIndex={carregando ? -1 : 0}
+          aria-label="Sair"
+          aria-disabled={carregando}
+          className={[
+            "p-button p-component p-button-text p-button-danger p-button-sm p-ripple",
+            "flex justify-content-center align-items-center gap-2 px-3 py-2 border-round-lg",
+            carregando ? "opacity-60 pointer-events-none" : "cursor-pointer select-none",
+          ].join(" ")}
+          onClick={!carregando ? comportamentoLogout : undefined}
+          onKeyDown={(e) => {
+            if (carregando) return;
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              comportamentoLogout();
+            }
+          }}
+        >
+          <i className="pi pi-sign-out" aria-hidden="true" />
+          <span className="font-medium">Sair</span>
+          <Ripple />
         </div>
       </OverlayPanel>
-      <BlockUI blocked={carregando} fullScreen template={<ProgressSpinner style={{ width: '80px', height: '80px' }} strokeWidth="4" />} />
+      <BlockUI blocked={carregando} fullScreen template={<ProgressSpinner color="#ffffff"/>} />
       <ToastComponent />
     </header>
   );

@@ -26,31 +26,28 @@ export const filtrarProcessos = (processos, filtros) => {
     const estadoProcesso = p.estado;
     const statusProcesso = p.status;
     const valorProcesso = Number(p.valor_causa);
+    const numeroProcesso = (p.numero_processo || "").toLowerCase().trim();
 
-    const atendeData =
-      !filtros.data ||
-      dataProcesso === filtros.data;
+    const atendeData = !filtros.data || dataProcesso === filtros.data;
 
     const atendeClasse =
       !filtros.classe ||
-      classeProcesso === (filtros.classe || "").toLowerCase().trim();
+      classeProcesso.includes((filtros.classe || "").toLowerCase().trim());
 
-    const atendeEstado =
-      !filtros.estado || estadoProcesso === filtros.estado;
+    const atendeEstado = !filtros.estado || estadoProcesso === filtros.estado;
 
-    const atendeStatus =
-      !filtros.status || statusProcesso === filtros.status;
+    const atendeStatus = !filtros.status || statusProcesso === filtros.status;
 
     const atendeValor =
       (!filtros.valorMinimo || valorProcesso >= Number(filtros.valorMinimo)) &&
       (!filtros.valorMaximo || valorProcesso <= Number(filtros.valorMaximo));
 
-    return (
-      atendeData &&
-      atendeClasse &&
-      atendeEstado &&
-      atendeStatus &&
-      atendeValor
-    );
+    const atendeNumero =
+      !filtros.numero_processo ||
+      numeroProcesso.includes((filtros.numero_processo || "").toLowerCase().trim());
+
+    return atendeData && atendeClasse && atendeEstado && atendeStatus && atendeValor && atendeNumero;
   });
 };
+
+
