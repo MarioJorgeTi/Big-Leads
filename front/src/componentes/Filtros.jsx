@@ -1,4 +1,5 @@
 import { InputNumber } from "primereact/inputnumber";
+import { InputText } from "primereact/inputtext";
 import { Calendar } from "primereact/calendar";
 import { Dropdown } from "primereact/dropdown";
 import { FaFilter } from "react-icons/fa6";
@@ -9,11 +10,13 @@ import { classesJudiciais, estados, statusOpcoes } from "../utilitarios/opcoes";
 
 const Filtros = ({ filtros, setFiltros }) => {
     const [abrirFiltros, setAbrirFiltros] = useState(false);
+
     const estadosModel = estados.map((estado) => ({ label: estado, value: estado }));
     const classesJudiciaisModel = classesJudiciais.map((classeJudicial) => ({ label: classeJudicial, value: classeJudicial }));
     const status = statusOpcoes.map((statusOpcao) => ({ label: statusOpcao, value: statusOpcao }));
+
     const limparFiltros = () => {
-        setFiltros({ data: null, classe: null, estado: null, status: null, valor: null });
+        setFiltros({ data: null, classe: null, estado: null, status: null, valorMinimo: null, valorMaximo: null, numero_processo: '' });
     };
 
     return (
@@ -33,6 +36,12 @@ const Filtros = ({ filtros, setFiltros }) => {
                 header='Filtros'
             >
                 <div className="flex flex-column gap-3">
+                    <InputText
+                        value={filtros.numero_processo}
+                        onChange={(e) => setFiltros({ ...filtros, numero_processo: e.target.value })}
+                        placeholder="Número do Processo"
+                        className="w-full"
+                    />
                     <Calendar
                         value={filtros.data}
                         onChange={(e) => setFiltros({ ...filtros, data: e.value })}
@@ -96,7 +105,6 @@ const Filtros = ({ filtros, setFiltros }) => {
                         onClick={() => setAbrirFiltros(false)}
                         className="w-6 px-3 border-none"
                         style={{ background: 'var(--primary-color)' }}
-
                     />
                 </div>
             </Sidebar>
