@@ -71,6 +71,8 @@ Route::middleware(['auth:api', 'nivel:3'])->prefix('vendedor')->group(function (
     Route::delete('/documento', [DocumentoController::class, 'deletarDocumentoProcesso']);
 
     Route::post('/contrato/honorario', [ContratoController::class, 'gerarContratoHonorario']);
+
+    Route::get('/vendedores', [ProcessoController::class, 'lerVendedores']);
 });
 
 Route::middleware(['auth:api', 'nivel:4'])->prefix('tramit')->group(function () {
