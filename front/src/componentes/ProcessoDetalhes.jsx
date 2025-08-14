@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Dialog } from 'primereact/dialog'; 
+import { Dialog } from 'primereact/dialog';
 import { Card } from 'primereact/card';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { Tag } from 'primereact/tag';
@@ -7,16 +7,20 @@ import { Divider } from 'primereact/divider';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import api from "../servicos/api";
+import RenderizarPdf from "./RenderizarPdf";
 
 export default function ProcessoDetalhes({ idProcesso, visible, onHide }) {
   const [processo, setProcesso] = useState(null);
   const [carregando, setCarregando] = useState(false);
+  const [documentos, setDocumentos] = useState(false);
 
   const lerProcesso = async () => {
     try {
       setCarregando(true);
-      const res = await api.get(`/vendedor/processo/${idProcesso}`);
-      setProcesso(res.data.success.processo);
+      const resposta = await api.get(`/vendedor/processo/${idProcesso}`);
+      console.log(resposta);
+      setProcesso(resposta.data.success.processo);
+      setDocumentos(resposta.data.success.processo.documentos);
     } catch (err) {
       console.log(err);
     } finally {
@@ -24,11 +28,11 @@ export default function ProcessoDetalhes({ idProcesso, visible, onHide }) {
     }
   };
 
-  useEffect(()=>{
-    if(visible){
+  useEffect(() => {
+    if (visible) {
       lerProcesso()
     }
-  },[visible])
+  }, [visible])
 
   return (
     <Dialog header="Detalhes do Processo" visible={visible} onHide={onHide} style={{ width: '80vw' }} breakpoints={{ '960px': '95vw', '640px': '100vw' }}>
@@ -87,6 +91,15 @@ export default function ProcessoDetalhes({ idProcesso, visible, onHide }) {
               </ul>
             </div>
           ))}
+          <Divider />
+          <h3>Documentos</h3>
+          <div className="grid">
+            {documentos.map((documento, index) => (
+              <div key={index} className="col-12">
+                <RenderizarPdf base64Pdf={documento.arquivo_base64} nomeArquivo={documento.nome} />
+              </div>
+            ))}
+          </div>
         </Card>
       ) : (
         <p style={{ textAlign: 'center' }}>Nenhum processo encontrado.</p>

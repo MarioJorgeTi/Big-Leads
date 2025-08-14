@@ -62,7 +62,7 @@ class ProcessoController extends Controller
     public function lerProcessoUsuario(Request $request, $id)
     {
         $usuario = $request->user();
-        $processo = Processo::with(['polosAtivos', 'polosPassivos.telefones', 'polosPassivos.emails'])->find($id);
+        $processo = Processo::with(['polosAtivos', 'polosPassivos.telefones', 'polosPassivos.emails', 'documentos'])->find($id);
         if (!$processo) {
             return response()->json([
                 'errors' => [

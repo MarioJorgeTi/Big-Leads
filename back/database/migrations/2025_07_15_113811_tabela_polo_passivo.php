@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('polo_passivo', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('cpf_cnpj');
+            $table->string('cpf_cnpj')->nullable();
             $table->foreignId('id_processo')->constrained('processo')->onDelete('cascade');
             $table->timestamps();
         });
